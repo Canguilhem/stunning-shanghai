@@ -84,3 +84,6 @@ dist
 sw.*
 
 *.md
+
+/static
+/assets
