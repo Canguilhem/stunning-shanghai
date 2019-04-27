@@ -6,15 +6,20 @@ const morgan = require('morgan')
 const app = express()
 
 // MONGODB_CONNECTION
-const db = 'mongodb://127.0.0.1:27017/stunning-shanghai'
+// const db = 'mongodb://127.0.0.1:27017/stunning-shanghai'
+const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true"
+const srvOptions = {
+  useNewUrlParser: true,
+  dbName: "Stunning_shanghai"
+}
 
 mongoose
   .connect(
-    db,
-    { useNewUrlParser: true }
+    dbSrv,
+    srvOptions
   )
-  .then(() => console.log('Connected to ' + db))
-  .catch(() => console.log('Failed to connected to ' + db))
+  .then(() => console.log('Connected to mongoDB Atlas cluster on ' + srvOptions.dbName))
+  .catch((error) => console.log(error) )
 
 const config = require('../nuxt.config')
 config.dev = !(process.env.NODE_ENV === 'production')
@@ -36,20 +41,6 @@ const postRoutes = require('./routes/post')
 
 //  USE ROUTES
 app.use('/api/posts', postRoutes)
-
-// Handling routes errors
-// app.use((req, res, next) => {
-//   const error = new Error('Endpoint not found')
-//   error.status = 404
-//   next(error)
-// })
-
-// app.use((error, req, res, next) => {
-//   res.status(error.status || 500)
-//   res.send({
-//     error: { message: error.message, status: error.status }
-//   })
-// })
 
 // NUXT MAGIC
 const nuxt = new Nuxt(config)

@@ -18,6 +18,11 @@ const postSchema = new mongoose.Schema({
     required: true,
     minlength: 15
   },
+  photoDescription: {
+    type: String,
+    required: true,
+    minlength: 15
+  },
   tags: {
     type: [String],
     enum: ['food', 'city', 'shopping', 'flora']
@@ -35,6 +40,9 @@ function validatePost(post) {
       .required(),
     thumbnail: Joi.string().required(),
     content: Joi.string()
+      .min(15)
+      .required(),
+    photoDescription: Joi.string()
       .min(15)
       .required(),
     tags: Joi.array().allow(['food', 'city', 'shopping', 'technology'])

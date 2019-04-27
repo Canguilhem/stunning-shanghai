@@ -34,6 +34,7 @@ router.post('/', async (req, res) => {
     title: req.body.title,
     thumbnail: req.body.thumbnail,
     content: req.body.content,
+    photoDescription: req.body.photoDescription,
     tags: req.body.tags
   })
   post = await post.save()
@@ -53,6 +54,7 @@ router.put('/:id', async (req, res) => {
         title: req.body.title,
         thumbnail: req.body.thumbnail,
         content: req.body.content,
+        photoDescription: req.body.photoDescription,
         tags: req.body.tags
       },
       { new: true, useFindAndModify: false }

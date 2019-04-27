@@ -21,6 +21,16 @@
           />
         </b-col>
       </b-form-row>
+      <b-form-row>
+        <b-col>
+          <b-form-textarea
+            id="photoDescription"
+            v-model="form.photoDescription"
+            required
+            placeholder="Describe your photo"
+          />
+        </b-col>
+      </b-form-row>
       <b-form-group label-cols-lg="3" id="tags" label="Tags:" label-align="left" label-for="tags">
         <div class="tags-container">
           <b-badge v-for="tag in form.tags" :key="tag" variant="dark" class="tagBadge">{{ tag }}</b-badge>
@@ -50,6 +60,7 @@ export default {
       form: {
         title: this.defaultValues.title,
         path: this.defaultValues.thumbnail,
+        photoDescription: this.defaultValues.photoDescription,
         content: this.defaultValues.content,
         tags: this.defaultValues.tags
       },
@@ -65,6 +76,7 @@ export default {
       this.form.title = "";
       this.form.path = "";
       this.form.content = "";
+      this.form.photoDescription = "";
       this.form.tags = [];
     }
   },

@@ -18,7 +18,8 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' }
     ]
   },
 

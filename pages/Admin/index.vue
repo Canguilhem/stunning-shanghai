@@ -17,7 +17,11 @@
     </div>
     <div class="background-color2">
       <h1 class="text-center">List of posts :</h1>
-      <post-preview-list @editPost="editPost" @deletePost="deletePost" :posts="posts" :key="listKey"/>
+      <post-preview-list 
+        @editPost="editPost" 
+        @deletePost="deletePost" 
+        :posts="posts" 
+        :key="listKey"/>
     </div>
   </div>
 </template>
@@ -37,6 +41,7 @@ export default {
       post: {
         title: '',
         thumbnail: '',
+        photoDescription: '',
         content: '',
         tags: []
       },
@@ -46,10 +51,12 @@ export default {
   },
   methods:{
     async publish(payload) {
+      console.log("Admin Page  == publishMethod")
       const post = {
         title: payload.title,
         thumbnail: payload.path,
         content: payload.content,
+        photoDescription: payload.photoDescription,
         tags: payload.tags 
       }
       // console.log(payload);
@@ -61,6 +68,7 @@ export default {
       this.post.title = payload.title;
       this.post.thumbnail = payload.thumbnail;
       this.post.content = payload.content;
+      this.post.photoDescription = payload.photoDescription;
       this.post.tags = payload.tags;
       this.rerenderForm()
       this.rerenderList()

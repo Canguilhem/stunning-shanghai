@@ -14,14 +14,13 @@
         </b-jumbotron>
       </div>
     </section>
-    <hr>
     <div class="container main-content background-color2">
       <app-disclaimer></app-disclaimer>
       <hr>
       <section class="articles">
         <div id="Articles_list">
-          <h1>Nombre de posts: {{posts.length}}</h1>
-          <app-article v-for="post in posts" :key="post._id" :post="post"></app-article>
+          <!-- <h1>Nombre de posts: {{posts.length}}</h1> -->
+          <app-article v-for="(post, index) in posts" :key="post._id" :post="post" :index="index"></app-article>
         </div>
       </section>
     </div>
@@ -67,6 +66,7 @@ export default {
 .main-content {
   border-radius: 12px;
   border: 2px dashed var(--main-color1);
+  margin-bottom: 110px;
 }
 .header {
   background-image: url("../assets/images/objection.jpg");
@@ -83,5 +83,8 @@ export default {
 }
 .class{
   width: 10%;
+}
+hr {
+  border: 2px dashed var(--main-color1);
 }
 </style>

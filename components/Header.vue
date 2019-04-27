@@ -1,6 +1,6 @@
 /* eslint-disable */
 <template>
-  <div class="root-div background-color4">
+  <header class="root-div background-color5">
     <b-navbar toggleable="lg" type="dark" class="background-color5 container">
       <b-navbar-brand to="/">
         Stunning Shanghai
@@ -27,12 +27,12 @@
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
-  </div>
+  </header>
 </template>
 
 <style scoped>
 .navbar {
-  box-shadow: 0px 8px 8px #888888;
+  /* box-shadow: 0px 8px 8px #888888; */
 }
 .navbar-brand {
   color: var(--main-color3) !important;

@@ -20,6 +20,7 @@
         alt="Responsive image"
       />
       <b-card-text class="text-center">{{ post.content }}</b-card-text>
+      <b-card-text class="text-center description">{{ post.photoDescription }}</b-card-text>
     </b-card-body>
     <b-button type="edit" variant="outline-warning" @click="editPost">Edit this post</b-button>
   </b-card>
@@ -35,6 +36,7 @@ export default {
           title: "Post Title",
           thumbnail: "Path to post thumbnail",
           content: "This is the post content",
+          photoDescription: 'default picture descritpion',
           tags: ["shopping", "food"]
         }
       ]
@@ -69,5 +71,8 @@ button {
 .card-footer {
   border-radius: 12px;
   margin-top: 2px;
+}
+.description {
+  font-weight: bold;
 }
 </style>

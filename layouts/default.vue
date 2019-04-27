@@ -1,15 +1,18 @@
 <template>
   <div>
     <app-header />
-    <nuxt />
+    <nuxt id="nuxt-content" />
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/Header'
+import AppFooter from '@/components/Footer'
 export default {
   components: {
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>
@@ -44,8 +47,8 @@ body {
   background-color: var(--main-color3);
 }
 
-hr{
-   background-color: var(--main-color1);
+#nuxt-content {
+   margin-bottom: 1.5em;
 }
 *,
 *:before,
