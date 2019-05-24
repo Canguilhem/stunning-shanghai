@@ -14,6 +14,9 @@
       <b-button variant="success" to="/projects">Go see more of my work</b-button>
     </b-jumbotron>
     <div class="row">
+      Shanghai is one of the biggest city in the world
+    </div>
+    <div class="row">
       <div class="col-sm-3"></div>
       <div class="stack col-sm-6  background-color2">
         <h3 class="text-center">WebSite architecture</h3>

@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const webpack = require("webpack");
 
 
 module.exports = {
@@ -19,8 +20,14 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' }
-    ]
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css' }
+    ],
+    script: []
+  },
+  
+  router: {
+    middleware: 'auth',
   },
 
   /*
@@ -32,12 +39,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    "aos/dist/aos.css"
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {src: "~/plugins/aos", ssr: false}
   ],
 
   /*
@@ -56,10 +65,19 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
+
   /*
   ** Build configuration
   */
   build: {
+
+    plugins: [
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        '$': 'jquery',
+        jquery: 'jquery'
+    })
+    ],
     /*
     ** You can extend webpack config here
     */
@@ -81,6 +99,8 @@ module.exports = {
         'b-carousel-slide': 'img-src',
         'b-embed': 'src'
       }
-    }
+    },
+    // vendors have been deprecated
+    // vendor : ["aos"]
   }
 }

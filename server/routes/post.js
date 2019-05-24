@@ -27,18 +27,23 @@ router.get('/:id', async (req, res) => {
 
 // POST Validate_Input>400 -> Construct Object -> Post -> return posted object
 router.post('/', async (req, res) => {
-  const { error } = validate(req.body)
-  if (error) return res.status(400).send(error.message)
+  try {
+    const { error } = validate(req.body)
+    if (error) return res.status(400).send(error.message)
+    let post = new Post({
+      title: req.body.title,
+      thumbnail: req.body.thumbnail,
+      content: req.body.content,
+      photoDescription: req.body.photoDescription,
+      tags: req.body.tags
+    })
+    post = await post.save()
+    res.status(201).send(post)
 
-  let post = new Post({
-    title: req.body.title,
-    thumbnail: req.body.thumbnail,
-    content: req.body.content,
-    photoDescription: req.body.photoDescription,
-    tags: req.body.tags
-  })
-  post = await post.save()
-  res.status(201).send(post)
+  } catch (error) {
+    console.log(error)
+  }
+
 })
 
 // PUT LookUp>404 -> Validate>400 -> Update -> Return updated object

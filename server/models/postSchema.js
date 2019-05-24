@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
   },
   tags: {
     type: [String],
-    enum: ['food', 'city', 'shopping', 'flora']
+    enum: ['food', 'city', 'shopping', 'technology']
   }
 })
 

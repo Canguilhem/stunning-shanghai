@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <section>
+    <section class="jumbo">
       <div>
         <b-jumbotron 
           text-variant="white" 
@@ -8,7 +8,7 @@
           lead-tag="h3">
           <template slot="header">Stunning Shanghai</template>
           <template slot="lead">
-            Here are some of the things that really stunned me when I first landed to
+            Here are some of the things that really stunned me when I first landed in
             <strong>Shanghai</strong>
           </template>
         </b-jumbotron>
@@ -16,10 +16,8 @@
     </section>
     <div class="container main-content background-color2">
       <app-disclaimer></app-disclaimer>
-      <hr>
       <section class="articles">
         <div id="Articles_list">
-          <!-- <h1>Nombre de posts: {{posts.length}}</h1> -->
           <app-article v-for="(post, index) in posts" :key="post._id" :post="post" :index="index"></app-article>
         </div>
       </section>
@@ -49,6 +47,9 @@ export default {
 </script>
 
 <style scoped>
+.jumbo {
+  margin-top: 10px;
+}
 .jumbotron {
   background-image: url("../assets/images/shanghai_jumbo.jpg");
   background-size: cover;
@@ -66,7 +67,7 @@ export default {
 .main-content {
   border-radius: 12px;
   border: 2px dashed var(--main-color1);
-  margin-bottom: 110px;
+  margin-bottom: 2em;
 }
 .header {
   background-image: url("../assets/images/objection.jpg");
@@ -86,5 +87,10 @@ export default {
 }
 hr {
   border: 2px dashed var(--main-color1);
+}
+@media screen and (max-width: 993px) {
+  .jumbotron {
+    margin-bottom: .8rem !important;
+  }
 }
 </style>

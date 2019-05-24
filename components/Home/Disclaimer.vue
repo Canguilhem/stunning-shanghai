@@ -12,7 +12,7 @@
           src="@/assets/images/objection.jpg"></b-img>
       </div>
       <br>
-      <p>I'm french and lived most of my life on the country side / little towns.</p>
+      <p>I'm french and lived most of my life on country side's little towns.</p>
       <p>I had never been to Asia before.</p>
       <p>I loved it.</p>
     </div>

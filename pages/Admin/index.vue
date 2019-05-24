@@ -6,7 +6,6 @@
       <div class="col-sm-8">
         <h1>Admin Part</h1>
         <br>
-        <p>Nombre de post : {{ posts.length }}</p>
         <b-button variant="outline-light" @click="show = true">Ajouter un post</b-button>
       </div>
       <div class="col-sm-2"></div>
@@ -16,7 +15,7 @@
       <create-form @publishPost="publish" :defaultValues="post" :key="formKey"/>
     </div>
     <div class="background-color2">
-      <h1 class="text-center">List of posts :</h1>
+      <h1 class="text-center">List of posts ({{ posts.length }}) :</h1>
       <post-preview-list 
         @editPost="editPost" 
         @deletePost="deletePost" 
@@ -45,10 +44,11 @@ export default {
         content: '',
         tags: []
       },
-      formKey:0,
-      listKey:0
+      formKey: 0,
+      listKey: 0
     };
   },
+  middleware: 'auth',
   methods:{
     async publish(payload) {
       console.log("Admin Page  == publishMethod")
@@ -59,8 +59,9 @@ export default {
         photoDescription: payload.photoDescription,
         tags: payload.tags 
       }
-      // console.log(payload);
-      const res = await axios.post('http://localhost:3000/api/posts/', post);
+      console.log("payload : " + payload);
+      const res = await axios.post('http://localhost:3000/api/posts/', post)
+      this.rerenderList()
     },
     async editPost(payload) {
       this.show = true;
