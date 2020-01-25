@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <div class="col-sm-3"></div>
-      <div class="stack col-sm-6  background-color2">
+      <div class="stack col-sm-6 ">
         <h3 class="text-center">WebSite architecture</h3>
         <p>It's commonly called a MEVN stack single page application</p>It uses:
         <ul class="list">
@@ -45,7 +45,7 @@
 .stack {
   padding-left: 20px;
   border-radius: 25px;
-  border: 2px dashed cadetblue;
+  border: 1px dashed var(--main-color1);
   font-family: 'PT Serif Caption', serif;
 }
 .list{

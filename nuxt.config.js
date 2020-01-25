@@ -3,6 +3,7 @@ const webpack = require("webpack");
 
 
 module.exports = {
+  buildDir : 'nuxt-dist',
   mode: 'universal',
 
   /*
@@ -27,7 +28,7 @@ module.exports = {
   },
   
   router: {
-    middleware: 'auth',
+    // middleware: 'auth',
   },
 
   /*

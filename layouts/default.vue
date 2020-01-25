@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div id="root__default"> 
     <app-header />
     <nuxt id="nuxt-content" />
-    <app-footer></app-footer>
+    <app-footer class="footer"></app-footer>
   </div>
 </template>
 
@@ -20,11 +20,16 @@ export default {
 
 <style>
 :root {
-  --main-color1: rgba(177, 116, 15, 1);
-  --main-color2: rgba(255, 208, 123, 1);
-  --main-color3: rgba(253, 184, 51, 1);
-  --main-color4: rgba(41, 110, 180, 1);
-  --main-color5: rgba(23, 137, 252, 1);
+  --main-color1: rgba(1, 116, 15, 1);
+  --main-color2: rgb(206, 255, 255);
+}
+
+#root__default {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--main-color2)
 }
 
 html {
@@ -37,10 +42,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  height: 100%
 }
 
 body {
-  background-color: var(--main-color3);
+  min-height: 100%;
 }
 
 .container{
@@ -48,7 +54,7 @@ body {
 }
 
 #nuxt-content {
-   margin-bottom: 1.5em;
+   height: 100%;
 }
 *,
 *::before,
@@ -56,63 +62,15 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
-}
-.text-color1 {
-  color: rgba(177, 116, 15, 1);
-}
-.text-color2 {
-  color: rgba(255, 208, 123, 1);
-}
-.text-color3 {
-  color: rgba(253, 184, 51, 1);
-}
-.text-color4 {
-  color: rgba(41, 110, 180, 1);
-}
-.text-color5 {
-  color: rgba(23, 137, 252, 1);
-}
+/* 
 .background-color1 {
-  background-color: rgba(177, 116, 15, 1);
-}
+  background-color: rgb(204, 204, 204);
+} */
 .background-color2 {
-  background-color: rgba(255, 208, 123, 1);
+  background-color: rgb(248, 233, 233);
 }
 .background-color3 {
-  background-color: rgba(253, 184, 51, 1);
-}
-.background-color4 {
-  background-color: rgba(41, 110, 180, 1);
-}
-.background-color5 {
-  background-color: rgba(23, 137, 252, 1);
+  background-color: rgb(206, 255, 255);
 }
 p,a,h1,h2,h3,h6,button, .content-text {
   font-family: 'PT Serif Caption', serif;

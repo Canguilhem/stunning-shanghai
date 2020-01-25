@@ -14,8 +14,8 @@
         </b-jumbotron>
       </div>
     </section>
-    <div class="container main-content background-color2">
-      <app-disclaimer></app-disclaimer>
+    <div class="container main-content">
+      <app-disclaimer v-if="!disclaimerclosed"></app-disclaimer>
       <section class="articles">
         <div id="Articles_list">
           <app-article v-for="(post, index) in posts" :key="post._id" :post="post" :index="index"></app-article>
@@ -34,6 +34,11 @@ export default {
     AppDisclaimer,
     PostPreviewList,
     AppArticle
+  },
+  data() {
+    return {
+      disclaimerclosed: false
+    }
   },
   async fetch({store}) {
     await store.dispatch('FETCH_POSTS')
@@ -81,9 +86,6 @@ export default {
   color: var(--main-color2);
   font-family: 'Baloo Da', cursive;
   font-weight:bold;
-}
-.class{
-  width: 10%;
 }
 hr {
   border: 2px dashed var(--main-color1);

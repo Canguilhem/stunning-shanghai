@@ -1,5 +1,7 @@
 import AOS from 'aos'
 
 export default ({app}, inject) => {
-    app.AOS = new AOS.init()
+    app.AOS = new AOS.init({
+        offset: -80
+    })
 }

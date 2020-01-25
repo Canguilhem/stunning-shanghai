@@ -12,16 +12,23 @@
           src="@/assets/images/objection.jpg"></b-img>
       </div>
       <br>
-      <p>I'm french and lived most of my life on country side's little towns.</p>
-      <p>I had never been to Asia before.</p>
-      <p>I loved it.</p>
+      <p>Ce site a été créer avant tout, pour faire découvrir des choses drôles ou insolites</p>
+      <p>J'ai moi même vu ou vécu les situations décrites</p>
+      <p>Les articles de ce blog ne sont pas à prendre au premier degré</p>
+      <p>Si c'est bien compris, suis moi, on y va..</p>
+      <button @click="destroy">close</button>
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  name: "Disclaimer"
+  name: "Disclaimer",
+  methods: {
+    destroy() {
+      this.$el.remove()
+    }
+  }
 };
 </script>
 

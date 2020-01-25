@@ -75,10 +75,7 @@ h6 > a {
   margin-top: 10px;
 }
 footer {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-top: -10px;
+  margin-top: auto;
   font-size: 12px;
 }
 .navigation > div {

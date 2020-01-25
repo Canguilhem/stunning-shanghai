@@ -7,7 +7,7 @@ const app = express()
 
 // MONGODB_CONNECTION
 // const db = 'mongodb://127.0.0.1:27017/stunning-shanghai'
-const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true"
+const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true&w=majority"
 const srvOptions = {
   useNewUrlParser: true,
   dbName: "Stunning_shanghai"

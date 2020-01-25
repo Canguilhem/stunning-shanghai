@@ -7,9 +7,9 @@
 
       <b-collapse id="nav_collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item class="text-center" to="/">Home</b-nav-item>
-          <b-nav-item to="/projects">Projects</b-nav-item>
-          <b-nav-item to="/about">About</b-nav-item>
+          <b-nav-item class="text-center" to="/">Accueil</b-nav-item>
+          <b-nav-item class="text-center" to="/projects">Projets</b-nav-item>
+          <b-nav-item class="text-center" to="/about">à Propos</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -45,7 +45,7 @@ ul.navbar-nav li a {
 }
 ul.navbar-nav li a:hover,
 .navbar-brand:hover {
-  color: var(--main-color2) !important;
+  color: var(--main-color1) !important;
 }
 ul.navbar-nav {
   color: var(--main-color1) !important;

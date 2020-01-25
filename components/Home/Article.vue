@@ -48,10 +48,6 @@ export default {
   props: ["post", "index"]
 };
 
-// $("#title").waypoint(function(){
-//    $("#title").addClass('fadeInLeft');
-// }, {offset:'100%'});
-
 </script>
 <style scoped>
 .title {
@@ -63,7 +59,7 @@ export default {
   text-shadow: grey 0.3em 0.3em 0.3em;
 }
 hr {
-  border: 3px dashed var(--main-color1);
+  border: 1px dashed var(--main-color1);
 }
 .wrapper {
   display: grid;
@@ -111,14 +107,14 @@ hr {
   transition: opacity ease-out 250ms;
 }
 .card:hover {
-  opacity: .3;
+  opacity: .9;
 }
 .card__text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color:rgb(113, 84, 230);
+  color:rgb(255, 255, 255);
   opacity: 0;
   transition: opacity ease-out 250ms;
 }
