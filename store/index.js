@@ -28,7 +28,7 @@ return new Vuex.Store({
     actions: {
       async FETCH_POSTS({ commit }) {
         try {
-          let { data } = await axios.get(`http://localhost:3000/api/posts/`);
+          let { data } = await axios.get(`/api/posts/`);
           commit('SET_POSTS', data)
         } catch (error) {
           console.log(error)

@@ -1,5 +1,5 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
-import BootstrapVue from 'bootstrap-vue/src'
+import { BootstrapVue } from 'bootstrap-vue';
 
-Vue.use(BootstrapVue, {})
+Vue.use(BootstrapVue, {});

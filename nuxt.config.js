@@ -103,5 +103,8 @@ module.exports = {
     },
     // vendors have been deprecated
     // vendor : ["aos"]
+  },
+  generate: {
+    fallback: true
   }
 }

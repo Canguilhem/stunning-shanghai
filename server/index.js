@@ -10,6 +10,7 @@ const app = express()
 const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true&w=majority"
 const srvOptions = {
   useNewUrlParser: true,
+  useUnifiedTopology: true,
   dbName: "Stunning_shanghai"
 }
 
