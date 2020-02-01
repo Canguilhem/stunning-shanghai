@@ -4,7 +4,7 @@
 
 const mongoose = require('mongoose')
 const db = require('./server')
-const Post = require('./PostModel')
+const { Post, validate } = require('./PostModel')
 
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
