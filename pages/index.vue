@@ -42,22 +42,15 @@ export default {
       disclaimerclosed: false
     }
   },
-  // methods:{
-  //     async getPost(){
-  //       try {
-  //         const res = 
-  //       // const res = await axios.get('.netlify/functions/ReadPost')
-  //         console.log(res);
-  //       } catch (e) {
-  //         console.log(e);
-  //       }
-  //     }
-  // },
-  async fetch({store}) {
-    await store.dispatch('FETCH_POSTS')
+  async asyncData(){
+    let {data} = await getPosts()
+      return this.posts = data;
   },
+  // async fetch({store}) {
+  //   await store.dispatch('FETCH_POSTS')
+  // },
   computed: {
-    posts() {
+    async posts() {
       let {data} = await getPosts()
       return data;
     }
