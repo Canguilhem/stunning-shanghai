@@ -26,6 +26,7 @@
   </div>
 </template>
 <script>
+import getPosts from '@/services/Postservice.mjs'
 import axios from "axios";
 import PostPreviewList from '@/components/admin/PostPreviewList.vue'
 import AppDisclaimer from '@/components/Home/Disclaimer.vue'
@@ -44,8 +45,8 @@ export default {
   methods:{
       async getPost(){
         try {
-        const res = await axios.get('.netlify/functions/ReadPost')
-        // const res = await this.$axios.$get('.netlify/functions/ReadPost')
+        const res = getPosts()
+        // const res = await axios.get('.netlify/functions/ReadPost')
         console.log(res);
       } catch (e) {
         console.log(e);
