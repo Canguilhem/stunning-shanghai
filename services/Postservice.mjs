@@ -8,4 +8,4 @@ async function getPosts(){
     }
 }
 
-export const getPosts
+export {getPosts}
