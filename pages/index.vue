@@ -45,7 +45,7 @@ export default {
   methods:{
       async getPost(){
         try {
-        const res = getPosts()
+        const res = await getPosts()
         // const res = await axios.get('.netlify/functions/ReadPost')
         console.log(res);
       } catch (e) {
