@@ -1,6 +1,10 @@
-import mongoose from 'mongoose'
-import db from './server'
-import Post from './PostModel'
+// import mongoose from 'mongoose'
+// import db from './server'
+// import Post from './PostModel'
+
+const mongoose = require('mongoose')
+const db = require('./server')
+const Post = require('./PostModel')
 
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false

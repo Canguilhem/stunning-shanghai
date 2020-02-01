@@ -1,5 +1,5 @@
 // TODO add authentication
-import mongoose from 'mongoose'
+const mongoose =require('mongoose')
 const dotenv = require('dotenv').config()
 // Initialize connection to database
 // const dbSrv = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_CLUSTER}`
