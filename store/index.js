@@ -27,6 +27,7 @@ return new Vuex.Store({
     },
     actions: {
       async FETCH_POSTS({ commit }) {
+        console.log("Fetching data from server")
         try {
           let { data } = await axios.get('.netlify/functions/ReadPost')
           commit('SET_POSTS', data)
