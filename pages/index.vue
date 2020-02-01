@@ -44,7 +44,7 @@ export default {
   methods:{
       async getPost(){
         try {
-        const res = await this.$axios.$get('http://localhost:34567/.netlify/functions/ReadPost')
+        const res = await this.$axios.$get('.netlify/functions/ReadPost')
         console.log(res);
       } catch (e) {
         console.log(e);
