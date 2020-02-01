@@ -45,7 +45,7 @@ export default {
   },
   async asyncData(){
     let {data} = await getPosts()
-      return this.posts = data;
+      return { posts: data}
   },
   // async fetch({store}) {
   //   await store.dispatch('FETCH_POSTS')
