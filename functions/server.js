@@ -15,4 +15,5 @@ mongoose.connect(dbSrv, srvOptions)
     .catch((error) => console.log('Failed to connect to DB cause:', error) )
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
-export default db
+// export default db
+module.exports = db
