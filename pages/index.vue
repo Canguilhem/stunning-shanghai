@@ -26,7 +26,7 @@
   </div>
 </template>
 <script>
-import getPosts from '@/services/Postservice.mjs'
+import {getPosts} from 'services/Postservice.mjs'
 import axios from "axios";
 import PostPreviewList from '@/components/admin/PostPreviewList.vue'
 import AppDisclaimer from '@/components/Home/Disclaimer.vue'
