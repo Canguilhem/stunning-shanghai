@@ -39,6 +39,7 @@ export default {
   },
   data() {
     return {
+      posts:[],
       disclaimerclosed: false
     }
   },
@@ -49,16 +50,12 @@ export default {
   // async fetch({store}) {
   //   await store.dispatch('FETCH_POSTS')
   // },
-  computed: {
-    async posts() {
-      let {data} = await getPosts()
-      return data;
-    }
-  },
-  created(){
-
-    // axios.get()
-  }
+  // computed: {
+  //   async posts() {
+  //     let {data} = await getPosts()
+  //     return data;
+  //   }
+  // },
 };
 </script>
 
