@@ -14,6 +14,7 @@
         </b-jumbotron>
       </div>
     </section>
+    <b-btn @click="getPost">va chercher</b-btn>
     <div class="container main-content">
       <app-disclaimer v-if="!disclaimerclosed"></app-disclaimer>
       <section class="articles">
@@ -40,6 +41,16 @@ export default {
       disclaimerclosed: false
     }
   },
+  methods:{
+      async getPost(){
+        try {
+        const res = await this.$axios.$get('/.netlify/functions/ReadPost')
+        console.log(res);
+      } catch (e) {
+        console.log(e);
+      }
+      }
+  },
   async fetch({store}) {
     await store.dispatch('FETCH_POSTS')
   },
@@ -47,6 +58,10 @@ export default {
     posts() {
       return this.$store.getters.getPosts
     }
+  },
+  created(){
+
+    // axios.get()
   }
 };
 </script>
