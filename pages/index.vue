@@ -43,8 +43,14 @@ export default {
       disclaimerclosed: false
     }
   },
+  methods:{
+    checkStore(){
+      this.$store.getters.getPosts;
+    }
+  },
   async asyncData({store}){
     let { data } = await getPosts()
+    store.commits('SET_POSTS', data)
     return { posts: data }
   }
 };
