@@ -44,7 +44,7 @@ export default {
     }
   },
   computed:{
-    posts = this.$store.getters.getPosts
+    posts: this.$store.getters.getPosts
   },
   methods:{
     checkStore(){
