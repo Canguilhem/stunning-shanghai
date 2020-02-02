@@ -47,11 +47,11 @@ export default {
     checkStore(){
       console.log(this.$store.getters.getPosts)
     }
+  },
+  async asyncData(){
+    let {data} = await getPosts()
+      return { posts: data}
   }
-  // async asyncData(){
-  //   let {data} = await getPosts()
-  //     return { posts: data}
-  // }
 };
 </script>
 
