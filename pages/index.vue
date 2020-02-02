@@ -39,9 +39,12 @@ export default {
   },
   data() {
     return {
-      posts:[],
+      // posts:[],
       disclaimerclosed: false
     }
+  },
+  computed:{
+    posts = this.$store.getters.getPosts
   },
   methods:{
     checkStore(){
@@ -49,8 +52,9 @@ export default {
     }
   },
   async asyncData(){
-    let {data} = await getPosts()
-      return { posts: data}
+    // let { data } = await getPosts()
+    this.$store.dispatch('FETCH_POSTS');
+    // return { posts: data }
   }
 };
 </script>
