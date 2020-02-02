@@ -2,7 +2,7 @@
 const mongoose =require('mongoose')
 const dotenv = require('dotenv').config()
 // Initialize connection to database
-const dbSrv = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_CLUSTER}`
+const dbSrv = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_CLUSTER}?retryWrites=true&w=majority`
 // const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true&w=majority"
 const srvOptions = {
   useNewUrlParser: true,
