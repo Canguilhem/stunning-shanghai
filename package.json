@@ -1,7 +1,7 @@
 {
   "name": "first-nuxt-project",
   "version": "1.0.0",
-  "description": "My cat&#39;s meow Nuxt.js project",
+  "description": "CrunchDev web experiments",
   "author": "Canguilhem",
   "private": true,
   "type": "module",

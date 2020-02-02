@@ -18,10 +18,10 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da' },
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One'},
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption'},
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da'},
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css'},
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css' }
     ],
     script: []

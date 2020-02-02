@@ -14,7 +14,7 @@
         </b-jumbotron>
       </div>
     </section>
-    <b-btn @click="getPost">va chercher</b-btn>
+    <b-btn @click="checkStore">test Store</b-btn>
     <div class="container main-content">
       <app-disclaimer v-if="!disclaimerclosed"></app-disclaimer>
       <section class="articles">
@@ -43,19 +43,15 @@ export default {
       disclaimerclosed: false
     }
   },
-  async asyncData(){
-    let {data} = await getPosts()
-      return { posts: data}
-  },
-  // async fetch({store}) {
-  //   await store.dispatch('FETCH_POSTS')
-  // },
-  // computed: {
-  //   async posts() {
-  //     let {data} = await getPosts()
-  //     return data;
-  //   }
-  // },
+  methods:{
+    checkStore(){
+      console.log(this.$store.getters.getPosts)
+    }
+  }
+  // async asyncData(){
+  //   let {data} = await getPosts()
+  //     return { posts: data}
+  // }
 };
 </script>
 

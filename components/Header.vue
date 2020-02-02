@@ -2,12 +2,15 @@
 <template>
   <header class="background-color3">
     <b-navbar toggleable="lg" type="light" class="background-color3 container">
-      <b-navbar-brand to="/">Stunning Shanghai</b-navbar-brand>
+      <b-navbar-brand to="/" class=""
+        @mouseover="hover =true"
+        @mouseleave="hover=false"
+        :class="{heartBeat: hover}">Stunning Shanghai</b-navbar-brand>
       <b-navbar-toggle target="nav_collapse"/>
 
       <b-collapse id="nav_collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item class="text-center" to="/">Accueil</b-nav-item>
+          <!-- <b-nav-item class="text-center" to="/">Accueil</b-nav-item> -->
           <b-nav-item class="text-center" to="/projects">Projets</b-nav-item>
           <b-nav-item class="text-center" to="/about">à Propos</b-nav-item>
         </b-navbar-nav>
@@ -15,6 +18,15 @@
     </b-navbar>
   </header>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      hover: false
+    }
+  }
+}
+</script>
 
 <style scoped>
 .navbar-brand {
