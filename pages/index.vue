@@ -49,14 +49,13 @@ export default {
     }
   },
   async asyncData(context){
-    // if(process.server){
+    if(context.store.getters.getPosts.length > 0){
+      return { posts: context.store.getters.getPosts }
+    }else{
       let { data } = await getPosts()
       context.store.commit('SET_POSTS', data)
       return { posts: data }
-    // }else{
-    //   return {posts : context.store.state.posts}
-    // }
-    
+    }
   }
 };
 </script>
