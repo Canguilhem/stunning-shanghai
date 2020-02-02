@@ -45,7 +45,7 @@ export default {
   },
   methods:{
     checkStore(){
-      this.$store.getters.getPosts;
+      console.log(this.$store.getters.getPosts)
     }
   },
   async asyncData(context){
