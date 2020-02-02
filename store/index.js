@@ -15,6 +15,10 @@ return new Vuex.Store({
       }
     },
     mutations: {
+      async nuxtServerInit({commit}){
+        let { data } = await axios.get('.netlify/functions/ReadPost')
+        commit('SET_POSTS', data)
+      },
       addPost(state, { post }) {
         state.posts.push(post)
       },

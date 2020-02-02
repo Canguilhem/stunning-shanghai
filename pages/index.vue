@@ -14,7 +14,6 @@
         </b-jumbotron>
       </div>
     </section>
-    <b-btn @click="checkStore">test Store</b-btn>
     <div class="container main-content">
       <app-disclaimer v-if="!disclaimerclosed"></app-disclaimer>
       <section class="articles">
@@ -41,11 +40,6 @@ export default {
     return {
       posts:[],
       disclaimerclosed: false
-    }
-  },
-  methods:{
-    checkStore(){
-      console.log(this.$store.getters.getPosts)
     }
   },
   async asyncData(context){

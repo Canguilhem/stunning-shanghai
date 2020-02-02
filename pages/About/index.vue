@@ -10,7 +10,7 @@
 
       <hr class="my-4">
 
-      <b-button variant="primary" to="/posts">Explore posts</b-button>
+      <!-- <b-button variant="primary" to="/posts">Explore posts</b-button> -->
       <b-button variant="success" to="/projects">Go see more of my work</b-button>
     </b-jumbotron>
     <div class="row">
