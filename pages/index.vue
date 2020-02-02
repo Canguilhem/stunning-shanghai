@@ -53,9 +53,9 @@ export default {
       console.log(this.$store.getters.getPosts)
     }
   },
-  async asyncData(){
+  async fetch({store}){
     // let { data } = await getPosts()
-    dispatch('FETCH_POSTS');
+    await store.dispatch('FETCH_POSTS');
     // return { posts: data }
   }
 };
