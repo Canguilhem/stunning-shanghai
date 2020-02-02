@@ -51,7 +51,7 @@ export default {
   async asyncData(context){
     // if(process.server){
       let { data } = await getPosts()
-      context.store.commits('SET_POSTS', data)
+      context.store.commit('SET_POSTS', data)
       return { posts: data }
     // }else{
     //   return {posts : context.store.state.posts}
