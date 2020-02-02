@@ -43,7 +43,7 @@ export default {
       disclaimerclosed: false
     }
   },
-  async fetch({store}){
+  async asyncData({store}){
     let { data } = await getPosts()
     return { posts: data }
   }
