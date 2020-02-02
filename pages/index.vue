@@ -48,10 +48,15 @@ export default {
       this.$store.getters.getPosts;
     }
   },
-  async asyncData({store}){
-    let { data } = await getPosts()
-    store.commits('SET_POSTS', data)
-    return { posts: data }
+  async asyncData(context){
+    if(process.server){
+      let { data } = await getPosts()
+      context.store.commits('SET_POSTS', data)
+      return { posts: data }
+    }else{
+      return {posts : context.store.state.posts}
+    }
+    
   }
 };
 </script>
