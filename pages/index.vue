@@ -39,24 +39,13 @@ export default {
   },
   data() {
     return {
-      // posts:[],
+      posts:[],
       disclaimerclosed: false
     }
   },
-  computed:{
-    posts(){
-      return this.$store.getters.getPosts
-    }
-  },
-  methods:{
-    checkStore(){
-      console.log(this.$store.getters.getPosts)
-    }
-  },
   async fetch({store}){
-    // let { data } = await getPosts()
-    await store.dispatch('FETCH_POSTS');
-    // return { posts: data }
+    let { data } = await getPosts()
+    return { posts: data }
   }
 };
 </script>
