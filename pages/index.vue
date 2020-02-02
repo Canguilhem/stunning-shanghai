@@ -55,7 +55,7 @@ export default {
   },
   async asyncData(){
     // let { data } = await getPosts()
-    this.$store.dispatch('FETCH_POSTS');
+    dispatch('FETCH_POSTS');
     // return { posts: data }
   }
 };
