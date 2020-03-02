@@ -37,6 +37,7 @@
 <script>
 import { getExperiences } from '~/services/Experienceservice.mjs'
 import Experience from "@/components/Home/Experience";
+import moment from "moment";
 import axios from "axios";
 export default {
   components: {
@@ -54,6 +55,14 @@ export default {
     }else{
       try {
         let { data } = await getExperiences();
+        data.forEach(element => {
+          element.from = moment(element.from).format("MMM-YY");
+          if (element.to) {
+            element.to = moment(element.to).format("MMM-YY");
+          } else {
+            element.to = moment().format("MMM-YY");
+          }
+        });
         context.store.commit('SET_EXPERIENCES', data)
         return { experiences: data };
       } catch (error) {
