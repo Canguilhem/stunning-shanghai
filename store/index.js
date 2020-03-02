@@ -25,11 +25,11 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({commit}){
       try {
-        let { data } = await axios.get('.netlify/functions/ReadPost')
+        let { data } = await this.$axios.$get('.netlify/functions/ReadPost')
         // let { data } = await getPosts()
         commit('SET_POSTS', data) 
         
-        let res = await axios.get('.netlify/functions/ReadExp')
+        let res = await this.$axios.$get('.netlify/functions/ReadExp')
         // let res = await axios.get("http://localhost:3000/api/experiences")
         res.data.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
