@@ -1,101 +1,142 @@
 <template>
-  <div class="container">
-    <section class="jumbo">
-      <div>
-        <b-jumbotron 
-          text-variant="white" 
-          bg-variant="transparent" 
-          lead-tag="h3">
-          <template slot="header">Stunning Shanghai</template>
-          <template slot="lead">
-            Here are some of the things that really stunned me when I first landed in
-            <strong>Shanghai</strong>
-          </template>
-        </b-jumbotron>
-      </div>
-    </section>
-    <div class="container main-content">
-      <app-disclaimer v-if="!disclaimerclosed"></app-disclaimer>
-      <section class="articles">
-        <div id="Articles_list">
-          <app-article v-for="(post, index) in posts" :key="post._id" :post="post" :index="index"></app-article>
-        </div>
-      </section>
+  <div class="background-color3 page">
+    <h1>
+      Hello world and welcome in my personal
+      <i>Ludotheque</i> !
+    </h1>
+    <h2>
+      I am a
+      <span class="typed-text">{{ typeValue }}</span>
+      <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
+    </h2>
+
+    <h3>Here are some projects I have been working on lately:</h3>
+    <div class="projects--container">
+      <nuxt-link to="/shanghai">
+        <div class="project--card">Stunning Shanghai</div>
+      </nuxt-link>
+      <nuxt-link to="/youtube">
+        <div class="project--card">Interesting Youtube</div>
+      </nuxt-link>
+      <nuxt-link to="/crypto">
+        <div class="project--card">Crypto Tracker</div>
+      </nuxt-link>
+      <nuxt-link to="/youtube">
+        <div class="project--card">My personal library</div>
+      </nuxt-link>
+      <nuxt-link to="/youtube">
+        <div class="project--card">Challenge your friends and yourself</div>
+      </nuxt-link>
+      <nuxt-link to="/youtube">
+        <div class="project--card">Blockchain ~glossary</div>
+      </nuxt-link>
+      <nuxt-link to="/youtube">
+        <div class="project--card">Weasley clock</div>
+      </nuxt-link>
     </div>
   </div>
 </template>
 <script>
-import {getPosts} from '~/services/Postservice.mjs'
-import axios from "axios";
-import PostPreviewList from '@/components/admin/PostPreviewList.vue'
-import AppDisclaimer from '@/components/Home/Disclaimer.vue'
-import AppArticle from '@/components/Home/Article.vue'
 export default {
-  components: {
-    AppDisclaimer,
-    PostPreviewList,
-    AppArticle
-  },
+  components: { },
   data() {
     return {
-      posts:[],
-      disclaimerclosed: false
+      typeValue: "",
+      typeStatus: true,
+      typeArray: ["Developer", "Biologist", "Bioinformatician"],
+      typingSpeed: 200,
+      erasingSpeed: 100,
+      newTextDelay: 2000,
+      typeArrayIndex: 0,
+      charIndex: 0
+    };
+  },
+  methods: {
+    typeText() {
+      if (this.charIndex < this.typeArray[this.typeArrayIndex].length) {
+        if (!this.typeStatus) {
+          this.typeStatus = true;
+        }
+        this.typeValue += this.typeArray[this.typeArrayIndex].charAt(
+          this.charIndex
+        );
+        this.charIndex++;
+        setTimeout(this.typeText, this.typingSpeed);
+      } else {
+        this.typeStatus = false;
+        setTimeout(this.eraseText, this.newTextDelay);
+      }
+    },
+    eraseText() {
+      if (this.charIndex > 0) {
+        if (!this.typeStatus) {
+          this.typeStatus = true;
+        }
+        this.typeValue = this.typeArray[this.typeArrayIndex].substring(
+          0,
+          this.charIndex - 1
+        );
+        this.charIndex--;
+        setTimeout(this.eraseText, this.erasingSpeed);
+      } else {
+        this.typeStatus = false;
+        this.typeArrayIndex++;
+        if (this.typeArrayIndex >= this.typeArray.length) {
+          this.typeArrayIndex = 0;
+        }
+        setTimeout(this.typeText, this.typingSpeed + 1000);
+      }
     }
   },
-  async asyncData(context){
-    if(context.store.getters.getPosts.length > 0){
-      return { posts: context.store.getters.getPosts }
-    }else{
-      let { data } = await getPosts()
-      context.store.commit('SET_POSTS', data)
-      return { posts: data }
-    }
+  created() {
+    setTimeout(this.typeText, this.newTextDelay + 200);
   }
 };
 </script>
 
 <style scoped>
-.jumbo {
-  margin-top: 10px;
+body {
+  font-family: "Lato", sans-serif;
 }
-.jumbotron {
-  background-image: url("../assets/images/shanghai_jumbo.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-  text-shadow: black 0.3em 0.3em 0.3em;
+h2 {
+  position: relative;
 }
-.display-3 {
-  font-family: "Suez One", serif;
-  display: block;
-  font-weight: 300;
-  font-size: 10vw;
-  letter-spacing: 1px;
+span.cursor.typing {
+  animation: none;
 }
-.main-content {
-  border-radius: 12px;
-  border: 2px dashed var(--main-color1);
-  margin-bottom: 2em;
+span.cursor {
+  position: absolute;
+  display: inline-block;
+  margin-left: 3px;
+  width: 4px;
+  background-color: #fff;
+  animation: cursorBlink 1s infinite;
 }
-.header {
-  background-image: url("../assets/images/objection.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left top;
-  text-shadow: black 0.3em 0.3em 0.3em;
+.projects--container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
-.lead{
-  font-size: 2.2vw;
-  color: var(--main-color2);
-  font-family: 'Baloo Da', cursive;
-  font-weight:bold;
+.project--card {
+  border: solid 1px;
+  border-radius: 15px;
+  height: 100px;
+  text-align: center;
 }
-hr {
-  border: 2px dashed var(--main-color1);
+
+a {
+  color: var(--main-color2) !important;
 }
-@media screen and (max-width: 993px) {
-  .jumbotron {
-    margin-bottom: .8rem !important;
+
+@keyframes cursorBlink {
+  49% {
+    background-color: #efffe9;
+  }
+  50% {
+    background-color: transparent;
+  }
+  99% {
+    background-color: transparent;
   }
 }
 </style>

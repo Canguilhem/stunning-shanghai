@@ -1,14 +1,40 @@
 <template>
   <footer class="background-color3">
     <div class="wrapper text-center">
+        <div class="stay-in-touch">
+          <!-- <h6>Stay in touch:</h6> -->
+          <div class="social-icon">
+            <div class="mail--icon">
+              <b-link href="mailto:clerger.a35+stunningshanghai@gmail.com">
+                <b-icon-envelope-fill font-scale="2.8"></b-icon-envelope-fill>
+              </b-link>
+            </div>
+            <b-link target="_blank" href="https://www.linkedin.com/in/anthclerget/">
+              <i class="fab fa-linkedin fa-2x"></i>
+            </b-link> 
+            <b-link to="/instagram">
+              <i class="fab fa-instagram fa-2x"></i>
+            </b-link>
+            <b-link target="_blank" href="https://twitter.com/Clerget_A">
+              <i class="fab fa-twitter fa-2x"></i>
+            </b-link>
+            <b-link target="_blank" href="https://github.com/Canguilhem">
+              <i class="fab fa-github fa-2x"></i>
+            </b-link>
+          </div>
+        </div>
+        <div>
+        <div class="copyleft">
+          <p>Coded with love by Canguilhem</p>
+        </div>
+      </div>
       <!-- no-ssr needed else matching issue DOM vs shadow DOM -->
-      <!-- data-v-1a9bb128 -->
-      <no-ssr>
+      <client-only>
         <div class="navigation">
           <b-dropdown
             id="dropdown-1"
             text="Site Map"
-            variant="outline-success"
+            variant="outline-warning"
             class="m-md-2"
             no-caret
           >
@@ -17,69 +43,56 @@
             <b-dropdown-item to="/projects">Projects</b-dropdown-item>
           </b-dropdown>
         </div>
-      </no-ssr>
-      <div>
-        <h6>
-          <a href="mailto:clerger.a35+stunningshanghai@gmail.com">Contact</a>
-        </h6>
-        <div class="copyleft">
-          <p>Coded with love by Canguilhem</p>
-        </div>
-      </div>
-      <div>
-        <h6>Follow us on:</h6>
-        <div class="social-icon">
-          <b-link to="/linkedin">
-            <i class="fab fa-linkedin fa-2x"></i>
-          </b-link>
-          <b-link to="/instagram">
-            <i class="fab fa-instagram fa-2x"></i>
-          </b-link>
-          <b-link to="/twitter">
-            <i class="fab fa-twitter fa-2x"></i>
-          </b-link>
-          <b-link to="/github">
-            <i class="fab fa-github fa-2x"></i>
-          </b-link>
-        </div>
-      </div>
+      </client-only>
     </div>
   </footer>
 </template>
 
+<script>
+import { BIconEnvelopeFill } from 'bootstrap-vue'
+export default {
+  components:{
+    BIconEnvelopeFill
+  }
+}
+</script>
+
 <style scoped>
+.mail--icon{
+  display: inline;
+  vertical-align: sub;
+}
 .dropdown-item {
   color: var(--main-color1);
-  
+}
+li:hover{
+  background-color: #2EC4B6;
 }
 .wrapper {
+  align-items: center;
   display: grid;
   grid-template-columns: 34% 33% 33%;
+  color: var(--main-color7);
 }
-.wrapper > div {
-  padding-top: 1em;
+.stay-in-touch > div,
+.stay-in-touch > h6{
+  display: inline;
 }
-h6,
-h6 > a {
-  color: #212529;
-  font-weight: 700;
-}
+.mail--icon > a,
 .social-icon > a {
-  color: #212529;
+  color: var(--main-color7);
 }
+.mail--icon > a:hover,
 .social-icon > a:hover {
-  color: beige;
+  /* color: var(--main-color6); */
+  color: #ffc107;
 }
-.social-icon,
-.copyleft {
-  margin-top: 10px;
+p{
+  margin: 0 !important;
 }
+
 footer {
-  margin-top: auto;
-  font-size: 12px;
-}
-.navigation > div {
-  margin-top: 0.5rem;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 450px) {

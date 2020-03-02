@@ -1,7 +1,7 @@
 <template>
   <div id="root__default"> 
-    <app-header />
-    <nuxt id="nuxt-content" />
+    <app-header :site="site" class="background-color3"/>
+    <nuxt id="nuxt-content"/>
     <app-footer class="footer"></app-footer>
   </div>
 </template>
@@ -13,6 +13,14 @@ export default {
   components: {
     AppHeader,
     AppFooter
+  },
+  data(){
+    return {
+      site: {
+        name:'Make Your Bio',
+        url:'/'
+      }
+    }
   }
 }
 </script>
@@ -20,8 +28,17 @@ export default {
 
 <style>
 :root {
-  --main-color1: rgba(1, 116, 15, 1);
-  --main-color2: rgb(206, 255, 255);
+  /* --main-color1: rgba(1, 116, 15, 1); */
+  /* --main-color2: rgb(206, 255, 255); */
+  /* --main-color2: #e1ffff; */
+  --main-color1: #2EC4B6;
+  --main-color2: #efffe9;
+
+  --main-color3: #1a1a1a;
+  --main-color4: #b4464f;
+  --main-color5: #1a9fff;
+  --main-color6: #3a5c83;
+  --main-color7: #ebf2f7;
 }
 
 #root__default {
@@ -49,10 +66,6 @@ body {
   min-height: 100%;
 }
 
-.container{
-  background-color: var(--main-color3);
-}
-
 #nuxt-content {
    height: 100%;
 }
@@ -62,15 +75,11 @@ body {
   box-sizing: border-box;
   margin: 0;
 }
-/* 
-.background-color1 {
-  background-color: rgb(204, 204, 204);
-} */
 .background-color2 {
-  background-color: rgb(248, 233, 233);
+  background-color: var(--main-color2);
 }
 .background-color3 {
-  background-color: rgb(206, 255, 255);
+  background-color: var(--main-color3);
 }
 p,a,h1,h2,h3,h6,button, .content-text {
   font-family: 'PT Serif Caption', serif;
@@ -78,6 +87,12 @@ p,a,h1,h2,h3,h6,button, .content-text {
 .dropdown-menu {
   background-color: var(--main-color2);
   border: 1px dashed var(--main-color1);
-  /* padding: 0 0; */
+}
+
+.page{
+  padding: 0 11%;
+  color: var(--main-color7);
+  background-color: var(--main-color3);
+  min-height: 86vh;
 }
 </style>

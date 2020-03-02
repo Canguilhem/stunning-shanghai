@@ -39,9 +39,11 @@ app.use(morgan('dev'))
 
 // IMPORT ROUTES
 const postRoutes = require('./routes/post')
+const experienceRoutes = require('./routes/experience')
 
 //  USE ROUTES
 app.use('/api/posts', postRoutes)
+app.use('/api/experiences', experienceRoutes)
 
 // NUXT MAGIC
 const nuxt = new Nuxt(config)

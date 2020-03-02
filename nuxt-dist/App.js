@@ -14,12 +14,15 @@ import '..\\node_modules\\bootstrap-vue\\dist\\bootstrap-vue.css'
 
 import '..\\node_modules\\aos\\dist\\aos.css'
 
+import _6dfe2c37 from '..\\layouts\\crypto.vue'
 import _6f6c098b from '..\\layouts\\default.vue'
+import _2b220301 from '..\\layouts\\shanghai.vue'
+import _4f894326 from '..\\layouts\\youtube.vue'
 
-const layouts = { "_default": _6f6c098b }
+const layouts = { "_crypto": _6dfe2c37,"_default": _6f6c098b,"_shanghai": _2b220301,"_youtube": _4f894326 }
 
 export default {
-  head: {"title":"first-nuxt-project","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"My cat&#39;s meow Nuxt.js project"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Suez+One"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=PT+Serif+Caption"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Baloo+Da"},{"rel":"stylesheet","href":"https:\u002F\u002Fuse.fontawesome.com\u002Freleases\u002Fv5.8.1\u002Fcss\u002Fall.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fanimate.css\u002F3.7.0\u002Fanimate.min.css"}],"script":[],"style":[]},
+  head: {"title":"first-nuxt-project","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"CrunchDev web experiments"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Suez+One"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=PT+Serif+Caption"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Baloo+Da"},{"rel":"stylesheet","href":"https:\u002F\u002Fuse.fontawesome.com\u002Freleases\u002Fv5.8.1\u002Fcss\u002Fall.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fanimate.css\u002F3.7.0\u002Fanimate.min.css"}],"script":[],"style":[]},
 
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })

@@ -1,13 +1,13 @@
 const mongoose = require('mongoose')
 const db = require('./server')
-const { Post, validate } = require('./PostModel')
+const { Experience, validate } = require('./ExpModel')
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    const posts = await Post.find(),
+    const experiences = await Experience.find(),
           response = {
-            msg: "Posts successfully found",
-            data: posts
+            msg: "Experiences successfully found",
+            data: experiences
           }  
     return {
       statusCode: 200,

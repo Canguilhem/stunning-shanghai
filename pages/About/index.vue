@@ -1,40 +1,45 @@
 <template>
-  <div class="container">
-    <b-jumbotron bg-variant="transparent">
-      <template slot="header">Why this site ?</template>
+  <div class="page">
+    <b-jumbotron>
+      <template slot="header">Why this site?</template>
 
       <template slot="lead">
-        This sites is part of my web-dev experiments, I created it to share what really stunned me when I first landed in
-        <strong>Shanghai</strong>
+        To put to test the last things I've learned lately
       </template>
-
-      <hr class="my-4">
-
-      <!-- <b-button variant="primary" to="/posts">Explore posts</b-button> -->
-      <b-button variant="success" to="/projects">Go see more of my work</b-button>
     </b-jumbotron>
     <div class="row">
-      Shanghai is one of the biggest city in the world
+      This site gather different mini projects that I have been working on lately.
+      Most of those projects would merit their own standalone but here they are for now
     </div>
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="stack col-sm-6 ">
-        <h3 class="text-center">WebSite architecture</h3>
-        <p>It's commonly called a MEVN stack single page application</p>It uses:
+      In case you are wondering this whole site is developped as a serverless, single page application
+    </div>
+      <div class="stack">
+        <h3 class="text-center">Architecture</h3>
+        <p>MEVN stack single page application</p>Based on:
         <ul class="list">
           <li>MongoDB</li>
-          <li>Express.js</li>
+          <li class="crossed">Express.js</li>
           <li>Vue.js</li>
-          <li>Node.js</li>
+          <li class="crossed">Node.js</li>
         </ul>
-        <b-button class="see-more right" variant="info" to="/projects">En savoir plus</b-button>
+        <p>With our serverless approach we eliminated Express and Node from our stack</p>
+        <b-button class="see-more right" variant="danger" to="/projects">Let's see more of your projects</b-button>
       </div>
-      <div class="col-sm-3"></div>
-    </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped >
+.jumbotron{
+  color: black;
+  background-color: var(--main-color6);
+}
+h3{
+  color: var(--main-color5)
+}
+.crossed{
+  text-decoration: line-through red;
+}
 .display-3 {
   font-family: "Suez One", serif;
   display: block;
@@ -43,12 +48,14 @@
   letter-spacing: 1px;
 }
 .stack {
-  padding-left: 20px;
+  padding: 0 20px;
   border-radius: 25px;
-  border: 1px dashed var(--main-color1);
-  font-family: 'PT Serif Caption', serif;
+  border: 1px dashed var(--main-color5);
+  font-family: "PT Serif Caption", serif;
+  width: 40vw;
+  margin: auto;
 }
-.list{
+.list {
   margin-left: 20px;
 }
 .see-more {

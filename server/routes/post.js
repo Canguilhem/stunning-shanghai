@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
     const posts = await Post.find().sort('name')
     res.send(posts)
   } catch (err) {
-    console.log(err.meassage)
+    console.log(err.message)
   }
 })
 

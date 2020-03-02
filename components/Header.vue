@@ -2,17 +2,19 @@
 <template>
   <header class="background-color3">
     <b-navbar toggleable="lg" type="light" class="background-color3 container">
-      <b-navbar-brand to="/" class=""
+      <b-navbar-brand :to="site.url" class=""
         @mouseover="hover =true"
         @mouseleave="hover=false"
-        :class="{heartBeat: hover}">Stunning Shanghai</b-navbar-brand>
+        :class="{heartBeat: hover}">{{site.name}}</b-navbar-brand>
       <b-navbar-toggle target="nav_collapse"/>
 
       <b-collapse id="nav_collapse" is-nav>
         <b-navbar-nav>
           <!-- <b-nav-item class="text-center" to="/">Accueil</b-nav-item> -->
-          <b-nav-item class="text-center" to="/projects">Projets</b-nav-item>
-          <b-nav-item class="text-center" to="/about">à Propos</b-nav-item>
+          <b-nav-item v-if="site.name !='Make Your Bio'" to="/">Home</b-nav-item>
+          <!-- <b-nav-item v-if="site.name !='Make Your Bio'" :to="`${site.url}`">Posts</b-nav-item> -->
+          <b-nav-item :to="`${site.url}about`">About</b-nav-item>
+          <b-nav-item to="/resume">My Resume</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -24,13 +26,19 @@ export default {
     return {
       hover: false
     }
+  },
+  props: {
+    site:{
+      type: Object
+    }
   }
 }
 </script>
 
 <style scoped>
 .navbar-brand {
-  color: var(--main-color1) !important;
+  /* color: var(--main-color1) !important; */
+  color:#ffc107 !important;
   font-weight: 800;
 }
 .navbar-nav li {
@@ -42,7 +50,7 @@ export default {
   display: block;
   height: 5px;
   width: 0%;
-  background-color: var(--main-color1);
+  background-color: #ffc107;
   position: absolute;
   transition: all ease-in-out 250ms;
 }
@@ -51,15 +59,16 @@ export default {
   width: 100%;
 }
 ul.navbar-nav li a {
-  color: var(--main-color1) !important;
+  /* color: var(--main-color1) !important; */
+  color:#ffc107 !important;
   text-transform: uppercase;
   font-weight: 700;
 }
 ul.navbar-nav li a:hover,
 .navbar-brand:hover {
-  color: var(--main-color1) !important;
+  color:#ffc107 !important;
 }
 ul.navbar-nav {
-  color: var(--main-color1) !important;
+  color:#ffc107 !important;
 }
 </style>

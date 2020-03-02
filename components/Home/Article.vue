@@ -4,7 +4,7 @@
 <!-- animated delay-2s infinite flipInX -->
     <div v-if="index %2 == 0">
       <h2 class="title text-center" data-aos="fade-down">{{ post.title }}</h2>
-      <div class="wrapper" data-aos="fade-right">
+      <div class="wrapper"  aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-right">
         <div class="card">
           <b-img thumbnail fluid center block src="banana.png" class="card__img"></b-img>
           <div class="card__text">
@@ -14,7 +14,7 @@
 
         <div class="post-content text-center" data-aos="fade-left">
           <div class="tags-container">
-            <b-badge v-for="tag in post.tags" :key="tag" variant="dark">{{ tag }}</b-badge>
+            <b-badge v-for="tag in post.tags" :key="tag" variant="danger">{{ tag }}</b-badge>
           </div>
           <div class="content-text">{{ post.content }}</div>
         </div>
@@ -23,13 +23,14 @@
     <!-- ODD index -->
     <div v-else>
       <h2 class="title text-center" data-aos="fade-up">{{ post.title }}</h2>
-      <div class="wrapper" data-aos="fade-left">
+      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom"  data-aos="fade-left">
         <div class="post-content text-center">
           <div class="tags-container">
-            <b-badge v-for="tag in post.tags" :key="tag" variant="dark">{{ tag }}</b-badge>
+            <b-badge v-for="tag in post.tags" :key="tag" variant="danger">{{ tag }}</b-badge>
           </div>
           <div class="content-text">{{ post.content }}</div>
         </div>
+
         <div class="card">
           <b-img thumbnail fluid center block src="banana.png" class="card__img"></b-img>
           <div class="card__text">
@@ -38,7 +39,7 @@
         </div>
       </div>
     </div>
-    <br>
+    <!-- <br> -->
   </section>
 </template>
 <script>
@@ -57,9 +58,6 @@ export default {
   font-size: 4.5vw;
   letter-spacing: 1px;
   text-shadow: grey 0.3em 0.3em 0.3em;
-}
-hr {
-  border: 1px dashed var(--main-color1);
 }
 .wrapper {
   display: grid;
@@ -130,6 +128,10 @@ hr {
   text-align: justify;
   text-justify: inter-word;
 }
+.badge-danger{
+  padding: 5px 10px;
+  margin-right: 5px
+}
 
 @media screen and (max-width: 993px) {
   .wrapper {
@@ -138,5 +140,8 @@ hr {
   .post-content {
     display: inline;
   }
+  hr {
+  border: 1px dashed var(--main-color5);
+}
 }
 </style>
