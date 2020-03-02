@@ -3,8 +3,7 @@ import moment from "moment";
 
 export async function getExperiences(){
     try {
-      let {data} = await $axios.$get('.netlify/functions/ReadExp')
-        // let { data } = await axios.get("http://localhost:3000/api/experiences");
+      let {data} = await axios.get('.netlify/functions/ReadExp')
         data.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
           if (element.to) {
