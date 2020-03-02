@@ -35,7 +35,7 @@
   </div>
 </template>
 <script>
-import {getExperiences} from '~/services/Experienceservice.mjs'
+import { getExperiences } from '~/services/Experienceservice.mjs'
 import Experience from "@/components/Home/Experience";
 import axios from "axios";
 export default {
