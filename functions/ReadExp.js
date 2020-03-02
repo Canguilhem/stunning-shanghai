@@ -4,7 +4,7 @@ const { Experience } = require('./ExpModel')
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
-    const experiences = await Experience.find(),
+    const experiences = await Experience.find().sort('-from'),
           response = {
             msg: "Experiences successfully found",
             data: experiences
