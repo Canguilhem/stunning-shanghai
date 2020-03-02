@@ -1,5 +1,5 @@
-const Joi = require('joi')
 const mongoose = require('mongoose')
+const Joi = require('joi')
 
 const experienceSchema = new mongoose.Schema({
     position: { type: String },

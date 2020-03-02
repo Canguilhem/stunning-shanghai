@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const db = require('./server')
-const { Experience, validate } = require('./ExpModel')
+const { Experience } = require('./ExpModel')
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
@@ -9,6 +9,7 @@ exports.handler = async (event, context) => {
             msg: "Experiences successfully found",
             data: experiences
           }  
+          console.log("found something")
     return {
       statusCode: 200,
       body: JSON.stringify(response)
