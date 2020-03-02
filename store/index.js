@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {getExperiences} from '~/services/Experienceservice.mjs'
-import {getPosts} from '~/services/Postservice.mjs'
+// import {getExperiences} from '~/services/Experienceservice.mjs'
+// import {getPosts} from '~/services/Postservice.mjs'
 import moment from "moment";
 export const state = () => {
   posts: [];
