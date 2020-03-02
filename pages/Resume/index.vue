@@ -49,7 +49,7 @@ export default {
   },
   methods: {},
   async asyncData(context) {
-    if(context.store.state.experiences.length > 0){
+    if(context.store.state.experiences && context.store.state.experiences.length > 0){
       return {experiences: context.store.state.experiences }
     }else{
       try {

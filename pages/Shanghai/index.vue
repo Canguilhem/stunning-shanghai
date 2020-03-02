@@ -43,7 +43,7 @@ export default {
     }
   },
   async asyncData(context){
-    if(context.store.state.posts.length > 0){
+    if(context.store.state.posts && context.store.state.posts.length > 0){
       return { posts: context.store.state.posts }
     }else{
       try {
