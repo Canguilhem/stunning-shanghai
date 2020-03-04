@@ -5,8 +5,8 @@
             From <strong>{{experience.from }}</strong> to <strong>{{ experience.to }}</strong> -
             {{experience.duration}} months in {{experience.place}} 
         </div>
-                <i class="fa fa-plus-square"
-                    @click="visible = !visible" :class="visible ? null : 'collapsed'"
+                <i class="fa"
+                    @click="visible = !visible" :class="visible ? 'fa-minus-square' : 'collapsed fa-plus-square'"
                     :aria-expanded="visible ? 'true' : 'false'"
                     :aria-controls="`collapse-${index}`" aria-hidden="true"></i>
             <b-collapse visible :id="`collapse-${index}`" v-model="visible" class="mt-2" appear>
@@ -98,6 +98,9 @@ h1{
     top: 30px;
 }
 @media screen and (max-width: 500px) {
+    h1{
+        font-size: 1.2rem
+    }
     .exp{
         padding: 20px;
     }
