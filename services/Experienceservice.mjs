@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export async function getExperiences(){
     try {
-      let {data} = await axios.get('.netlify/functions/ReadExp')
+      let {data} = await axios.get('/.netlify/functions/ReadExp')
         // data.forEach(element => {
         //   element.from = moment(element.from).format("MMM-YY");
         //   if (element.to) {

@@ -25,12 +25,13 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({commit}, context){
       try {
-        let { data } = await axios.get('/.netlify/functions/ReadPost')
+        let { data } = await axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadPost')
         // let { data } = await getPosts()
         commit('SET_POSTS', data) 
         
-        let res = await axios.get('/.netlify/functions/ReadExp')
-        res.data.forEach(element => {
+        let res = await this.$axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadExp')
+        // console.log('Netlify answer: ',res.data.data)
+        res.data.data.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
           if (element.to) {
             element.to = moment(element.to).format("MMM-YY");
@@ -39,18 +40,18 @@ export const actions = {
           }
         });
         commit('SET_EXPERIENCES', res.data) 
-        console.log('CONTEXT:',context)
+        console.log("Store succesfully loaded")
       } catch (error) {
         console.log("nuxtServerInit--Error: ", error)
       }
   },
   async FETCH_POSTS({ commit }) {
-      console.log("Fetching data from server")
-      try {
-        let { data } = await axios.get('.netlify/functions/ReadPost')
-        commit('SET_POSTS', data)
-      } catch (error) {
-        console.log(error)
-      }
+      // console.log("Fetching data from server")
+      // try {
+      //   let { data } = await axios.get('.netlify/functions/ReadPost')
+      //   commit('SET_POSTS', data)
+      // } catch (error) {
+      //   console.log(error)
+      // }
     }
 }
