@@ -95,4 +95,10 @@ p,a,h1,h2,h3,h6,button, .content-text {
   background-color: var(--main-color3);
   min-height: 86vh;
 }
+
+@media screen and (max-width: 500px) {
+  .page{
+    padding: 0 7%;
+  }
+}
 </style>

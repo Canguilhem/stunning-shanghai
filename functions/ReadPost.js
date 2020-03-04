@@ -8,7 +8,8 @@ exports.handler = async (event, context) => {
           response = {
             msg: "Posts successfully found",
             data: posts
-          }  
+          }
+          console.log("found something")  
     return {
       statusCode: 200,
       body: JSON.stringify(response)

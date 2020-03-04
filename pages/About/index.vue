@@ -4,15 +4,15 @@
       <template slot="header">Why this site?</template>
 
       <template slot="lead">
-        To put to test the last things I've learned lately
+        To put to test the last things I've learned
       </template>
     </b-jumbotron>
     <div class="row">
       This site gather different mini projects that I have been working on lately.
-      Most of those projects would merit their own standalone but here they are for now
+      Most of them would merit their own standalone but here they are for now...
     </div>
     <div class="row">
-      In case you are wondering this whole site is developped as a serverless, single page application
+      In case you are wondering, this whole site is developped as a serverless, single page application
     </div>
       <div class="stack">
         <h3 class="text-center">Architecture</h3>
@@ -24,6 +24,7 @@
           <li class="crossed">Node.js</li>
         </ul>
         <p>With our serverless approach we eliminated Express and Node from our stack</p>
+        <p>Everytime data is needed we use AWS functions to fetch data from the cloud</p>
         <b-button class="see-more right" variant="danger" to="/projects">Let's see more of your projects</b-button>
       </div>
   </div>
@@ -61,5 +62,24 @@ h3{
 .see-more {
   margin-bottom: 15px;
   display: block;
+}
+@media (max-width: 993px) {
+  .jumbotron {
+    padding: 1rem;
+    margin-bottom: .8rem !important;
+  }
+  .display-3{
+    font-size: 36px;
+  }
+  .row{
+    margin: 30px 0;
+  }
+  .stack{
+    margin: 30px 0;
+    width: 100%;
+  }
+  .h3{
+    padding-top: 15px;
+  }
 }
 </style>

@@ -23,7 +23,7 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({commit}){
+  async nuxtServerInit({commit}, context){
       try {
         let { data } = await axios.get('/.netlify/functions/ReadPost')
         // let { data } = await getPosts()
@@ -39,6 +39,7 @@ export const actions = {
           }
         });
         commit('SET_EXPERIENCES', res.data) 
+        console.log('CONTEXT:',context)
       } catch (error) {
         console.log("nuxtServerInit--Error: ", error)
       }

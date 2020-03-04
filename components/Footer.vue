@@ -97,7 +97,8 @@ footer {
 
 @media screen and (max-width: 450px) {
   .wrapper {
-    display: inline;
+    display: grid;
+    grid-template-columns: 1.4fr 0fr 1fr;
   }
   .social-icon,
   .copyleft {
@@ -108,6 +109,9 @@ footer {
   }
   #dropdown-1 {
     margin-bottom: 5px;
+  }
+    .copyleft{
+    display: none;
   }
 }
 </style>

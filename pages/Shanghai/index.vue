@@ -96,9 +96,12 @@ export default {
   font-family: 'Baloo Da', cursive;
   /* font-weight:bold; */
 }
-@media screen and (max-width: 993px) {
+@media (max-width: 993px) {
   .jumbotron {
     margin-bottom: .8rem !important;
+  }
+  .display-3{
+    font-size: 36px;
   }
 }
 </style>

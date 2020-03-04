@@ -1,9 +1,9 @@
 <template>
   <div class="page">
     <!-- <div class="name">Anthony Clerget</div> -->
-    <h5 class="text-center mb-4">Two words about me first</h5>
+    <h5 class="text-center mb-4">Two things about me first :</h5>
     <div id="about-me" class="text-center">
-      <p>I am a software engineer passionated about programmation, automation &amp; life sciences</p>
+      <p>Passionated about programmation, automation &amp; life sciences</p>
       <p>Really curious I like to discover and learn new things</p>
     </div>
     <div class="skills">Skills</div>
@@ -95,8 +95,9 @@ body {
   background-color: var(--main-color7);
   color: var(--main-color6);
   font-size: 1.7rem;
-  width: 330px;
+  /* width: 330px; */
   margin: auto;
+  font-weight: 700;
 }
 h4{
   text-align: center;
@@ -104,5 +105,17 @@ h4{
 .container{
   display: grid;
   grid-template-columns: repeat(2,1fr);
+  background-color: var(--main-color6);
+}
+@media screen and (max-width: 500px) {
+  #about-me{
+    font-size: 0.9rem;
+  }
+  .container{
+    grid-template-columns: auto;
+  }
+  h4{
+    margin-top: 15px;
+  }
 }
 </style>
