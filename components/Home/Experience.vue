@@ -5,14 +5,10 @@
             From <strong>{{experience.from }}</strong> to <strong>{{ experience.to }}</strong> -
             {{experience.duration}} months in {{experience.place}} 
         </div>
-         
-        <b-button
-            variant="outline-light"
-            :class="visible ? null : 'collapsed'"
-            :aria-expanded="visible ? 'true' : 'false'"
-            :aria-controls="`collapse-${index}`"
-            @click="visible = !visible; visible ? buttonText= 'Hide' : buttonText='Tell me more';">
-                {{buttonText}}</b-button>
+                <i class="fa fa-plus-square"
+                    @click="visible = !visible" :class="visible ? null : 'collapsed'"
+                    :aria-expanded="visible ? 'true' : 'false'"
+                    :aria-controls="`collapse-${index}`" aria-hidden="true"></i>
             <b-collapse visible :id="`collapse-${index}`" v-model="visible" class="mt-2" appear>
 
          <b-tabs v-if="internship" pills content-class="mt-3" align="center" >
@@ -101,7 +97,9 @@ h1{
     right: 4%;
     top: 30px;
 }
-/* .internship{
-     display: none; 
-} */
+@media screen and (max-width: 500px) {
+    .exp{
+        padding: 20px;
+    }
+}
 </style>

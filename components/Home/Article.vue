@@ -81,6 +81,10 @@ export default {
   opacity: 1;
   transition: transform ease-out 250ms;
 }
+.tags-container{
+  margin: 20px 0;
+}
+
 .card::before {
   opacity: .5;
   border-top: 2px solid white; 
@@ -143,5 +147,8 @@ export default {
   hr {
   border: 1px dashed var(--main-color5);
 }
+  .wrapper > .post-content {
+    padding: 0;
+  }
 }
 </style>

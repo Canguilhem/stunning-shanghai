@@ -50,10 +50,12 @@ export default {
   },
   methods: {},
   async asyncData(context) {
+    console.log('EXPERIENCES:',context.store.state.experiences)
     if(context.store.state.experiences && context.store.state.experiences.length > 0){
       return {experiences: context.store.state.experiences }
     }else{
       try {
+        console.log("asyncData:/Resume")
         let { data } = await getExperiences();
         data.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
@@ -106,6 +108,7 @@ h4{
   display: grid;
   grid-template-columns: repeat(2,1fr);
   background-color: var(--main-color6);
+  margin: 30px 0;
 }
 @media screen and (max-width: 500px) {
   #about-me{

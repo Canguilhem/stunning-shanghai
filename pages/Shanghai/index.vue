@@ -43,9 +43,11 @@ export default {
     }
   },
   async asyncData(context){
+    console.log('POSTS :',context.store.state.posts)
     if(context.store.state.posts && context.store.state.posts.length > 0){
       return { posts: context.store.state.posts }
     }else{
+      console.log('asyncData:/shanghai')
       try {
         let { data } = await getPosts()
         context.store.commit('SET_POSTS', data)

@@ -65,4 +65,10 @@ button.close{
   font-size: 2rem;
   text-shadow: none;
 }
+@media screen and (max-width: 500px) {
+  button.close{
+    top: 7px;
+    right: 0;
+  }
+}
 </style>
