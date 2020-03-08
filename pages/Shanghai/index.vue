@@ -43,7 +43,7 @@ export default {
     }
   },
   async asyncData(context){
-    console.log('POSTS :',context.store.state.posts)
+    console.log('POSTS :',context.store.state)
     if(context.store.state.posts && context.store.state.posts.length > 0){
       return { posts: context.store.state.posts }
     }else{

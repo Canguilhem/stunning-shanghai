@@ -50,21 +50,12 @@ export default {
   },
   methods: {},
   async asyncData(context) {
-    console.log('EXPERIENCES:',context.store.state.experiences)
+    console.log('asyncData:/EXPERIENCES from store:',context.store.state)
     if(context.store.state.experiences && context.store.state.experiences.length > 0){
       return {experiences: context.store.state.experiences }
     }else{
       try {
-        console.log("asyncData:/Resume")
-        let { data } = await getExperiences();
-        data.forEach(element => {
-          element.from = moment(element.from).format("MMM-YY");
-          if (element.to) {
-            element.to = moment(element.to).format("MMM-YY");
-          } else {
-            element.to = moment().format("MMM-YY");
-          }
-        });
+        let data  = await getExperiences();
         context.store.commit('SET_EXPERIENCES', data)
         return { experiences: data };
       } catch (error) {
@@ -79,17 +70,6 @@ export default {
 body {
   font-family: "Lato", sans-serif;
 }
-.name {
-  position: absolute;
-  top: 10%;
-  right: 11%;
-  background-color: #e71d36;
-  color: var(--main-color7);
-  font-size: 3rem;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: bold;
-}
 .skills,
 .education,
 .experiences {
@@ -97,18 +77,27 @@ body {
   background-color: var(--main-color7);
   color: var(--main-color6);
   font-size: 1.7rem;
-  /* width: 330px; */
+  max-width: 330px;
   margin: auto;
   font-weight: 700;
 }
 h4{
-  text-align: center;
+  font-weight: 900;
+}
+.hard{
+  text-align: left;
+}
+.soft{
+  text-align: right;
 }
 .container{
+  border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  background-color: var(--main-color6);
-  margin: 30px 0;
+  padding: 10px;
+  background-color: rgba(58,92,131,0.4);
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 @media screen and (max-width: 500px) {
   #about-me{

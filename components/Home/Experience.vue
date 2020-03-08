@@ -1,12 +1,12 @@
 <template>
-    <div class="exp" :class="{'internship': internship, 'even': even}">
+    <div  @click="visible = !visible" class="exp" :class="{'internship': internship, 'even': even}">
         <h1>{{experience.position}} @ {{experience.hostOrganism}} </h1>
         <div class="temporal--details">
             From <strong>{{experience.from }}</strong> to <strong>{{ experience.to }}</strong> -
             {{experience.duration}} months in {{experience.place}} 
         </div>
                 <i class="fa"
-                    @click="visible = !visible" :class="visible ? 'fa-minus-square' : 'collapsed fa-plus-square'"
+                    :class="visible ? 'fa-minus-square' : 'collapsed fa-plus-square'"
                     :aria-expanded="visible ? 'true' : 'false'"
                     :aria-controls="`collapse-${index}`" aria-hidden="true"></i>
             <b-collapse visible :id="`collapse-${index}`" v-model="visible" class="mt-2" appear>
@@ -43,7 +43,6 @@ export default {
     data(){
         return {
             visible: false,
-            buttonText: 'Tell me more'
         }
     },
     computed:{
@@ -80,6 +79,11 @@ h1{
     margin-top: 25px;
     position: relative;
 }
+.fa{
+    position: absolute;
+    top: 24px;
+    right: 17px;
+}
 .tabs{
   /* background-color: #e1ffff; */
   /* background-color: var(--main-color7); */
@@ -89,17 +93,21 @@ h1{
   box-shadow: 0 0 2px var(--main-color4);
 }
 .details--activities > p{
- margin-bottom: 5px;
- color: var(--main-color2);
+    margin-bottom: 15px;
+    color: var(--main-color2);
 }
 .btn.btn-outline-light{
     position: absolute;
     right: 4%;
     top: 30px;
 }
+triangle{
+   margin-right: 5px 
+}
 @media screen and (max-width: 500px) {
     h1{
-        font-size: 1.2rem
+        font-size: 1.2rem;
+        max-width: 370px;
     }
     .exp{
         padding: 20px;

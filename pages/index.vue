@@ -1,7 +1,8 @@
 <template>
   <div class="background-color3 page">
     <h1>
-      Hello world and welcome in my personal
+      <!-- Hello world and -->
+       Welcome to my personal
       <i>Ludotheque</i> !
     </h1>
     <h2>
@@ -10,7 +11,7 @@
       <span class="cursor" :class="{'typing': typeStatus}">&nbsp;</span>
     </h2>
 
-    <h3>Here are some projects I have been working on lately:</h3>
+    <h3>Take a peek to some projects I have been working on lately:</h3>
     <div class="projects--container">
       <nuxt-link to="/shanghai">
         <div class="project--card">Stunning Shanghai</div>
@@ -21,7 +22,8 @@
       <nuxt-link to="/crypto">
         <div class="project--card">Crypto Tracker</div>
       </nuxt-link>
-      <nuxt-link to="/youtube">
+      <app-card link="/shanghai" name="Stunning shanghai" description="Blog about shanghai"></app-card>
+      <!-- <nuxt-link to="/youtube">
         <div class="project--card">My personal library</div>
       </nuxt-link>
       <nuxt-link to="/youtube">
@@ -32,13 +34,14 @@
       </nuxt-link>
       <nuxt-link to="/youtube">
         <div class="project--card">Weasley clock</div>
-      </nuxt-link>
+      </nuxt-link> -->
     </div>
   </div>
 </template>
 <script>
+import Card from '@/components/Home/ProjectCard'
 export default {
-  components: { },
+  components: { AppCard: Card },
   data() {
     return {
       typeValue: "",
@@ -98,6 +101,10 @@ export default {
 body {
   font-family: "Lato", sans-serif;
 }
+h1{
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
 h2 {
   position: relative;
 }
@@ -114,8 +121,9 @@ span.cursor {
 }
 .projects--container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(287px ,1fr));
   gap: 30px;
+  margin: 30px 0;
 }
 .project--card {
   border: solid 1px;
@@ -139,4 +147,11 @@ a {
     background-color: transparent;
   }
 }
+
+/* @media screen and (max-width: 450px) {
+  .projects--container {
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+} */
 </style>

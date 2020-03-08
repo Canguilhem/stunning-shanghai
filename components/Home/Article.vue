@@ -1,10 +1,10 @@
 <template>
   <section class="article">
-    <hr>
-<!-- animated delay-2s infinite flipInX -->
+    <hr />
+    <!-- animated delay-2s infinite flipInX -->
     <div v-if="index %2 == 0">
       <h2 class="title text-center" data-aos="fade-down">{{ post.title }}</h2>
-      <div class="wrapper"  aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-right">
+      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-right">
         <div class="card">
           <b-img thumbnail fluid center block src="banana.png" class="card__img"></b-img>
           <div class="card__text">
@@ -23,7 +23,7 @@
     <!-- ODD index -->
     <div v-else>
       <h2 class="title text-center" data-aos="fade-up">{{ post.title }}</h2>
-      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom"  data-aos="fade-left">
+      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-left">
         <div class="post-content text-center">
           <div class="tags-container">
             <b-badge v-for="tag in post.tags" :key="tag" variant="danger">{{ tag }}</b-badge>
@@ -43,12 +43,11 @@
   </section>
 </template>
 <script>
-import $ from 'jquery'
+import $ from "jquery";
 export default {
   name: "Article",
   props: ["post", "index"]
 };
-
 </script>
 <style scoped>
 .title {
@@ -81,16 +80,12 @@ export default {
   opacity: 1;
   transition: transform ease-out 250ms;
 }
-.tags-container{
-  margin: 20px 0;
-}
-
 .card::before {
-  opacity: .5;
-  border-top: 2px solid white; 
+  opacity: 0.5;
+  border-top: 2px solid white;
   border-bottom: 2px solid white;
   transform: scale(0, 1);
-  background:rgba(128, 128, 128, 0.767);
+  background: rgba(128, 128, 128, 0.767);
 }
 .card::after {
   border-left: 2px solid white;
@@ -109,14 +104,14 @@ export default {
   transition: opacity ease-out 250ms;
 }
 .card:hover {
-  opacity: .9;
+  opacity: 0.9;
 }
 .card__text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   opacity: 0;
   transition: opacity ease-out 250ms;
 }
@@ -132,9 +127,12 @@ export default {
   text-align: justify;
   text-justify: inter-word;
 }
-.badge-danger{
+.badge-danger {
   padding: 5px 10px;
-  margin-right: 5px
+  margin-right: 5px;
+}
+.b-icon.bi{
+  margin-right: 7px;
 }
 
 @media screen and (max-width: 993px) {
@@ -145,8 +143,8 @@ export default {
     display: inline;
   }
   hr {
-  border: 1px dashed var(--main-color5);
-}
+    border: 1px dashed var(--main-color5);
+  }
   .wrapper > .post-content {
     padding: 0;
   }

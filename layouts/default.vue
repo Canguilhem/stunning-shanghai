@@ -1,6 +1,6 @@
 <template>
   <div id="root__default"> 
-    <app-header :site="site" class="background-color3"/>
+    <app-header :site="site" />
     <nuxt id="nuxt-content"/>
     <app-footer class="footer"></app-footer>
   </div>
@@ -83,6 +83,7 @@ body {
 }
 p,a,h1,h2,h3,h6,button, .content-text {
   font-family: 'PT Serif Caption', serif;
+  color: var(--main-color2);
 }
 .dropdown-menu {
   background-color: var(--main-color2);

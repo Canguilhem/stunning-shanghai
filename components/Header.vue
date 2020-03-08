@@ -1,7 +1,7 @@
 /* eslint-disable */
 <template>
   <header class="background-color3">
-    <b-navbar toggleable="lg" type="dark" class="background-color3 container">
+    <b-navbar toggleable="lg" type="dark" class="container">
       <b-navbar-brand :to="site.url" class=""
         @mouseover="hover =true"
         @mouseleave="hover=false"
@@ -73,5 +73,12 @@ ul.navbar-nav {
 }
 .navbar-toggler-icon{
   filter: invert(1);
+}
+
+@media screen and (max-width: 450px) {
+  .nav-link::before,
+  .nav-link::after {
+    content: none;
+  }
 }
 </style>

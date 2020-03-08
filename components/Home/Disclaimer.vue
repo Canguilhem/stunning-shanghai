@@ -3,20 +3,15 @@
     <div class="text-center relative">
       <div class="jumbotron-disclaimer relative">
         <h2 class="title">Full disclaimer</h2>
-        <b-img 
-          class="objection" 
-          thumbnail 
-          fluid 
-          center 
-          block 
-          src="@/assets/images/objection.jpg"></b-img>
-
+        <b-img class="objection" thumbnail fluid center block src="@/assets/images/objection.jpg"></b-img>
       </div>
-      <br>
-      <p>This site has been created to share unusual or funny things I stumble upon</p>
-      <p>I personnaly lived or saw the situations described</p>
-      <p>Please take it with a grain of salt</p>
-      <p>If that's ok for you, let's get to it..</p>
+      <br />
+      <div>
+        <p>This site has been created to share unusual or funny things I stumble upon</p>
+        <p>I personnaly lived or saw the situations described</p>
+        <p>Please take it with a grain of salt</p>
+        <p>If that's ok for you, let's get to it..</p>
+      </div>
       <button type="button" class="close" @click="destroy" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -29,7 +24,7 @@ export default {
   name: "Disclaimer",
   methods: {
     destroy() {
-      this.$el.remove()
+      this.$el.remove();
     }
   }
 };
@@ -57,7 +52,7 @@ export default {
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
   line-height: 80%;
 }
-button.close{
+button.close {
   position: absolute;
   right: 8px;
   top: 0;
@@ -66,7 +61,7 @@ button.close{
   text-shadow: none;
 }
 @media screen and (max-width: 500px) {
-  button.close{
+  button.close {
     top: 7px;
     right: 0;
   }

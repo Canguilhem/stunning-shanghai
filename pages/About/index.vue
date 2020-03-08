@@ -47,14 +47,15 @@ h3{
   font-weight: 300;
   font-size: 100px;
   letter-spacing: 1px;
+  color: var(--main-color3)
 }
 .stack {
-  padding: 0 20px;
+  padding: 20px;
   border-radius: 25px;
   border: 1px dashed var(--main-color5);
-  font-family: "PT Serif Caption", serif;
   width: 40vw;
-  margin: auto;
+  margin: 30px auto;
+ 
 }
 .list {
   margin-left: 20px;

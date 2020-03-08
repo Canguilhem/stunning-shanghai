@@ -4,10 +4,13 @@ const mongoose = require('mongoose')
 const express = require('express')
 const morgan = require('morgan')
 const app = express()
+const dotenv = require('dotenv').config()
 
 // MONGODB_CONNECTION
 // const db = 'mongodb://127.0.0.1:27017/stunning-shanghai'
-const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true&w=majority"
+// const dbSrv = "mongodb+srv://classicUser:classicPassword@stunning-shanghai-cluster-qvbit.mongodb.net/test?retryWrites=true&w=majority"
+const dbSrv = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_CLUSTER}?retryWrites=true&w=majority`
+// console.log(dbSrv)
 const srvOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -40,10 +43,12 @@ app.use(morgan('dev'))
 // IMPORT ROUTES
 const postRoutes = require('./routes/post')
 const experienceRoutes = require('./routes/experience')
+const formationRoutes = require('./routes/formation')
 
 //  USE ROUTES
 app.use('/api/posts', postRoutes)
 app.use('/api/experiences', experienceRoutes)
+app.use('/api/formations', formationRoutes)
 
 // NUXT MAGIC
 const nuxt = new Nuxt(config)

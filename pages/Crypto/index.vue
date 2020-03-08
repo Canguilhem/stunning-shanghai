@@ -33,10 +33,10 @@
     
     <b-col id="records" sm="8">
       <h5>My Past transactions</h5>
-      <b-table :items="assets" :fields="fields" 
+      <!-- <b-table :items="assets" :fields="fields" 
         dark bordered borderless hover
-        :tbody-tr-class="rowClass"></b-table>
-        <!-- {{assets}} -->
+        :tbody-tr-class="rowClass"></b-table> -->
+        {{assets}}
     </b-col>
     <br />
     <b-btn class="mt-4" @click="fetchData">fetch Data</b-btn>
@@ -59,19 +59,19 @@ export default {
       assets: [],
       coinsData: [],
       // fields: ["Symbol", "Quantity", "Price", "Real time Value"]
-      fields: [
-        {key: "symbol", label: "Symbol", sortable: false},
-        {key: "quantity", label: "Quantity", sortable: true},
-        {key: "price", label: "Stack value then", sortable: true},
-        {key: "value", label: "Stack value now", sortable: true},
-      ]
+      // fields: [
+      //   {key: "symbol", label: "Symbol", sortable: false},
+      //   {key: "quantity", label: "Quantity", sortable: true},
+      //   {key: "price", label: "Stack value then", sortable: true, headerAbbr: "Then"},
+      //   {key: "value", label: "Stack value now", sortable: true, headerAbbr: "Now"},
+      // ]
     };
   },
   methods: {
     async fetchData() {
       try {
         let { data } = await axios.get(
-          "https://api.coinmarketcap.com/v1/ticker/"
+          "https://api.coinmarketcap.com/v2/ticker/"
         );
         console.log(data);
         let res = [];
