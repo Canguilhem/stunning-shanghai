@@ -83,6 +83,11 @@ module.exports = {
     ** You can extend webpack config here
     */
     extend(config, ctx) {
+      
+      if (ctx && ctx.isClient) {
+        config.optimization.splitChunks.maxSize = 51200
+      }
+      
       const vueLoader = config.module.rules.find(
         rule => rule.loader === 'vue-loader'
       )

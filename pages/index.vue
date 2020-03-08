@@ -22,7 +22,7 @@
       <nuxt-link to="/crypto">
         <div class="project--card">Crypto Tracker</div>
       </nuxt-link>
-      <app-card link="/shanghai" name="Stunning shanghai" description="Blog about shanghai"></app-card>
+      <!-- <app-card link="/shanghai" name="Stunning shanghai" description="Blog about shanghai"></app-card> -->
       <!-- <nuxt-link to="/youtube">
         <div class="project--card">My personal library</div>
       </nuxt-link>
