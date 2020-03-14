@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.5",
-    "aos": "^2.3.4",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.6.1",
     "cross-env": "^5.2.1",
@@ -24,7 +23,9 @@
     "moment": "^2.24.0",
     "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
-    "nuxt": "^2.11.0"
+    "node-sass": "^4.13.1",
+    "nuxt": "^2.11.0",
+    "sass-loader": "^8.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"

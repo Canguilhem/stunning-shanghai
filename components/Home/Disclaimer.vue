@@ -48,7 +48,7 @@ export default {
   letter-spacing: 1px;
   /* color: #ffc107; */
   color: var(--main-color5);
-  text-shadow: var(--main-color5) 0.2em 0.2em 0.6em;
+  /* text-shadow: var(--main-color5) 0.2em 0.2em 0.6em; */
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
   line-height: 80%;
 }

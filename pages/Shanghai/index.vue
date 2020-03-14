@@ -71,6 +71,7 @@ export default {
   background-position: center top;
   border: solid;
   border-radius: 40px;
+  filter:grayscale(0.2);
   text-shadow: black 0.3em 0.3em 0.3em;
 }
 .display-3 {

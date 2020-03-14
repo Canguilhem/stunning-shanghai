@@ -2,7 +2,7 @@
 <template>
   <header class="background-color3">
     <b-navbar toggleable="lg" type="dark" class="container">
-      <b-navbar-brand :to="site.url" class=""
+      <b-navbar-brand :to="site.url"
         @mouseover="hover =true"
         @mouseleave="hover=false"
         :class="{heartBeat: hover}">{{site.name}}</b-navbar-brand>
@@ -40,6 +40,7 @@ export default {
   /* color: var(--main-color1) !important; */
   color:#ffc107 !important;
   font-weight: 800;
+  padding-left: 30px;
 }
 .navbar-nav li {
   position: relative;

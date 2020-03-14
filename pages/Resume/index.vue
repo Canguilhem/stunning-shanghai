@@ -82,6 +82,7 @@ body {
   font-weight: 700;
 }
 h4{
+  margin-top: 1rem;
   font-weight: 900;
 }
 .hard{
@@ -98,6 +99,7 @@ h4{
   background-color: rgba(58,92,131,0.4);
   margin-top: 30px;
   margin-bottom: 30px;
+  justify-items: center;
 }
 @media screen and (max-width: 500px) {
   #about-me{

@@ -22,6 +22,12 @@
       <nuxt-link to="/crypto">
         <div class="project--card">Crypto Tracker</div>
       </nuxt-link>
+
+<!-- <i class="icon icon-shanghai"></i>
+<i class="icon icon-youtube"></i>
+<i class="icon icon-bitcoin"></i>
+<i class="icon icon-explained"></i> -->
+
       <!-- <app-card link="/shanghai" name="Stunning shanghai" description="Blog about shanghai"></app-card> -->
       <!-- <nuxt-link to="/youtube">
         <div class="project--card">My personal library</div>
@@ -97,7 +103,12 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.icon:before{
+  font-size: 3rem;
+  color: #FFC107;
+}
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -124,12 +135,15 @@ span.cursor {
   grid-template-columns: repeat(auto-fill, minmax(287px ,1fr));
   gap: 30px;
   margin: 30px 0;
-}
-.project--card {
-  border: solid 1px;
-  border-radius: 15px;
-  height: 100px;
-  text-align: center;
+  .project--card {
+    border: solid 1px;
+    border-radius: 15px;
+    height: 100px;
+    text-align: center;
+    &:hover{
+      background-color: lighten($color: #000000, $amount: 15);
+    }
+  }
 }
 
 a {

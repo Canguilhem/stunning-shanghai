@@ -1,10 +1,12 @@
 <template>
-  <section class="article">
+  <section class="article" v-anim>
     <hr />
     <!-- animated delay-2s infinite flipInX -->
     <div v-if="index %2 == 0">
-      <h2 class="title text-center" data-aos="fade-down">{{ post.title }}</h2>
-      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-right">
+      <!-- <h2 class="title text-center" data-aos="fade-down">{{ post.title }}</h2>
+      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-right"> -->
+        <h2 class="title text-center">{{ post.title }}</h2>
+      <div class="wrapper">
         <div class="card">
           <b-img thumbnail fluid center block src="banana.png" class="card__img"></b-img>
           <div class="card__text">
@@ -12,7 +14,8 @@
           </div>
         </div>
 
-        <div class="post-content text-center" data-aos="fade-left">
+        <!-- <div class="post-content text-center" data-aos="fade-left"> -->
+          <div class="post-content text-center">
           <div class="tags-container">
             <b-badge v-for="tag in post.tags" :key="tag" variant="danger">{{ tag }}</b-badge>
           </div>
@@ -22,8 +25,10 @@
     </div>
     <!-- ODD index -->
     <div v-else>
-      <h2 class="title text-center" data-aos="fade-up">{{ post.title }}</h2>
-      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-left">
+      <!-- <h2 class="title text-center" data-aos="fade-up">{{ post.title }}</h2>
+      <div class="wrapper" aos-anchor aos-anchor-placement="top-bottom" data-aos="fade-left"> -->
+      <h2 class="title text-center">{{ post.title }}</h2>
+      <div class="wrapper">
         <div class="post-content text-center">
           <div class="tags-container">
             <b-badge v-for="tag in post.tags" :key="tag" variant="danger">{{ tag }}</b-badge>
@@ -43,7 +48,7 @@
   </section>
 </template>
 <script>
-import $ from "jquery";
+// import $ from "jquery";
 export default {
   name: "Article",
   props: ["post", "index"]
@@ -56,7 +61,8 @@ export default {
   font-weight: 300;
   font-size: 4.5vw;
   letter-spacing: 1px;
-  text-shadow: grey 0.3em 0.3em 0.3em;
+  /* text-shadow: grey 0.3em 0.3em 0.3em; */
+  margin-bottom: 2.5rem;
 }
 .wrapper {
   display: grid;
@@ -68,6 +74,8 @@ export default {
 .card {
   position: relative;
   margin: 1em;
+  background-color: transparent;
+  align-self: center;
 }
 .card::before,
 .card::after {
@@ -122,17 +130,29 @@ export default {
 .post-content {
   display: grid;
   grid-template-rows: 10% 90%;
+  gap: 10px
 }
 .content-text {
   text-align: justify;
-  text-justify: inter-word;
+  /* text-justify: inter-word; */
+  font-size: 1.2rem;
 }
 .badge-danger {
-  padding: 5px 10px;
-  margin-right: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 1rem;
 }
 .b-icon.bi{
   margin-right: 7px;
+}
+.before-enter{
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease-out;
+}
+.enter{
+  opacity: 1;
+  transform: translateY(0px);
 }
 
 @media screen and (max-width: 993px) {

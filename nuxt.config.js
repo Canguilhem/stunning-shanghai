@@ -40,14 +40,19 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    "aos/dist/aos.css"
+    '@/assets/css/animation.css',
+    '@/assets/css/fontello-codes.css',
+    'assets/css/fontello-embedded.css',
+    'assets/css/fontello-ie7-codes.css', /*if IE 7 */
+    'assets/css/fontello-ie7.css',
+    '~/assets/css/fontello.css',
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    {src: "~/plugins/aos", ssr: false}
+   {src:'~/plugins/directives.js', ssr: false}
   ],
 
   /*
@@ -85,7 +90,7 @@ module.exports = {
     extend(config, ctx) {
       
       if (ctx && ctx.isClient) {
-        config.optimization.splitChunks.maxSize = 51200
+        config.optimization.splitChunks.maxSize = 102400
       }
       
       const vueLoader = config.module.rules.find(
