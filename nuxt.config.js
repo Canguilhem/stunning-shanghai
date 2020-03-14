@@ -40,11 +40,10 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '@/assets/css/animation.css',
-    '@/assets/css/fontello-codes.css',
-    'assets/css/fontello-embedded.css',
-    'assets/css/fontello-ie7-codes.css', /*if IE 7 */
-    'assets/css/fontello-ie7.css',
+    '~/assets/css/fontello-codes.css',
+    '~/assets/css/fontello-embedded.css',
+    '~/assets/css/fontello-ie7-codes.css', /*if IE 7 */
+    '~/assets/css/fontello-ie7.css',
     '~/assets/css/fontello.css',
   ],
 
