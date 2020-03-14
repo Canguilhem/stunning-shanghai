@@ -40,12 +40,13 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // './assets/css/fontello-codes.css',
-    // './assets/css/fontello-embedded.css',
-    // './assets/css/fontello-ie7-codes.css', /*if IE 7 */
-    // '.:assets/css/fontello-ie7.css',
+    {src:'_nuxt/assets/css/fontello.css'},
+    {src:'assets/css/fontello.css'},
+    {src:'@/assets/css/fontello.css'},
+    {src:'@assets/css/fontello.css'},
+    {src:'static/css/fontello.css'},
+    {src:'@static/css/fontello.css'},
     {src:'~assets/css/fontello.css'},
-    {src:'./assets/css/fontello.css'},
     
   ],
   /*
@@ -78,11 +79,11 @@ module.exports = {
   build: {
 
     plugins: [
-      new webpack.ProvidePlugin({
-        jQuery: 'jquery',
-        '$': 'jquery',
-        jquery: 'jquery'
-    })
+    //   new webpack.ProvidePlugin({
+    //     jQuery: 'jquery',
+    //     '$': 'jquery',
+    //     jquery: 'jquery'
+    // })
     ],
     /*
     ** You can extend webpack config here
