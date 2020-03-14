@@ -12,16 +12,6 @@ import '..\\node_modules\\bootstrap\\dist\\css\\bootstrap.css'
 
 import '..\\node_modules\\bootstrap-vue\\dist\\bootstrap-vue.css'
 
-import '..\\assets\\css\\animation.css'
-
-import '..\\assets\\css\\fontello-codes.css'
-
-import '..\\assets\\css\\fontello-embedded.css'
-
-import '..\\assets\\css\\fontello-ie7-codes.css'
-
-import '..\\assets\\css\\fontello-ie7.css'
-
 import '..\\assets\\css\\fontello.css'
 
 import _6dfe2c37 from '..\\layouts\\crypto.vue'
