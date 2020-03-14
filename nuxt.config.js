@@ -44,7 +44,6 @@ module.exports = {
     // './assets/css/fontello-embedded.css',
     // './assets/css/fontello-ie7-codes.css', /*if IE 7 */
     // '.:assets/css/fontello-ie7.css',
-    {src:'~static/css/fontello.css' , ssr: false},
     {src:'~assets/css/fontello.css'},
     {src:'./assets/css/fontello.css'},
     
