@@ -38,7 +38,7 @@
   </div>
 </template>
 <script>
-import { getExperiences } from '~/services/Experienceservice.mjs'
+import { getExperiences } from '~/services/Resumeservice.mjs'
 import Formation from "@/components/Home/Formation";
 import Experience from "@/components/Home/Experience";
 import axios from "axios";
@@ -63,7 +63,7 @@ export default {
         console.log('EXP right after call: ' , resume);
         context.store.commit('SET_EXPERIENCES', resume.experiences)
         context.store.commit('SET_FORMATIONS', resume.formations)
-        console.log('Inside resume component', data)
+        console.log('Inside resume component', resume)
         return { 
           experiences: resume.experiences,
           formations: resume.formations,

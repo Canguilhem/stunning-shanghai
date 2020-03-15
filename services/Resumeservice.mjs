@@ -6,7 +6,7 @@ export async function getExperiences(){
         let res = await axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadExp')
         console.log(res)
         let experiences = res.data.experiences;
-        console.log('ExperienceService:getExperiences:data: ', experiences.length)
+        console.log('ResumeService:getExperiences:data: ', experiences.length)
         experiences.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
           if (element.to) {

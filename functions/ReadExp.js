@@ -8,7 +8,6 @@ exports.handler = async (event, context) => {
     const experiences = await Experience.find().sort('-from'),
     formations = await Formation.find().sort('-from'),
           response = {
-            msg: "Experiences successfully found",
             experiences,
             formations
           }  

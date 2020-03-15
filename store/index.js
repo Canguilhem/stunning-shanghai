@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getExperiences } from '~/services/Experienceservice.mjs'
+import { getExperiences } from '~/services/Resumeservice.mjs'
 import { getPosts } from '~/services/Postservice.mjs'
 import { fetchData } from '~/services/Initservice.mjs'
 export const state = () => {
