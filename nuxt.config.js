@@ -40,13 +40,14 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    {src:'_nuxt/assets/css/fontello.css'},
-    {src:'assets/css/fontello.css'},
-    {src:'@/assets/css/fontello.css'},
-    {src:'@assets/css/fontello.css'},
-    {src:'static/css/fontello.css'},
-    {src:'@static/css/fontello.css'},
-    {src:'~assets/css/fontello.css'},
+    '@/assets/css/fontello.css'
+    // {src:'_nuxt/assets/css/fontello.css'},
+    // {src:'assets/css/fontello.css'},
+    // {src:'@/assets/css/fontello.css'},
+    // {src:'@assets/css/fontello.css'},
+    // {src:'static/css/fontello.css'},
+    // {src:'@static/css/fontello.css'},
+    // {src:'~assets/css/fontello.css'},
     
   ],
   /*
