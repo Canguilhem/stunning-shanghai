@@ -32,6 +32,7 @@ export const actions = {
       // dispatch('FETCH_POSTS');
       // dispatch('FETCH_EXPERIENCES');
       let data = await fetchData();
+      console.log('NUXT_SERVER_INIT: ', data)
       commit('SET_POSTS', data.posts)
       commit('SET_EXPERIENCES', data.experiences);
     } catch (error) {
