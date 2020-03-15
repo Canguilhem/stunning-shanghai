@@ -6,7 +6,7 @@ exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     const experiences = await Experience.find().sort('-from'),
-      formation = await Formation.find().sort('-from'),
+    formations = await Formation.find().sort('-from'),
           response = {
             msg: "Experiences successfully found",
             experiences,
