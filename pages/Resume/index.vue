@@ -56,26 +56,17 @@ export default {
   methods: {},
   async asyncData(context) {
     if(context.store.state.experiences && context.store.state.experiences.length > 0){
-      console.log('asyncData:/EXPERIENCES from store:',context.store.state)
       return {experiences: context.store.state.experiences }
     }else{
-      console.log('asyncData:/EXPERIENCES not found in store')
       try {
-        let exp  = await getExperiences();
-
-        console.log('EXP right after call: ' , exp);
-        context.store.commit('SET_EXPERIENCES', exp)
-
-
-        let { data } = await axios.get(" http://localhost:3000/api/formations")
-        context.store.commit('SET_FORMATIONS', data)
-
-        
-
+        let resume  = await getExperiences();
+        console.log('EXP right after call: ' , resume);
+        context.store.commit('SET_EXPERIENCES', resume.experiences)
+        context.store.commit('SET_FORMATIONS', resume.formations)
         console.log('Inside resume component', data)
         return { 
-          experiences: exp,
-          formations: data,
+          experiences: resume.experiences,
+          formations: resume.formations,
          };
       } catch (error) {
         console.log(error);

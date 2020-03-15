@@ -16,7 +16,8 @@ export async function fetchData(){
         });
         return {
             experiences,
-            posts: res.data.posts
+            posts: res.data.posts,
+            formations: res.data.formations
         };
     } catch (error) {
         console.log('ExperienceService:getExperiences', error)
