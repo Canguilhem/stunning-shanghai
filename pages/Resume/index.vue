@@ -56,7 +56,10 @@ export default {
   methods: {},
   async asyncData(context) {
     if(context.store.state.experiences && context.store.state.experiences.length > 0){
-      return {experiences: context.store.state.experiences }
+      return {
+        experiences: context.store.state.experiences,
+        formations: context.store.state.formations
+      }
     }else{
       try {
         let resume  = await getExperiences();
