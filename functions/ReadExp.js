@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
             experiences,
             formations
           }  
-          console.log("found something")
+          console.log("READ_EXP_FUNC : ", response)
     return {
       statusCode: 200,
       body: JSON.stringify(response)

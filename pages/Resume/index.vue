@@ -63,11 +63,12 @@ export default {
       try {
         let exp  = await getExperiences();
         context.store.commit('SET_EXPERIENCES', exp)
+        context.store.commit('SET_FORMATIONS', data)
 
         let { data } = await axios.get(" http://localhost:3000/api/formations")
+        
 
-        context.store.commit('SET_FORMATIONS', data)
-        console.log(data)
+        console.log('Inside resume component', data)
         return { 
           experiences: exp,
           formations: data,

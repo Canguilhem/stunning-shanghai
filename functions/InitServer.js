@@ -7,13 +7,15 @@ exports.handler = async (event, context) => {
   try {
     let response = {}
     const experiences = await Experience.find().sort('-from')
+    const formations = await Formation.find().sort('-from')
     const posts = await Post.find()
         //   response.msg = "Experiences successfully found",
     response.data = {
-        "experiences": experiences,
-        "posts": posts
+        experiences,
+        posts,
+        formations
     }
-    console.log("found something")
+    console.log("INIT_SERVER_FUNC: ", response.data)
     return {
       statusCode: 200,
       body: JSON.stringify(response)
