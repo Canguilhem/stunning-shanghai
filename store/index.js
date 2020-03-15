@@ -24,11 +24,13 @@ export const mutations = {
 }
 
 export const actions = {
-  async nuxtServerInit({dispatch}, context){
+  async nuxtServerInit({dispatc, commit}, context){
       try {
         // dispatch('FETCH_POSTS');
         // dispatch('FETCH_EXPERIENCES');
       let data  = await fetchData();
+      commit('SET_POSTS', data.posts)
+      commit('SET_EXPERIENCES', data.experiences);
       console.log(data);
       } catch (error) {
         console.log("nuxtServerInit--Error: ", error)
@@ -37,7 +39,6 @@ export const actions = {
   async FETCH_POSTS({ commit }) {
     console.log("ACTION:FETCH_POSTS")
       try {
-        // let { data } = await axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadPost')
         let { data } = await getPosts()
         console.log("ACTION:FETCH_POSTS_DATA:", data.length)
         commit('SET_POSTS', data)
@@ -48,7 +49,6 @@ export const actions = {
   async FETCH_EXPERIENCES({ commit }) {
     try {
       console.log("ACTION:FETCH_EXPERIENCES")
-      // let { data } = await axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadPost')
       let res = await getExperiences()
       console.log("ACTION:FETCH_EXPERIENCES_RES", res.length)
       commit('SET_EXPERIENCES', res);
