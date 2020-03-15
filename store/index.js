@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {getExperiences} from '~/services/Experienceservice.mjs'
 import {getPosts} from '~/services/Postservice.mjs'
-import moment from "moment";
+import {fetchData} from '~/services/Initservice.mjs'
 export const state = () => {
   posts: [];
   experiences: []
@@ -26,8 +26,10 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({dispatch}, context){
       try {
-        dispatch('FETCH_POSTS');
-        dispatch('FETCH_EXPERIENCES');
+        // dispatch('FETCH_POSTS');
+        // dispatch('FETCH_EXPERIENCES');
+      let data  = await fetchData();
+      console.log(data);
       } catch (error) {
         console.log("nuxtServerInit--Error: ", error)
       }

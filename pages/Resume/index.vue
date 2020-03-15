@@ -3,8 +3,8 @@
     <!-- <div class="name">Anthony Clerget</div> -->
     <h5 class="text-center mb-4">Two things about me first :</h5>
     <div id="about-me" class="text-center">
-      <p>Passionated about programmation, automation &amp; life sciences</p>
-      <p>Really curious I like to discover and learn new things</p>
+      <p>1 - Passionated about programmation, automation &amp; life sciences</p>
+      <p>2 - Really curious I like to discover and learn new things</p>
     </div>
     <div class="skills">Skills</div>
     <div class="container">

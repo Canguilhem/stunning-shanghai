@@ -6,6 +6,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _36d9eae1 = () => interopDefault(import('..\\pages\\About\\index.vue' /* webpackChunkName: "pages_About_index" */))
 const _6af20442 = () => interopDefault(import('..\\pages\\Admin\\index.vue' /* webpackChunkName: "pages_Admin_index" */))
 const _7a9c2665 = () => interopDefault(import('..\\pages\\Crypto\\index.vue' /* webpackChunkName: "pages_Crypto_index" */))
+const _1336f9e8 = () => interopDefault(import('..\\pages\\Glossary\\index.vue' /* webpackChunkName: "pages_Glossary_index" */))
 const _3bd2b379 = () => interopDefault(import('..\\pages\\Resume\\index.vue' /* webpackChunkName: "pages_Resume_index" */))
 const _78c250db = () => interopDefault(import('..\\pages\\Shanghai\\index.vue' /* webpackChunkName: "pages_Shanghai_index" */))
 const _276a908b = () => interopDefault(import('..\\pages\\Youtube\\index.vue' /* webpackChunkName: "pages_Youtube_index" */))
@@ -42,6 +43,10 @@ export const routerOptions = {
     path: "/Crypto",
     component: _7a9c2665,
     name: "Crypto"
+  }, {
+    path: "/Glossary",
+    component: _1336f9e8,
+    name: "Glossary"
   }, {
     path: "/Resume",
     component: _3bd2b379,
