@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const db = require('./server')
 const { Experience } = require('./ExpModel')
 const { Post } = require('./PostModel')
+const { Formation } = require('./FormModel')
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
