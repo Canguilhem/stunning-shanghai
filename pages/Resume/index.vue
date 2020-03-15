@@ -63,7 +63,6 @@ export default {
         console.log('EXP right after call: ' , resume);
         context.store.commit('SET_EXPERIENCES', resume.experiences)
         context.store.commit('SET_FORMATIONS', resume.formations)
-        console.log('Inside resume component', resume)
         return { 
           experiences: resume.experiences,
           formations: resume.formations,
