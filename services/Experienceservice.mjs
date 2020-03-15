@@ -4,7 +4,8 @@ import moment from "moment";
 export async function getExperiences(){
     try {
         let res = await axios.get('https://gallant-booth-1c4e5d.netlify.com/.netlify/functions/ReadExp')
-        let experiences = res.data.data;
+        console.log(res)
+        let experiences = res.data.experiences;
         console.log('ExperienceService:getExperiences:data: ', experiences.length)
         experiences.forEach(element => {
           element.from = moment(element.from).format("MMM-YY");
@@ -14,7 +15,10 @@ export async function getExperiences(){
             element.to = moment().format("MMM-YY");
           }
         });
-        return experiences;
+        return {
+          experiences,
+          formations: res.data.formations
+        };
     } catch (error) {
         console.log('ExperienceService:getExperiences', error)
     }

@@ -30,34 +30,48 @@
 
     <br />
     <div class="education">Education</div>
+    {{formations}}
+  <formation v-for="(form, index) in formations" :key="index" :form="form"></formation>
+
     <div class="interests">Center of interests</div>
     <div class="hobbies">Other Hobbies</div>
   </div>
 </template>
 <script>
 import { getExperiences } from '~/services/Experienceservice.mjs'
+import Formation from "@/components/Home/Formation";
 import Experience from "@/components/Home/Experience";
-import moment from "moment";
 import axios from "axios";
 export default {
   components: {
-    Experience
+    Experience,
+    Formation
   },
   data() {
     return {
-      experiences: []
+      experiences: [],
+      formations: []
     };
   },
   methods: {},
   async asyncData(context) {
-    console.log('asyncData:/EXPERIENCES from store:',context.store.state)
     if(context.store.state.experiences && context.store.state.experiences.length > 0){
+      console.log('asyncData:/EXPERIENCES from store:',context.store.state)
       return {experiences: context.store.state.experiences }
     }else{
+      console.log('asyncData:/EXPERIENCES not found in store')
       try {
-        let data  = await getExperiences();
-        context.store.commit('SET_EXPERIENCES', data)
-        return { experiences: data };
+        let exp  = await getExperiences();
+        context.store.commit('SET_EXPERIENCES', exp)
+
+        let { data } = await axios.get(" http://localhost:3000/api/formations")
+
+        context.store.commit('SET_FORMATIONS', data)
+        console.log(data)
+        return { 
+          experiences: exp,
+          formations: data,
+         };
       } catch (error) {
         console.log(error);
       }

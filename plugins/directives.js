@@ -11,7 +11,7 @@ const animatedScrollObserver = new IntersectionObserver(
             }
         })
     },
-    {threshold: [0.1,0.95]}
+    {threshold: [0.1,0.9]}
 )
 
 Vue.directive('anim', {

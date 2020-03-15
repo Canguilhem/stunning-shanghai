@@ -1,13 +1,16 @@
 const mongoose = require('mongoose')
 const db = require('./server')
 const { Experience } = require('./ExpModel')
+const { Formation } = require('./FormModel')
 exports.handler = async (event, context) => {
   context.callbackWaitsForEmptyEventLoop = false
   try {
     const experiences = await Experience.find().sort('-from'),
+      formation = await Formation.find().sort('-from'),
           response = {
             msg: "Experiences successfully found",
-            data: experiences
+            experiences,
+            formations
           }  
           console.log("found something")
     return {
