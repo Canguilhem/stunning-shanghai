@@ -17,12 +17,10 @@ export async function getExperiences(){
           }
         });
         formations.forEach(element => {
-          element.from = moment(element.from).format("MMM-YY");
-          if (element.to) {
-            element.to = moment(element.to).format("MMM-YY");
-          } else {
-            element.to = moment().format("MMM-YY");
-          }
+          element.from = moment(element.from).format("MM-DD-YYYY");
+          element.to = moment(element.to).format("MM-DD-YYYY");
+
+          
         });
         return {
           experiences,

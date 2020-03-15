@@ -30,7 +30,10 @@
 
     <br />
     <div class="education">Education</div>
+    <div class="formations--container">
+
   <formation v-for="(form, index) in formations" :key="index" :form="form"></formation>
+    </div>
 
     <div class="interests">Center of interests</div>
     <div class="hobbies">Other Hobbies</div>
@@ -64,9 +67,15 @@ export default {
         let resume  = await getExperiences();
         console.log('EXP right after call: ' , resume);
         context.store.commit('SET_EXPERIENCES', resume.experiences)
+        
+        // let {data} = await axios.get(' http://localhost:3000/api/formations')
+        // context.store.commit('SET_FORMATIONS', data)
         context.store.commit('SET_FORMATIONS', resume.formations)
+        
+        
         return { 
           experiences: resume.experiences,
+          // formations: data
           formations: resume.formations,
          };
       } catch (error) {
@@ -111,6 +120,16 @@ h4{
   margin-top: 30px;
   margin-bottom: 30px;
   justify-items: center;
+}
+
+.formations--container {
+  background-image: linear-gradient(var(--main-color2), var(--main-color6));
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;  /* <- here it is */
+  padding: 10px;
+  margin: 30px 0;
+  border-radius: 25px;
 }
 @media screen and (max-width: 500px) {
   #about-me{
