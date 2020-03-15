@@ -30,7 +30,6 @@
 
     <br />
     <div class="education">Education</div>
-    {{formations}}
   <formation v-for="(form, index) in formations" :key="index" :form="form"></formation>
 
     <div class="interests">Center of interests</div>
