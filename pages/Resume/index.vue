@@ -62,10 +62,14 @@ export default {
       console.log('asyncData:/EXPERIENCES not found in store')
       try {
         let exp  = await getExperiences();
+
+        console.log('EXP right after call: ' , exp);
         context.store.commit('SET_EXPERIENCES', exp)
-        context.store.commit('SET_FORMATIONS', data)
+
 
         let { data } = await axios.get(" http://localhost:3000/api/formations")
+        context.store.commit('SET_FORMATIONS', data)
+
         
 
         console.log('Inside resume component', data)
