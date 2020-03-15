@@ -104,25 +104,25 @@ export default {
       position: relative;
       &:first-child {
         p {
-          top: 35px;
+          top: 42px;
           right: -57px;
         }
       }
       &:nth-child(2) {
         p {
-          top: 6px;
+          top: 16px;
         }
       }
       &:nth-child(3) {
         margin-top:20px;
         margin-bottom: 2px;
         p {
-          top: -8px;
+          top: 4px;
         }
       }
       &:nth-child(4) {
         p {
-          top: -2px;
+          top: 12px;
         }
       }
       &:last-child {
@@ -134,7 +134,7 @@ export default {
       }
       p {
         position: absolute;
-        top: -3px;
+        top: 12px;
         right: -53px;
         width: 50px;
         font-weight: 600;
@@ -150,6 +150,9 @@ export default {
     i {
       font-size: 3rem;
     }
+   .fa-home{
+     margin-top: 16px;
+   }
   }
 }
 </style>
