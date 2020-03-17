@@ -2,7 +2,7 @@
   <div class="background-color3 page">
     <h1>
       <!-- Hello world and -->
-       Welcome to my personal
+      Welcome to my personal
       <i>Ludotheque</i> !
     </h1>
     <h2>
@@ -14,19 +14,29 @@
     <h3>Take a peek to some projects I have been working on lately:</h3>
     <div class="projects--container">
       <nuxt-link to="/shanghai">
-        <div class="project--card">Stunning Shanghai</div>
+        <div class="project--card">
+          <div class="card--title">Stunning Shanghai</div>
+          <div class="card--body">
+            List of unusual things for a first time in shanghai as a westerner
+          </div>
+        </div>
       </nuxt-link>
       <nuxt-link to="/youtube">
-        <div class="project--card">Interesting Youtube</div>
+        <div class="project--card">
+          <div class="card--title">Interesting Youtube</div>
+          <div class="card--body">
+            It's not all about zapping, lolcats and weird satisfying videos
+          </div>
+        </div>
       </nuxt-link>
       <nuxt-link to="/crypto">
-        <div class="project--card">Crypto Tracker</div>
+        <div class="project--card">
+          <div class="card--title">Crypto Tracker</div>
+          <div class="card--body">
+            Keep an eye on your portfolio value, all on your machine, nothing store in database
+          </div>
+        </div>
       </nuxt-link>
-
-<!-- <i class="icon icon-shanghai"></i>
-<i class="icon icon-youtube"></i>
-<i class="icon icon-bitcoin"></i>
-<i class="icon icon-explained"></i> -->
 
       <!-- <app-card link="/shanghai" name="Stunning shanghai" description="Blog about shanghai"></app-card> -->
       <!-- <nuxt-link to="/youtube">
@@ -40,12 +50,12 @@
       </nuxt-link>
       <nuxt-link to="/youtube">
         <div class="project--card">Weasley clock</div>
-      </nuxt-link> -->
+      </nuxt-link>-->
     </div>
   </div>
 </template>
 <script>
-import Card from '@/components/Home/ProjectCard'
+import Card from "@/components/Home/ProjectCard";
 export default {
   components: { AppCard: Card },
   data() {
@@ -104,15 +114,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.icon:before{
+.icon:before {
   font-size: 3rem;
-  color: #FFC107;
+  color: #ffc107;
 }
 
 body {
   font-family: "Lato", sans-serif;
 }
-h1{
+h1 {
   margin-bottom: 2.5rem;
   text-align: center;
 }
@@ -132,16 +142,20 @@ span.cursor {
 }
 .projects--container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(287px ,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(287px, 1fr));
   gap: 30px;
   margin: 30px 0;
+  a{
+    text-decoration: none;
+  }
   .project--card {
     border: solid 1px;
     border-radius: 15px;
-    height: 100px;
+    height: auto;
     text-align: center;
-    &:hover{
+    &:hover {
       background-color: lighten($color: #000000, $amount: 15);
+      text-decoration: none;
     }
   }
 }
@@ -149,7 +163,10 @@ span.cursor {
 a {
   color: var(--main-color2) !important;
 }
-
+.card--title{
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
 @keyframes cursorBlink {
   49% {
     background-color: #efffe9;
@@ -161,11 +178,4 @@ a {
     background-color: transparent;
   }
 }
-
-/* @media screen and (max-width: 450px) {
-  .projects--container {
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
-} */
 </style>
