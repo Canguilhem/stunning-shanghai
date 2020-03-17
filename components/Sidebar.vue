@@ -1,38 +1,60 @@
 <template>
-  <div class="container" :class="{'show': showSidebar, 'show--mobile': showMobile }">
-    <div class="mobile--grip" @click="showNavMobile">
-      <div class="animated infinite wobble slower"></div>
-      <div class="animated infinite wobble slow delay-2s"></div>
-      <div class="animated infinite wobble delay-3s"></div>
+  <div>
+    <div class="title--container background-color3">
+      <nuxt-link class="site--title" :to="site.url">{{site.name}}</nuxt-link>
     </div>
-    <div class="control" @click="showNav">
-      <i class="fas fa-angle-double-right"></i>
-    </div>
-    <div class="navigation-icons">
-      <nuxt-link to="/">
-        <i class="fas fa-home" v-b-tooltip.hover.right.v-warning title="Home"></i>
-        <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Home</p>
-      </nuxt-link>
-      <nuxt-link to="/shanghai">
-        <i class="icon-shanghai" v-b-tooltip.hover.right.v-danger title="Stunning Shanghai"></i>
-        <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Stunning Shanghai</p>
-      </nuxt-link>
-      <nuxt-link to="/youtube">
-        <i class="icon-youtube" v-b-tooltip.hover.right.v-success title="Interesting Youtube"></i>
-        <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Interesting Youtube</p>
-      </nuxt-link>
-      <nuxt-link to="/crypto">
-        <i class="icon-bitcoin" v-b-tooltip.hover.right.v-info title="Crypto Tracker"></i>
-        <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Crypto Tracker</p>
-      </nuxt-link>
-      <nuxt-link to="/glossary">
-        <i class="icon-explained" v-b-tooltip.hover.right.v-primary title="Layman's Blockchain"></i>
-        <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">Layman's Blockchain</p>
-      </nuxt-link>
-      <nuxt-link to="/glossary">
-        <i class="icon-explained" v-b-tooltip.hover.right.v-primary title="Layman's Blockchain"></i>
-        <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">Layman's Blockchain</p>
-      </nuxt-link>
+
+    <div class="container" :class="{'show': showSidebar, 'show--mobile': showMobile }">
+      <div class="mobile--grip" @click="showNavMobile">
+        <div class="animated infinite wobble slower"></div>
+        <div class="animated infinite wobble slow delay-2s"></div>
+        <div class="animated infinite wobble delay-3s"></div>
+      </div>
+      <div class="control" @click="showNav">
+        <i class="fas fa-angle-double-right"></i>
+      </div>
+      <div class="navigation-icons">
+        <nuxt-link to="/">
+          <i class="fas fa-home" v-b-tooltip.hover.right.v-warning title="Home"></i>
+          <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Home</p>
+        </nuxt-link>
+        <nuxt-link to="/shanghai">
+          <i class="icon-shanghai" v-b-tooltip.hover.right.v-danger title="Stunning Shanghai"></i>
+          <p
+            v-show="showLink"
+            class="animated faster"
+            :class="{ zoomIn: showLink }"
+          >Stunning Shanghai</p>
+        </nuxt-link>
+        <nuxt-link to="/youtube">
+          <i class="icon-youtube" v-b-tooltip.hover.right.v-success title="Interesting Youtube"></i>
+          <p
+            v-show="showLink"
+            class="animated faster"
+            :class="{ zoomIn: showLink }"
+          >Interesting Youtube</p>
+        </nuxt-link>
+        <nuxt-link to="/crypto">
+          <i class="icon-bitcoin" v-b-tooltip.hover.right.v-info title="Crypto Tracker"></i>
+          <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Crypto Tracker</p>
+        </nuxt-link>
+        <nuxt-link to="/glossary">
+          <i class="icon-explained" v-b-tooltip.hover.right.v-primary title="Layman's Blockchain"></i>
+          <p
+            v-show="showLink"
+            class="animated faster"
+            :class="{zoomIn: showLink }"
+          >Layman's Blockchain</p>
+        </nuxt-link>
+        <nuxt-link :to="`${site.url}about`">
+          <i class="icon-about" v-b-tooltip.hover.right.v-success title="About"></i>
+          <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">About</p>
+        </nuxt-link>
+        <nuxt-link to="/resume">
+          <i class="icon-resume" v-b-tooltip.hover.right.v-danger title="My Resume"></i>
+          <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">Resume</p>
+        </nuxt-link>
+      </div>
     </div>
   </div>
   <!-- Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
@@ -40,11 +62,17 @@
 
 <script>
 export default {
+  props: {
+    site: {
+      type: Object
+    }
+  },
   data() {
     return {
       showSidebar: false,
       showLink: false,
-      showMobile: false
+      showMobile: false,
+      hover: false
     };
   },
   methods: {
@@ -61,15 +89,29 @@ export default {
         }, 500);
       }
     },
-    showNavMobile(){
-      console.log("clicked:", this.showMobile)
-      this.showMobile = !this.showMobile
+    showNavMobile() {
+      console.log("clicked:", this.showMobile);
+      this.showMobile = !this.showMobile;
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.title--container{
+  padding: 20px;
+  letter-spacing: 2px;
+}
+.site--title {
+  color: #ffc107 !important;
+  display: block;
+  font-weight: 800;
+  font-size: 2rem;
+  margin: auto;
+  padding-left: 30px;
+  text-align: center;
+  width: 500px;
+}
 .container {
   border-radius: 50px;
   position: absolute;
@@ -129,19 +171,28 @@ export default {
         }
       }
       &:nth-child(3) {
-        margin-top:20px;
+        margin-top: 20px;
         margin-bottom: 2px;
         p {
           top: 4px;
         }
       }
-      &:nth-child(4) {
+      &:nth-child(4),
+      &:nth-child(5) {
         p {
           top: 12px;
         }
       }
+      &:nth-child(6) {
+        p {
+          top: 22px;
+        }
+      }
       &:last-child {
         margin-bottom: 20px;
+        p {
+          top: 16px;
+        }
       }
       i,
       p {
@@ -165,17 +216,18 @@ export default {
     i {
       font-size: 3rem;
     }
-   .fa-home{
-     margin-top: 16px;
-   }
+    .fa-home {
+      margin-top: 16px;
+    }
   }
 }
 @media screen and (max-width: 450px) {
-  .container{
+  .container {
     width: 30px;
     position: fixed;
-    top: 150px;
-    .control,.navigation-icons{
+    top: 50%;
+    .control,
+    .navigation-icons {
       display: none;
     }
     .mobile--grip {
@@ -183,7 +235,7 @@ export default {
       grid-template-columns: auto;
       justify-content: center;
       row-gap: 5px;
-      div{
+      div {
         height: 10px;
         width: 10px;
         background-color: #fff;
