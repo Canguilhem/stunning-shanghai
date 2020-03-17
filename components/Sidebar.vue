@@ -108,7 +108,7 @@ export default {
   font-weight: 800;
   font-size: 2rem;
   margin: auto;
-  padding-left: 30px;
+  // padding: 30px;
   text-align: center;
   width: 500px;
 }
@@ -222,6 +222,11 @@ export default {
   }
 }
 @media screen and (max-width: 450px) {
+  .site--title{
+    width: 100vw;
+    font-size: 1.2rem;
+    // padding-left: 0;
+  }
   .container {
     width: 30px;
     position: fixed;
