@@ -40,9 +40,14 @@
     </b-col>
     <br />
     <b-btn class="mt-4" @click="fetchData">fetch Data</b-btn>
-    <pre>
-    {{coinsData}}
-  </pre>
+    <h4>Data from coinmarketcap price in $</h4>
+    <div class="pairs--container">
+      <div v-for="(pair, index) in coinsData" :key="index" :v-if="index< 10">
+        {{pair.name}} : {{roundPrice(pair.quote.USD.price)}}
+      </div>
+    </div>
+    
+
   </div>
 </template>
 
@@ -70,27 +75,36 @@ export default {
   methods: {
     async fetchData() {
       try {
-        let { data } = await axios.get(
-          "https://api.coinmarketcap.com/v2/ticker/"
-        );
+
+        console.log( "do you copy", process.env.API_CMC);
+        let {data} = await axios({
+          url: "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
+          method: 'get',
+          headers: {
+            'X-CMC_PRO_API_KEY': 'e43d170c-a7b2-4370-9fd0-c251f91cdce9',
+          }
+        })
         console.log(data);
-        let res = [];
-        data.forEach(e => {
-          // res.push({
-          //   symbol: e.symbol,
-          //   price: e.price_usd,
-          //   last_updated: moment.unix(e.last_updated).format("MM/DD/YYYY")
-          // });
-          this.assets.forEach(a=>{
-            if(a.symbol == e.symbol){
-              a.value = Math.round(a.quantity * e.price_usd *100)/100
-            }
-          })
-        });
-        this.coinsData = res;
+        // data.forEach(e => {
+        //   // res.push({
+        //   //   symbol: e.symbol,
+        //   //   price: e.price_usd,
+        //   //   last_updated: moment.unix(e.last_updated).format("MM/DD/YYYY")
+        //   // });
+        //   this.assets.forEach(a=>{
+        //     if(a.symbol == e.symbol){
+        //       a.value = Math.round(a.quantity * e.price_usd *100)/100
+        //     }
+        //   })
+        // });
+        this.coinsData = data.data
+        console.log(this.coinsData)
       } catch (error) {
         console.log(error);
       }
+    },
+    roundPrice(value){
+      return Math.round(value*100)/100;
     },
     addAsset() {
       this.assets.push({
@@ -126,5 +140,11 @@ thead > tr {
 }
 pre {
   color: var(--main-color2);
+}
+
+.pairs--container{
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 15px;
 }
 </style>

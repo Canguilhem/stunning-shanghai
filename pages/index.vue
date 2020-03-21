@@ -25,7 +25,7 @@
         <div class="project--card">
           <div class="card--title">Interesting Youtube</div>
           <div class="card--body">
-            It's not all about zapping, lolcats and weird satisfying videos
+            Way more than zappings, lolcats and weird satisfying videos
           </div>
         </div>
       </nuxt-link>

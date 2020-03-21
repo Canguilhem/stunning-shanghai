@@ -39,8 +39,8 @@ export default {
 }
 .title {
   position: absolute;
-  bottom: -3%;
-  left: 44%;
+  bottom: -2%;
+  left: 50%;
   font-family: "Suez One", serif;
   display: block;
   font-weight: 300;
@@ -51,6 +51,7 @@ export default {
   /* text-shadow: var(--main-color5) 0.2em 0.2em 0.6em; */
   /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
   line-height: 80%;
+  width: 150px;
 }
 button.close {
   position: absolute;

@@ -4,15 +4,11 @@
       <nuxt-link class="site--title" :to="site.url">{{site.name}}</nuxt-link>
     </div>
 
-    <div class="container" :class="{'show': showSidebar, 'show--mobile': showMobile }">
-      <div class="mobile--grip" @click="showNavMobile">
-        <div class="animated infinite wobble slower"></div>
-        <div class="animated infinite wobble slow delay-2s"></div>
-        <div class="animated infinite wobble delay-3s"></div>
-      </div>
+    <div class="container" :class="{'show': showSidebar}" v-b-toggle.sidebar>
       <div class="control" @click="showNav">
         <i class="fas fa-angle-double-right"></i>
       </div>
+      <b-collapse id="sidebar">
       <div class="navigation-icons">
         <nuxt-link to="/">
           <i class="fas fa-home" v-b-tooltip.hover.right.v-warning title="Home"></i>
@@ -55,6 +51,7 @@
           <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">Resume</p>
         </nuxt-link>
       </div>
+      </b-collapse>
     </div>
   </div>
   <!-- Icons made by <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a> -->
@@ -71,7 +68,6 @@ export default {
     return {
       showSidebar: false,
       showLink: false,
-      showMobile: false,
       hover: false
     };
   },
@@ -88,10 +84,6 @@ export default {
           this.showLink = true;
         }, 500);
       }
-    },
-    showNavMobile() {
-      console.log("clicked:", this.showMobile);
-      this.showMobile = !this.showMobile;
     }
   }
 };
@@ -114,7 +106,7 @@ export default {
 }
 .container {
   border-radius: 50px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 72px;
@@ -225,28 +217,11 @@ export default {
   .site--title{
     width: 100vw;
     font-size: 1.2rem;
-    // padding-left: 0;
   }
   .container {
-    width: 30px;
+    width: 65px;
     position: fixed;
-    top: 50%;
-    .control,
-    .navigation-icons {
-      display: none;
-    }
-    .mobile--grip {
-      display: grid;
-      grid-template-columns: auto;
-      justify-content: center;
-      row-gap: 5px;
-      div {
-        height: 10px;
-        width: 10px;
-        background-color: #fff;
-        border-radius: 50%;
-      }
-    }
+    overflow: scroll;
   }
 }
 </style>

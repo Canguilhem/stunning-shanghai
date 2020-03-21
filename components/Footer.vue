@@ -60,6 +60,9 @@ export default {
 </script>
 
 <style scoped>
+.fab{
+  margin-right: 2px;
+}
 .mail--icon{
   display: inline;
   vertical-align: sub;
