@@ -10,17 +10,40 @@
     <div class="container">
       <div class="hard">
        <h4>Hard</h4>
-       <p>Programmation : Python, Java2EE, Php</p>
-       <p>Biology: qPCR/ TaqPCR, Western/Northern Blot</p>
-       <p>Biostatistics and NGS data analysis</p>
+      <div>
+        <p class="skill--category">Programmation Language</p>
+        <div class="skill">Python</div>
+        <div class="skill">Java2EE</div>
+        <div class="skill">Javascript</div>
+        <div class="skill">Php</div>
+      </div>
+      <div>
+        <p class="skill--category">Frequently used frameworks</p>
+        <div class="skill">Angular</div>
+        <div class="skill">Spring</div>
+        <div class="skill">Vue</div>
+        <div class="skill">Drupal</div>
+      </div>
+
+      <div>
+        <p class="skill--category">Biology</p>
+        <div class="skill">qPCR/ TaqPCR</div>
+        <div class="skill">Western/Northern Blot</div>
+        <br>
+        <div class="skill">Clonning methods</div>
+        <div class="skill">Biostatistics</div>
+        <div class="skill">Bioinformatics</div>
+      </div>
+
+       <!-- <p>Biostatistics and NGS data analysis</p> -->
       </div>
       <div class="soft">
         <h4>Soft</h4>
-        <p>Mission driven / challenge oriented</p>
-        <p>Analytic and logical thinking</p>
-        <p>Problem solving</p>
-        <p>Team play</p>
-        <p>Innovative spirit</p>
+        <p class="skill">Mission driven / challenge oriented</p>
+        <p class="skill">Analytic and logical thinking</p>
+        <p class="skill">Problem solving</p>
+        <p class="skill">Team play</p>
+        <p class="skill">Innovative spirit</p>
       </div>
     </div>
     <div class="experiences">Profesional Experience</div>
@@ -86,7 +109,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 body {
   font-family: "Lato", sans-serif;
 }
@@ -105,31 +128,52 @@ h4{
   margin-top: 1rem;
   font-weight: 900;
 }
-.hard{
-  text-align: left;
-}
-.soft{
-  text-align: right;
-}
 .container{
   border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
-  padding: 10px;
+  padding: 10px 70px;
   background-color: rgba(58,92,131,0.4);
   margin-top: 30px;
   margin-bottom: 30px;
-  justify-items: center;
+  .hard{
+    text-align: left;
+    .skill{
+      border: solid 1px var(--main-color4);
+      color: var(--main-color4);
+    }
+  }
+  .soft{
+   text-align: right;
+    .skill{
+      border: solid 1px var(--main-color5);
+      color: var(--main-color5);
+    }
+  }
+  .skill--category{
+    margin-bottom: 10px;
+  }
+  .skill{
+    display: inline-block;
+    padding: 4px 8px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin:  0 0 15px 3px;
+  }
 }
 
 .formations--container {
-  background-image: linear-gradient(var(--main-color2), var(--main-color6));
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;  /* <- here it is */
   padding: 10px;
   margin: 30px 0;
-  border-radius: 25px;
+  .formation:nth-child(2){
+    margin-left: 7%;
+  }
+  .formation:nth-child(3){
+    margin-left: 14%;
+  }
+  .formation:nth-child(4){
+    margin-left: 21%;
+  }
 }
 @media screen and (max-width: 500px) {
   #about-me{

@@ -27,9 +27,10 @@ export default {
 <style scoped>
     .formation{
         margin: 1rem;
-        background-color: var(--main-color6);
+        /* background-color: var(--main-color6); */
         color: var(--main-color2);
         padding: 15px;
-        border-radius: 30px;
+        border-bottom-right-radius: 44px;
+        box-shadow: 0 0 8px var(--main-color4);
     }
 </style>
