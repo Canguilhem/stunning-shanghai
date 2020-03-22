@@ -144,7 +144,7 @@ body {
   color: var(--main-color6);
   font-size: 1.7rem;
   max-width: 330px;
-  margin: auto;
+  margin: 45px auto;
   font-weight: 700;
 }
 h4 {

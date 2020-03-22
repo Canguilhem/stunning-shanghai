@@ -32,7 +32,7 @@ export default {
 </script>
 <style scoped>
     .formation{
-        margin: 1rem;
+        margin-top: 30px;
         background-color: rgba(29,37,44,0.4);
 
         color: var(--main-color2);
