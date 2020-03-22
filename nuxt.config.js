@@ -54,8 +54,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-   {src:'~/plugins/directives.js', ssr: false},
-   "~plugins/bootstrap.js"
+   {src:'~/plugins/directives.js', ssr: false}
   ],
 
   /*
