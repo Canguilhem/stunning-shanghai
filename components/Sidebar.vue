@@ -4,8 +4,8 @@
       <nuxt-link class="site--title" :to="site.url">{{site.name}}</nuxt-link>
     </div>
 
-    <div class="container" :class="{'show': showSidebar}" v-b-toggle.sidebar>
-      <div class="control" @click="showNav">
+    <div class="container" :class="{'show': showSidebar}">
+      <div class="control" @click.stop="showNav"  v-b-toggle.sidebar>
         <i class="fas fa-angle-double-right"></i>
       </div>
       <b-collapse id="sidebar">
@@ -67,23 +67,25 @@ export default {
   data() {
     return {
       showSidebar: false,
-      showLink: false,
-      hover: false
+      showLink: false
     };
   },
   methods: {
     showNav() {
-      if (this.showSidebar) {
-        this.showLink = false;
-        setTimeout(() => {
-          this.showSidebar = false;
-        }, 50);
-      } else {
-        this.showSidebar = true;
-        setTimeout(() => {
-          this.showLink = true;
-        }, 500);
-      }
+        if (this.showSidebar) {
+          console.log("showSide bar")
+          this.showLink = false;
+          setTimeout(() => {
+            this.showSidebar = false;
+          }, 50);
+        } else {
+          console.log("showLinks bar")
+          this.showSidebar = true;
+          setTimeout(() => {
+            this.showLink = true;
+          }, 500);
+        }
+      
     }
   }
 };

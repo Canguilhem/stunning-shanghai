@@ -54,7 +54,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-   {src:'~/plugins/directives.js', ssr: false}
+   {src:'~/plugins/directives.js', ssr: false},
+   "~plugins/bootstrap.js"
   ],
 
   /*
@@ -80,11 +81,11 @@ module.exports = {
   build: {
 
     plugins: [
-    //   new webpack.ProvidePlugin({
-    //     jQuery: 'jquery',
-    //     '$': 'jquery',
-    //     jquery: 'jquery'
-    // })
+      new webpack.ProvidePlugin({
+        jQuery: 'jquery',
+        '$': 'jquery',
+        jquery: 'jquery'
+    })
     ],
     /*
     ** You can extend webpack config here

@@ -5,3 +5,6 @@
 .icon-explained:before { content: '\e803'; } /* '' */
 .icon-about:before { content: '\e804'; } /* '' */
 .icon-resume:before { content: '\e805'; } /* '' */
+.icon-biotech:before { content: '\e807'; } /* '' */
+.icon-dev:before { content: '\e808'; } /* '' */
+.icon-data:before { content: '\e809'; } /* '' */

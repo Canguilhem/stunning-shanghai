@@ -1,6 +1,7 @@
 <template>
     <div  @click="visible = !visible" class="exp" :class="{'internship': internship, 'even': even}">
-        <h1>{{experience.position}} @ {{experience.hostOrganism}} </h1>
+        <h1>{{experience.position}}</h1>
+        <h4> @ {{experience.hostOrganism}} </h4>
         <div class="temporal--details">
             From <strong>{{experience.from }}</strong> to <strong>{{ experience.to }}</strong> -
             {{experience.duration}} months in {{experience.place}} 
@@ -56,28 +57,37 @@ export default {
     methods:{ }
 }
 </script>
-<style scoped>
-h1{
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--main-color5);
-}
-.temporal--details{
-  opacity: 0.7;
-  padding-bottom: 10px;
-}
+<style scoped lang="scss">
 .exp{
     border-top-left-radius: 44px;
     border-bottom-right-radius: 44px;
     color: var(--main-color7);
-    /* background: var(--main-color5); */
-    /* color: #011627; */
-    /* background: #2ec4b6; */
-    /* box-shadow: 0 0 8px rgba(29,37,44,0.8); */
     box-shadow: 0 0 8px var(--main-color4);
     padding: 10px 40px;
     margin-top: 25px;
     position: relative;
+    background-color: rgba(58, 92, 131, 0.2);
+    &:hover h1{
+        text-decoration: underline;
+    }
+    h1{
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--main-color5);
+    }
+    h4{
+        color: var(--main-color4);
+    }
+    .temporal--details{
+        opacity: 0.7;
+        padding-bottom: 10px;
+    }
+    &.internship{
+    box-shadow: 0 0 8px var(--warning);
+    h4{
+        color: var(--warning);
+    }
+}
 }
 .fa{
     position: absolute;
@@ -85,9 +95,7 @@ h1{
     right: 17px;
 }
 .tabs{
-  /* background-color: #e1ffff; */
-  /* background-color: var(--main-color7); */
-  background-color: rgba(29,37,44,0.4);
+  background-color: rgba(29,37,44,0.3);
   border-radius: 15px;
   padding: 2px 10px;
   box-shadow: 0 0 2px var(--main-color4);
@@ -105,12 +113,12 @@ triangle{
    margin-right: 5px 
 }
 @media screen and (max-width: 500px) {
-    h1{
-        font-size: 1.2rem;
-        max-width: 370px;
-    }
     .exp{
         padding: 20px;
+            h1{
+            font-size: 1.2rem;
+            max-width: 370px;
+        }
     }
 }
 </style>
