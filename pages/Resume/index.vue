@@ -57,7 +57,7 @@
         <p class="skill">Innovative spirit</p>
       </div>
     </div>
-    <div class="experiences">Profesional Experience</div>
+    <div class="experiences">Professional Experience</div>
     <div>
       <experience v-for="(exp, index) in experiences" :key="index" :index="index" :experience="exp"></experience>
     </div>
@@ -160,7 +160,7 @@ h4 {
   margin-top: 30px;
   margin-bottom: 30px;
   position: relative;
-  .skills--logos{
+  .skills--logos {
     position: absolute;
     left: 46%;
     top: 33px;
@@ -168,7 +168,7 @@ h4 {
     grid-template-columns: auto;
     gap: 30px;
     color: var(--main-color2);
-    i:before{
+    i:before {
       font-size: 5rem;
     }
   }
@@ -199,8 +199,6 @@ h4 {
 }
 
 .formations--container {
-  padding: 10px;
-  margin: 30px 0;
   .formation:nth-child(2) {
     margin-left: 7%;
   }
@@ -211,25 +209,78 @@ h4 {
     margin-left: 21%;
   }
 }
-.interests--container{
+.interests--container {
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-items: center;
   margin: 30px;
-  p{
-    font-size: 1.5rem;
+  p {
+    font-size: 1.3rem;
+     &:nth-child(1) {
+        color: var(--main-color1);
+      }
+      &:nth-child(2) {
+        color: var(--main-color8);
+      }
+      &:nth-child(3) {
+        color: var(--main-color4);
+      }
+      &:nth-child(4) {
+        color: var(--main-color5);
+      }
+      &:nth-child(5) {
+        color: var(--main-color8);
+      }
+      &:nth-child(6) {
+        color: var(--main-color4);
+      }
   }
 }
 @media screen and (max-width: 500px) {
   #about-me {
     font-size: 0.9rem;
   }
+  .skills,
+  .education,
+  .experiences,
+  .hobbies,
+  .interests {
+    margin: 30px auto;
+    font-size: 1.4rem;
+  }
   .container {
     grid-template-columns: auto;
     padding: 10px 26px;
+    gap: 72px;
+    .skills--logos {
+      position: absolute;
+      left: 6px;
+      top: 61%;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 30px;
+      i:before {
+        font-size: 3rem;
+      }
+    }
   }
   h4 {
     margin-top: 15px;
+  }
+
+  .formations--container {
+    .formation {
+      margin-left: 0 !important;
+      margin-top: 45px;
+    }
+  }
+  .interests--container {
+    grid-template-columns: auto;
+    margin: 5px;
+    justify-items: unset;
+    p {
+      font-size: 1rem;
+    }
   }
 }
 </style>

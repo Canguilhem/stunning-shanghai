@@ -39,6 +39,7 @@ export default {
   --main-color5: #1a9fff;
   --main-color6: #3a5c83;
   --main-color7: #ebf2f7;
+  --main-color8: #ffc107;
 }
 
 #root__default {

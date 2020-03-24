@@ -11,11 +11,11 @@
       <b-collapse id="sidebar">
       <div class="navigation-icons">
         <nuxt-link to="/">
-          <i class="fas fa-home" v-b-tooltip.hover.right.v-warning title="Home"></i>
+          <i class="fas fa-home" v-b-tooltip.hover.right.v-warning v-b-toggle.sidebar title="Home"></i>
           <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Home</p>
         </nuxt-link>
         <nuxt-link to="/shanghai">
-          <i class="icon-shanghai" v-b-tooltip.hover.right.v-danger title="Stunning Shanghai"></i>
+          <i class="icon-shanghai" v-b-tooltip.hover.right.v-danger v-b-toggle.sidebar title="Stunning Shanghai"></i>
           <p
             v-show="showLink"
             class="animated faster"
@@ -23,7 +23,7 @@
           >Stunning Shanghai</p>
         </nuxt-link>
         <nuxt-link to="/youtube">
-          <i class="icon-youtube" v-b-tooltip.hover.right.v-success title="Interesting Youtube"></i>
+          <i class="icon-youtube" v-b-tooltip.hover.right.v-success v-b-toggle.sidebar title="Interesting Youtube"></i>
           <p
             v-show="showLink"
             class="animated faster"
@@ -31,11 +31,11 @@
           >Interesting Youtube</p>
         </nuxt-link>
         <nuxt-link to="/crypto">
-          <i class="icon-bitcoin" v-b-tooltip.hover.right.v-info title="Crypto Tracker"></i>
+          <i class="icon-bitcoin" v-b-tooltip.hover.right.v-info v-b-toggle.sidebar title="Crypto Tracker"></i>
           <p v-show="showLink" class="animated faster" :class="{ zoomIn: showLink }">Crypto Tracker</p>
         </nuxt-link>
         <nuxt-link to="/glossary">
-          <i class="icon-explained" v-b-tooltip.hover.right.v-primary title="Layman's Blockchain"></i>
+          <i class="icon-explained" v-b-tooltip.hover.right.v-primary v-b-toggle.sidebar title="Layman's Blockchain"></i>
           <p
             v-show="showLink"
             class="animated faster"
@@ -43,11 +43,11 @@
           >Layman's Blockchain</p>
         </nuxt-link>
         <nuxt-link :to="`${site.url}about`">
-          <i class="icon-about" v-b-tooltip.hover.right.v-success title="About"></i>
+          <i class="icon-about" v-b-tooltip.hover.right.v-success v-b-toggle.sidebar title="About"></i>
           <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">About</p>
         </nuxt-link>
         <nuxt-link to="/resume">
-          <i class="icon-resume" v-b-tooltip.hover.right.v-danger title="My Resume"></i>
+          <i class="icon-resume" v-b-tooltip.hover.right.v-danger v-b-toggle.sidebar title="My Resume"></i>
           <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">Resume</p>
         </nuxt-link>
       </div>
