@@ -172,6 +172,9 @@ h4 {
       font-size: 5rem;
     }
   }
+  &:hover .skills--logos {
+    // color: turquoise;
+  }
   .hard {
     text-align: left;
     .skill {
@@ -280,6 +283,20 @@ h4 {
     justify-items: unset;
     p {
       font-size: 1rem;
+      &:nth-child(even){
+        text-align: right;
+      }
+    }
+  }
+}
+@media (max-width: 1400px) {
+  .container{
+    .skills--logos{
+      grid-template-columns: auto auto auto;
+      position: absolute;
+      top: 61%;
+      right: 2%;
+      justify-items: center;
     }
   }
 }

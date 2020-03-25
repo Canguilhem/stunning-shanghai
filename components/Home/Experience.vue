@@ -77,13 +77,16 @@ export default {
   border-bottom-right-radius: 44px;
   color: var(--main-color7);
   box-shadow: 0 0 8px var(--main-color4);
-  padding: 10px 40px;
+  padding: 15px 40px;
   margin-top: 25px;
   position: relative;
   background-color: rgba(58, 92, 131, 0.2);
-  &:hover h1 {
-    text-decoration: underline;
-  }
+  &:hover{
+    box-shadow: 0 0 13px var(--danger);
+    h1 {
+      text-decoration: underline;
+    }
+  } 
   h1 {
     font-size: 2rem;
     font-weight: 600;
@@ -91,13 +94,19 @@ export default {
   }
   h4 {
     color: var(--main-color4);
+    display: inline;
+    margin-right: 20px;
   }
   .temporal--details {
     opacity: 0.7;
     padding-bottom: 10px;
+    display: inline;
   }
   &.internship {
     box-shadow: 0 0 8px var(--warning);
+    &:hover{
+      box-shadow: 0 0 13px #ffc107;
+    }
     h4 {
       color: var(--warning);
     }
@@ -107,12 +116,15 @@ export default {
   position: absolute;
   top: 24px;
   right: 17px;
+  &:before{
+    font-size:  2rem;
+  }
 }
 .tabs {
-  background-color: rgba(29, 37, 44, 0.3);
+  // background-color: rgba(29, 37, 44, 0.3);
   border-radius: 15px;
   padding: 2px 10px;
-  box-shadow: 0 0 2px var(--main-color4);
+  // box-shadow: 0 0 2px var(--main-color4);
 }
 .details--activities > p {
   margin-bottom: 15px;
@@ -129,13 +141,21 @@ triangle {
 @media screen and (max-width: 500px) {
   .exp {
     padding: 20px;
+    
     h1,h4 {
       font-size: 1.1rem;
       max-width: 370px;
+      display: block;
     }
 		.temporal--details{
 			font-size: 0.9rem;
 		}
+    .fa {
+      top: 44px;
+      &:before{
+        font-size:  1.7rem;
+      }
+  }
   }
 }
 </style>
