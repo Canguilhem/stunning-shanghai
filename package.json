@@ -12,6 +12,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^4.5.1",
     "@nuxtjs/axios": "^5.9.5",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.6.1",
@@ -21,10 +22,13 @@
     "fs": "0.0.1-security",
     "joi": "^14.3.1",
     "jquery": "^1.9.1",
+    "mapbox-gl": "^1.9.0",
+    "mapbox-gl-vue": "^2.0.4",
     "moment": "^2.24.0",
     "mongoose": "^5.9.3",
     "morgan": "^1.9.1",
     "node-sass": "^4.13.1",
+    "novelcovid": "^1.0.7-b3",
     "nuxt": "^2.11.0",
     "sass-loader": "^8.0.2"
   },

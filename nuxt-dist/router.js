@@ -5,6 +5,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _36d9eae1 = () => interopDefault(import('..\\pages\\About\\index.vue' /* webpackChunkName: "pages_About_index" */))
 const _6af20442 = () => interopDefault(import('..\\pages\\Admin\\index.vue' /* webpackChunkName: "pages_Admin_index" */))
+const _402fa729 = () => interopDefault(import('..\\pages\\covid\\index.vue' /* webpackChunkName: "pages_covid_index" */))
 const _7a9c2665 = () => interopDefault(import('..\\pages\\Crypto\\index.vue' /* webpackChunkName: "pages_Crypto_index" */))
 const _1336f9e8 = () => interopDefault(import('..\\pages\\Glossary\\index.vue' /* webpackChunkName: "pages_Glossary_index" */))
 const _3bd2b379 = () => interopDefault(import('..\\pages\\Resume\\index.vue' /* webpackChunkName: "pages_Resume_index" */))
@@ -39,6 +40,10 @@ export const routerOptions = {
     path: "/Admin",
     component: _6af20442,
     name: "Admin"
+  }, {
+    path: "/covid",
+    component: _402fa729,
+    name: "covid"
   }, {
     path: "/Crypto",
     component: _7a9c2665,

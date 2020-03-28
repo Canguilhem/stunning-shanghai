@@ -1,12 +1,11 @@
 <template>
-<div class="page">
-    <h1>Interesting youtube</h1>
-    <p>Way more than just music </p>
+  <div class="page">
+    <h1>Way more than just music</h1>
+
     <div>
-      <h2>French channels</h2>
-      E-penser
+      <h2>French channels</h2>E-penser
       Sciences etonnantes
-      Dans ton corps 
+      Dans ton corps
       Micmaths
       M.Phil
       Aurelien Barreau
@@ -23,7 +22,6 @@
       Passe science
       Deusex silicium
       cocadmin
-      
       thinkerview
       HEC debats
       ioduremetallique
@@ -34,12 +32,9 @@
       la tronche en biais
       dany caligula
       ce soir ou jamais
-    </div>
-Institut des hautes etudes scientifiques
-
+    </div>Institut des hautes etudes scientifiques
     <div>
-      <h2>English channels</h2>
-      Numberphiles
+      <h2>English channels</h2>Numberphiles
       hello internet
       Kurgezat
       AsapScience
@@ -56,7 +51,6 @@ Institut des hautes etudes scientifiques
       CS50
       Academind
       andrew dotson
-
       Fireship
       simplilearn
       Code Damn
@@ -66,16 +60,13 @@ Institut des hautes etudes scientifiques
       Coding Tech
       Design course
       Traversy media
-
       Circle line art school
-
       Aantonop
       Naomi Brockwell
       Crypto Candor
       Hashoshi
       Altcoin Daily
       Philakone
-
       DevTips
       Kevin Powell
       Web Dev Simplified
@@ -86,16 +77,15 @@ Institut des hautes etudes scientifiques
       wisecrack
       Firebase || Google developers/Angel
       CGP Grey
-
-
     </div>
-</div>
+  </div>
 </template>
     
 <script>
+
 export default {
-  layout:'youtube'
-}
+  layout: "youtube",
+};
 </script>
 <style scoped>
 </style>

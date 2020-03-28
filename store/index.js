@@ -5,7 +5,8 @@ import { fetchData } from '~/services/Initservice.mjs'
 export const state = () => {
   posts: [];
   experiences: [];
-  formations: []
+  formations: [];
+  covidCountries: []
 }
 
 export const mutations = {
@@ -23,6 +24,9 @@ export const mutations = {
   },
   SET_FORMATIONS(state, formations) {
     state.formations = formations
+  },
+  SET_COUNTRIES(state, covidCountries) {
+    state.covidCountries = covidCountries
   }
 }
 

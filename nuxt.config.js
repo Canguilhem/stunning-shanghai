@@ -3,7 +3,7 @@ const webpack = require("webpack");
 
 
 module.exports = {
-  buildDir : 'nuxt-dist',
+  buildDir: 'nuxt-dist',
   mode: 'universal',
 
   /*
@@ -18,15 +18,17 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One'},
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption'},
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da'},
-      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css'},
-      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Suez+One' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=PT+Serif+Caption' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Baloo+Da' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.8.1/css/all.css' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css' },
+      { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' }
+
     ],
-    script: [ ]
+    script: []
   },
-  
+
   router: {
     // middleware: 'auth',
   },
@@ -48,13 +50,14 @@ module.exports = {
     // {src:'static/css/fontello.css'},
     // {src:'@static/css/fontello.css'},
     // {src:'~assets/css/fontello.css'},
-    
+
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-   {src:'~/plugins/directives.js', ssr: false}
+    { src: '~/plugins/directives.js', ssr: false },
+    { src: '~/plugins/mapbox-gl-vue', ssr: false }
   ],
 
   /*
@@ -83,18 +86,21 @@ module.exports = {
       new webpack.ProvidePlugin({
         jQuery: 'jquery',
         '$': 'jquery',
-        jquery: 'jquery'
-    })
+        jquery: 'jquery',
+      }),
+      new webpack.ProvidePlugin({
+        mapboxgl: 'mapbox-gl'
+      })
     ],
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
-      
+
       if (ctx && ctx.isClient) {
         config.optimization.splitChunks.maxSize = 102400
       }
-      
+
       const vueLoader = config.module.rules.find(
         rule => rule.loader === 'vue-loader'
       )

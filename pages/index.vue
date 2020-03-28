@@ -16,25 +16,29 @@
       <nuxt-link to="/shanghai">
         <div class="project--card">
           <div class="card--title">Stunning Shanghai</div>
-          <div class="card--body">
-            List of unusual things for a first time in shanghai as a westerner
-          </div>
+          <div class="card--body">List of unusual things for a first time in shanghai as a westerner</div>
         </div>
       </nuxt-link>
       <nuxt-link to="/youtube">
         <div class="project--card">
           <div class="card--title">Interesting Youtube</div>
-          <div class="card--body">
-            Way more than zappings, lolcats and weird satisfying videos
-          </div>
+          <div class="card--body">Way more than zappings, lolcats and weird satisfying videos</div>
         </div>
       </nuxt-link>
       <nuxt-link to="/crypto">
         <div class="project--card">
           <div class="card--title">Crypto Tracker</div>
-          <div class="card--body">
-            Keep an eye on your portfolio value, all on your machine, nothing store in database
-          </div>
+          <div
+            class="card--body"
+          >Keep an eye on your portfollio, all on your machine, nothing store in database</div>
+        </div>
+      </nuxt-link>
+      <nuxt-link to="/covid">
+        <div class="project--card">
+          <div class="card--title">Covid-19 Real Time Data</div>
+          <div
+            class="card--body"
+          >See where are countries headed, related to 2019 coronavirus pandemic</div>
         </div>
       </nuxt-link>
 
@@ -63,9 +67,9 @@ export default {
       typeValue: "",
       typeStatus: true,
       typeArray: ["Developer", "Biologist", "Bioinformatician"],
-      typingSpeed: 200,
-      erasingSpeed: 100,
-      newTextDelay: 2000,
+      typingSpeed: 250,
+      erasingSpeed: 150,
+      newTextDelay: 1800,
       typeArrayIndex: 0,
       charIndex: 0
     };
@@ -145,27 +149,42 @@ span.cursor {
   grid-template-columns: repeat(auto-fill, minmax(287px, 1fr));
   gap: 30px;
   margin: 30px 0;
-  a{
+  a {
     text-decoration: none;
   }
   .project--card {
-    border: solid 1px;
+    border: solid 1px var(--main-color8);
     border-radius: 15px;
     height: auto;
     text-align: center;
+    padding: 15px;
+    box-shadow: 0 0 5px #ffc107;
     &:hover {
-      background-color: lighten($color: #000000, $amount: 15);
+      // background-color: lighten($color: #000000, $amount: 15);
       text-decoration: none;
+      box-shadow: 0 0 10px #ffc107;
+      transition: box-shadow .5s;
+       .card--title {
+         color: var(--main-color5);
+       }
+      .card--body {
+        color: var(--main-color5);
+      }
     }
+    .card--title {
+      color: var(--main-color8);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+    .card--title,
+    .card--body{
+      transition: color .5s;
+    } 
   }
 }
 
 a {
   color: var(--main-color2) !important;
-}
-.card--title{
-  font-size: 1.5rem;
-  margin-bottom: 15px;
 }
 @keyframes cursorBlink {
   49% {

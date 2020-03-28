@@ -15,6 +15,7 @@ import { createStore } from './store.js'
 import nuxt_plugin_bootstrapvue_17e8dd98 from 'nuxt_plugin_bootstrapvue_17e8dd98' // Source: .\\bootstrap-vue.js (mode: 'all')
 import nuxt_plugin_axios_1fb6eff6 from 'nuxt_plugin_axios_1fb6eff6' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_directives_521c0486 from 'nuxt_plugin_directives_521c0486' // Source: ..\\plugins\\directives.js (mode: 'client')
+import nuxt_plugin_mapboxglvue_08c98986 from 'nuxt_plugin_mapboxglvue_08c98986' // Source: ..\\plugins\\mapbox-gl-vue (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -181,6 +182,10 @@ async function createApp (ssrContext) {
 
   if (process.client && typeof nuxt_plugin_directives_521c0486 === 'function') {
     await nuxt_plugin_directives_521c0486(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_mapboxglvue_08c98986 === 'function') {
+    await nuxt_plugin_mapboxglvue_08c98986(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
