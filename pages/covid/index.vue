@@ -83,7 +83,7 @@ export default {
   methods: {
     async asyncData(context) {
       if (
-        context.store.state.posts &&
+        context.store.state.covidCountries &&
         context.store.state.covidCountries.length > 0
       ) {
         return { countries: context.store.state.covidCountries };

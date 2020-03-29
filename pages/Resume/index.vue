@@ -50,11 +50,11 @@
       </div>
       <div class="soft">
         <h4>Soft</h4>
-        <p class="skill">Mission driven / challenge oriented</p>
-        <p class="skill">Analytic and logical thinking</p>
-        <p class="skill">Problem solving</p>
-        <p class="skill">Team play</p>
-        <p class="skill">Innovative spirit</p>
+        <div class="skill">Mission driven / challenge oriented</div>
+        <div class="skill">Analytic and logical thinking</div>
+        <div class="skill">Problem solving</div>
+        <div class="skill">Team play</div>
+        <div class="skill">Innovative spirit</div>
       </div>
     </div>
     <div class="experiences">Professional Experience</div>
@@ -172,14 +172,25 @@ h4 {
       font-size: 5rem;
     }
   }
-  &:hover .skills--logos {
-    // color: turquoise;
+  &:hover {
+    .hard .skill {
+      background-color: var(--main-color4);
+      color: var(--main-color2);
+    }
+    .soft .skill {
+      background-color: var(--main-color5);
+      color: var(--main-color2);
+    }
   }
   .hard {
     text-align: left;
     .skill {
       border: solid 1px var(--main-color4);
       color: var(--main-color4);
+      // &:hover {
+      //   background-color: var(--main-color4);
+      //   color: var(--main-color2);
+      // }
     }
   }
   .soft {
@@ -187,6 +198,10 @@ h4 {
     .skill {
       border: solid 1px var(--main-color5);
       color: var(--main-color5);
+      // &:hover {
+      //   background-color: var(--main-color5);
+      //   color: var(--main-color2);
+      // }
     }
   }
   .skill--category {
@@ -198,6 +213,7 @@ h4 {
     font-weight: 700;
     border-radius: 10px;
     margin: 0 0 15px 3px;
+    transition: all 1s;
   }
 }
 
@@ -219,24 +235,24 @@ h4 {
   margin: 30px;
   p {
     font-size: 1.3rem;
-     &:nth-child(1) {
-        color: var(--main-color1);
-      }
-      &:nth-child(2) {
-        color: var(--main-color8);
-      }
-      &:nth-child(3) {
-        color: var(--main-color4);
-      }
-      &:nth-child(4) {
-        color: var(--main-color5);
-      }
-      &:nth-child(5) {
-        color: var(--main-color8);
-      }
-      &:nth-child(6) {
-        color: var(--main-color4);
-      }
+    &:nth-child(1) {
+      color: var(--main-color5);
+    }
+    &:nth-child(2) {
+      color: var(--main-color8);
+    }
+    &:nth-child(3) {
+      color: var(--main-color4);
+    }
+    &:nth-child(4) {
+      color: var(--main-color5);
+    }
+    &:nth-child(5) {
+      color: var(--main-color8);
+    }
+    &:nth-child(6) {
+      color: var(--main-color4);
+    }
   }
 }
 @media screen and (max-width: 500px) {
@@ -283,15 +299,15 @@ h4 {
     justify-items: unset;
     p {
       font-size: 1rem;
-      &:nth-child(even){
+      &:nth-child(even) {
         text-align: right;
       }
     }
   }
 }
 @media (max-width: 1400px) {
-  .container{
-    .skills--logos{
+  .container {
+    .skills--logos {
       grid-template-columns: auto auto auto;
       position: absolute;
       top: 61%;

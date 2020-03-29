@@ -2,6 +2,10 @@
   <div>
     <div class="title--container background-color3">
       <nuxt-link class="site--title" :to="site.url">{{site.name}}</nuxt-link>
+      <nuxt-link :to="`${site.url}about`">
+          <i class="icon-about" v-b-tooltip.hover.right.v-success v-b-toggle.sidebar @click="showNav" title="About"></i>
+          <!-- <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">About</p> -->
+      </nuxt-link>
     </div>
 
     <div class="container" :class="{'show': showSidebar}">
@@ -41,10 +45,6 @@
             class="animated faster"
             :class="{zoomIn: showLink }"
           >Layman's Blockchain</p>
-        </nuxt-link>
-        <nuxt-link :to="`${site.url}about`">
-          <i class="icon-about" v-b-tooltip.hover.right.v-success v-b-toggle.sidebar @click="showNav" title="About"></i>
-          <p v-show="showLink" class="animated faster" :class="{zoomIn: showLink }">About</p>
         </nuxt-link>
         <nuxt-link to="/resume">
           <i class="icon-resume" v-b-tooltip.hover.right.v-danger v-b-toggle.sidebar @click="showNav" title="My Resume"></i>
@@ -89,6 +89,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.icon-about{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: var(--main-color8);
+  &:before{
+    font-size: 3rem;
+  }
+}
 .title--container{
   padding: 20px;
   letter-spacing: 2px;
