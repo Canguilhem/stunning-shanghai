@@ -6,6 +6,9 @@
       <p>1 - Passionated about programmation, automation &amp; life sciences</p>
       <p>2 - Really curious I like to discover and learn new things</p>
     </div>
+
+    <div class="tools">Frequently used Tools</div>
+
     <div class="skills">Skills</div>
     <div class="container">
       <div class="skills--logos">
@@ -15,14 +18,6 @@
       </div>
       <div class="hard">
         <h4>Hard</h4>
-        <!-- <div>
-        <p class="skill--category">Programmation Language</p>
-        <div class="skill">Python</div>
-        <div class="skill">Java2EE</div>
-        <div class="skill">Javascript</div>
-        <div class="skill">Php</div>
-        </div>-->
-
         <div>
           <p class="skill--category">Programmation</p>
           <div class="skill">Software Development</div>
@@ -134,6 +129,7 @@ export default {
 body {
   font-family: "Lato", sans-serif;
 }
+.tools,
 .skills,
 .education,
 .experiences,

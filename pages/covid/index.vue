@@ -8,9 +8,17 @@
         <a href="https://www.worldometers.info/">worldometers</a> as datasource
       </h5>
     </div>
-
-    <button @click="getCoVidData">update SARS-CoV2</button>
-    <img v-if="loading" class="loader" :class="{'loading': loading}" src="@/assets/images/pacman_loader.svg">
+    <div class="btn--container">
+      <button @click="getCoVidData">update SARS-CoV2</button>
+    </div>
+    <div class="loader--container">
+      <img
+        v-if="loading"
+        class="loader"
+        :class="{'loading': loading}"
+        src="@/assets/images/pacman_loader.svg"
+      />
+    </div>
 
     <div id="global--data">
       <h2 class="text-center">Global Data</h2>
@@ -36,23 +44,23 @@
         <input type="text" placeholder="Search Country" v-model="search" class="search" />
         <tr>
           <th>Country</th>
-          <th>Today Cases</th>
-          <th>Today Deaths</th>
-          <th>Ratio critical / active</th>
+          <th class="large">Today Cases</th>
+          <th class="large">Today Deaths</th>
+          <th class="large">Ratio critical / active</th>
           <th>Total Cases</th>
           <th>Total Deaths</th>
           <th>Total Recovered</th>
         </tr>
         <tbody>
           <tr v-for="country in filteredTable" :key="country.country">
-          <td>{{ country.country }}</td>
-          <td>{{ country.todayCases }}</td>
-          <td>{{ country.todayDeaths }}</td>
-          <td>{{ country.critical }} / {{country.active}} ({{formatPercentage(country.critical/country.active)}})</td>
-          <td>{{ country.cases }}</td>
-          <td>{{ country.deaths }}</td>
-          <td>{{ country.recovered }}</td>
-        </tr>
+            <td>{{ country.country }}</td>
+            <td class="large">{{ country.todayCases }}</td>
+            <td class="large">{{ country.todayDeaths }}</td>
+            <td class="large">({{formatPercentage(country.critical/country.active)}})</td>
+            <td>{{ country.cases }}</td>
+            <td>{{ country.deaths }}</td>
+            <td>{{ country.recovered }}</td>
+          </tr>
         </tbody>
       </div>
     </div>
@@ -80,23 +88,31 @@ export default {
         "pk.eyJ1IjoiY2FuZ3VpbGhlbSIsImEiOiJjazhhZjdxODYwMWgxM2duenZyajlmb2M5In0.-g6SKaL5YseQ0ER8_CamAw"
     };
   },
-  methods: {
-    async asyncData(context) {
-      if (
-        context.store.state.covidCountries &&
-        context.store.state.covidCountries.length > 0
-      ) {
-        return { countries: context.store.state.covidCountries };
-      } else {
-        try {
-          let countries = await covid.getCountry();
-          context.store.commit("SET_COUNTRIES", countries);
-          return { countries: countries };
-        } catch (error) {
-          console.log(error);
-        }
+  async asyncData(context) {
+    if (
+      context.store.state.covidCountries &&
+      context.store.state.covidCountries.length > 0
+    ) {
+      return { countries: context.store.state.covidCountries };
+    } else {
+      try {
+        let countries = await covid.getCountry();
+        context.store.commit("SET_COUNTRIES", countries);
+        let data = await covid.getAll();
+        return { 
+          countries: countries,
+          globalCases: data.cases,
+          globalDeaths: data.deaths,
+          globalRecovered: data.recovered,
+          updated: data.updated,
+          globalActive: data.active
+        };
+      } catch (error) {
+        console.log(error);
       }
-    },
+    }
+  },
+  methods: {
     async getCoVidData() {
       this.loading = true;
       try {
@@ -133,7 +149,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.loader{
+.loader {
   position: absolute;
   left: 13%;
   top: 175px;
@@ -160,13 +176,14 @@ button {
   padding: 10px 40px;
   text-transform: uppercase;
   color: var(--main-color3);
+  border-radius: 30px;
 }
 .table {
   color: var(--main-color2);
 }
 tr:hover {
   background-color: lighten($color: #000000, $amount: 15);
-  color: var(--success)
+  color: var(--success);
 }
 .stats--container {
   display: grid;
@@ -176,5 +193,38 @@ tr:hover {
   width: 500;
   height: 500px;
   margin: auto;
+}
+
+@media screen and (max-width: 500px) {
+  h5 {
+    line-height: 50px;
+  }
+  input {
+    margin-left: 3%;
+  }
+  .loader--container,
+  .btn--container {
+    text-align: center;
+  }
+  .loader--container {
+    img {
+      position: initial;
+    }
+  }
+  #global--data {
+    width: auto;
+    .stats--container {
+      display: block;
+    }
+  }
+  .tableWrap {
+    margin-left: -40px;
+    tbody {
+      font-size: 0.9rem;
+    }
+    .large {
+      display: none;
+    }
+  }
 }
 </style>
