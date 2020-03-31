@@ -98,7 +98,7 @@ export default {
       try {
         let countries = await covid.getCountry();
         context.store.commit("SET_COUNTRIES", countries);
-        let data = await covid.getAll();
+        let data = await covid.all();
         return { 
           countries: countries,
           globalCases: data.cases,
@@ -115,9 +115,12 @@ export default {
   methods: {
     async getCoVidData() {
       this.loading = true;
+      console.log("banana");
       try {
         let countries = await covid.getCountry();
         let data = await covid.getAll();
+        let histo = await covid.getHistorical();
+        console.log(histo);
         console.log(data);
         console.log(countries);
 
