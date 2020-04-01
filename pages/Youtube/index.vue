@@ -38,6 +38,7 @@
     <h2>English channels</h2>
     <div class="channels--container">
       <p>Numberphiles</p>
+      <p>3Blue1Brown</p>
       <p>hello internet</p>
       <p>Kurgezat</p>
       <p>AsapScience</p>

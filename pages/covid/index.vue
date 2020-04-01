@@ -42,26 +42,28 @@
     <div class="tableWrap" v-if="countries != null">
       <div class="container table">
         <input type="text" placeholder="Search Country" v-model="search" class="search" />
-        <tr>
-          <th>Country</th>
-          <th class="large">Today Cases</th>
-          <th class="large">Today Deaths</th>
-          <th class="large">Ratio critical / active</th>
-          <th>Total Cases</th>
-          <th>Total Deaths</th>
-          <th>Total Recovered</th>
-        </tr>
-        <tbody>
-          <tr v-for="country in filteredTable" :key="country.country">
-            <td>{{ country.country }}</td>
-            <td class="large">{{ country.todayCases }}</td>
-            <td class="large">{{ country.todayDeaths }}</td>
-            <td class="large">({{formatPercentage(country.critical/country.active)}})</td>
-            <td>{{ country.cases }}</td>
-            <td>{{ country.deaths }}</td>
-            <td>{{ country.recovered }}</td>
-          </tr>
-        </tbody>
+        <table>
+          <tbody v-if="countries">
+            <tr>
+              <th>Country</th>
+              <th class="large">Today Cases</th>
+              <th class="large">Today Deaths</th>
+              <th class="large">Ratio critical / active</th>
+              <th>Total Cases</th>
+              <th>Total Deaths</th>
+              <th>Total Recovered</th>
+            </tr>
+            <tr v-for="country in filteredTable" :key="country.country">
+              <td>{{ country.country }}</td>
+              <td class="large">{{ country.todayCases }}</td>
+              <td class="large">{{ country.todayDeaths }}</td>
+              <td class="large">({{formatPercentage(country.critical/country.active)}})</td>
+              <td>{{ country.cases }}</td>
+              <td>{{ country.deaths }}</td>
+              <td>{{ country.recovered }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -99,7 +101,7 @@ export default {
         let countries = await covid.getCountry();
         context.store.commit("SET_COUNTRIES", countries);
         let data = await covid.all();
-        return { 
+        return {
           countries: countries,
           globalCases: data.cases,
           globalDeaths: data.deaths,
@@ -115,12 +117,9 @@ export default {
   methods: {
     async getCoVidData() {
       this.loading = true;
-      console.log("banana");
       try {
         let countries = await covid.getCountry();
         let data = await covid.getAll();
-        let histo = await covid.getHistorical();
-        console.log(histo);
         console.log(data);
         console.log(countries);
 
@@ -131,7 +130,7 @@ export default {
           (this.globalActive = data.active),
           (this.countries = countries);
       } catch (error) {
-        console.log("Call to covid third party API went wrong..");
+        console.log("Call to covid third party API went wrong..", error);
       }
       this.loading = false;
     },
