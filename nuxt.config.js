@@ -57,7 +57,8 @@ module.exports = {
   */
   plugins: [
     { src: '~/plugins/directives.js', ssr: false },
-    { src: '~/plugins/mapbox-gl-vue', ssr: false }
+    { src: '~/plugins/mapbox-gl-vue', ssr: false },
+    { src: '~/plugins/vue-chartjs.js', ssr: false }
   ],
 
   /*

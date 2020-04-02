@@ -9,7 +9,7 @@
       </h5>
     </div>
     <div class="btn--container">
-      <button @click="getCoVidData">update SARS-CoV2</button>
+      <b-btn @click="getCoVidData" variant="outline-danger">update SARS-CoV2</b-btn>
     </div>
     <div class="loader--container">
       <img
@@ -31,6 +31,9 @@
       <p v-if="globalCases > 0" class="text-center">Last updated : {{fomratTime(updated)}}</p>
     </div>
 
+    <client-only>
+      <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
+    </client-only>
     <!-- <mapbox
       :access-token="access_token"
       :map-options="{
@@ -42,6 +45,11 @@
     <div class="tableWrap" v-if="countries != null">
       <div class="container table">
         <input type="text" placeholder="Search Country" v-model="search" class="search" />
+        <b-btn
+          variant="outline-warning"
+          :disabled="filteredTable.length != 1"
+          @click="getHisto"
+        >See historical data for this country</b-btn>
         <table>
           <tbody v-if="countries">
             <tr>
@@ -72,6 +80,7 @@
 const covid = require("novelcovid");
 import Mapbox from "mapbox-gl-vue";
 import moment from "moment";
+import axios from "axios";
 export default {
   components: {
     Mapbox
@@ -79,13 +88,19 @@ export default {
   data() {
     return {
       loading: false,
+      histo_loaded: false,
       globalCases: 0,
       globalDeaths: 0,
       globalRecovered: 0,
       updated: 0,
       globalActive: 0,
       countries: [],
+      histo: {},
+      options: {
+        responsive: true
+      },
       search: "",
+      dummychart: [1, 2, 3],
       access_token:
         "pk.eyJ1IjoiY2FuZ3VpbGhlbSIsImEiOiJjazhhZjdxODYwMWgxM2duenZyajlmb2M5In0.-g6SKaL5YseQ0ER8_CamAw"
     };
@@ -134,6 +149,48 @@ export default {
       }
       this.loading = false;
     },
+    async getHisto() {
+      try {
+        this.loading = true;
+        this.histo_loaded = false;
+        let histo = await axios.get(
+          `https://corona.lmao.ninja/v2/historical/${this.search}`
+        );
+
+        let histoData = {
+          labels: Object.keys(histo.data.timeline.cases),
+          datasets: [
+            {
+              label: "Cases",
+              backgroundColor: "#dc3545",
+				      // borderColor: window.chartColors.red,
+              borderWidth: 1,
+              data: Object.values(histo.data.timeline.cases)
+            },
+            {
+              label: "Deaths",
+              backgroundColor: '#1a9fff',
+				      // borderColor: window.chartColors.blue,
+              borderWidth: 1,
+              data: Object.values(histo.data.timeline.deaths)
+            },
+            {
+              label: "Recovered",
+              backgroundColor: '#28a745',
+				      // borderColor: window.chartColors.green,
+              borderWidth: 1,
+              data: Object.values(histo.data.timeline.recovered)
+            }
+          ]
+        };
+        this.histo = histoData
+
+        this.histo_loaded = true;
+        this.loading = true;
+      } catch (error) {
+        console.log(error);
+      }
+    },
     fomratTime(value) {
       return moment(value);
     },
@@ -168,17 +225,22 @@ a {
   color: var(--orange);
 }
 input {
-  width: 100%;
+  width: 45%;
   border-radius: 20px;
   padding: 15px;
   margin-bottom: 30px;
+}
+.btn--container {
+  position: relative;
+  z-index: 1;
 }
 button {
   // display: block;
   padding: 10px 40px;
   text-transform: uppercase;
-  color: var(--main-color3);
-  border-radius: 30px;
+  // color: var(--main-color3);
+  border-radius: 20px;
+  height: 58px;
 }
 .table {
   color: var(--main-color2);
