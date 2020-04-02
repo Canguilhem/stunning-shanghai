@@ -186,7 +186,7 @@ export default {
         this.histo = histoData
 
         this.histo_loaded = true;
-        this.loading = true;
+        this.loading = false;
       } catch (error) {
         console.log(error);
       }
