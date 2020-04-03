@@ -18,18 +18,31 @@
         :class="{'loading': loading}"
         src="@/assets/images/pacman_loader.svg"
       />
+      <p>Fetching Data</p>
     </div>
 
     <div id="global--data">
       <h2 class="text-center">Global Data</h2>
       <div class="stats--container">
-        <p>Total number of cases: {{globalCases}}</p>
-        <p>Death toll : {{globalDeaths}}</p>
-        <p>Still Active cases: {{globalActive}}</p>
-        <p>Total number of recovered: {{globalRecovered}}</p>
+        <p>Total number of cases: {{globalData.cases}}</p>
+        <p>Death toll : {{globalData.deaths}}</p>
+        <p>Still Active cases: {{globalData.active}}</p>
+        <p>Total number of recovered: {{globalData.recovered}}</p>
       </div>
-      <p v-if="globalCases > 0" class="text-center">Last updated : {{fomratTime(updated)}}</p>
+      <p v-if="globalData" class="text-center">Last updated : {{fomratTime(globalData.updated)}}</p>
     </div>
+
+      <app-actual-data 
+        :name="selectedName"
+        :url="selectedUrl"
+        :cases="selectedTodayCases"
+        :deaths="selectedTodayDeaths"
+        :critical="selectedLastCritical"
+        :active="selectedLastActive"
+        :recovered="selectedRecovered"
+        :totalCases="selectedTotalCases">
+      </app-actual-data>
+
 
     <client-only>
       <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
@@ -61,7 +74,11 @@
               <th>Total Deaths</th>
               <th>Total Recovered</th>
             </tr>
-            <tr v-for="country in filteredTable" :key="country.country">
+            <tr
+              v-for="country in filteredTable"
+              :key="country.country"
+              @click="showHistory(country)"
+            >
               <td>{{ country.country }}</td>
               <td class="large">{{ country.todayCases }}</td>
               <td class="large">{{ country.todayDeaths }}</td>
@@ -78,31 +95,35 @@
 </template>
 <script>
 const covid = require("novelcovid");
-import Mapbox from "mapbox-gl-vue";
+import AppActualData from '@/components/Covid/ActualData'
+// import Mapbox from "mapbox-gl-vue";
 import moment from "moment";
 import axios from "axios";
 export default {
   components: {
-    Mapbox
+    AppActualData,
+    // Mapbox
   },
   data() {
     return {
       loading: false,
       histo_loaded: false,
-      globalCases: 0,
-      globalDeaths: 0,
-      globalRecovered: 0,
-      updated: 0,
-      globalActive: 0,
+      selected: false,
+      globalData: {},
       countries: [],
       histo: {},
-      options: {
-        responsive: true
-      },
+      options: { responsive: true },
       search: "",
-      dummychart: [1, 2, 3],
-      access_token:
-        "pk.eyJ1IjoiY2FuZ3VpbGhlbSIsImEiOiJjazhhZjdxODYwMWgxM2duenZyajlmb2M5In0.-g6SKaL5YseQ0ER8_CamAw"
+      selectedName: "",
+      selectedUrl: "",
+      selectedTodayCases:0,
+      selectedTodayDeaths:0,
+      selectedLastCritical:0,
+      selectedLastActive:0,
+      selectedRecovered:0,
+      selectedTotalCases:0,
+      // access_token:
+      //   "pk.eyJ1IjoiY2FuZ3VpbGhlbSIsImEiOiJjazhhZjdxODYwMWgxM2duenZyajlmb2M5In0.-g6SKaL5YseQ0ER8_CamAw"
     };
   },
   async asyncData(context) {
@@ -118,11 +139,7 @@ export default {
         let data = await covid.all();
         return {
           countries: countries,
-          globalCases: data.cases,
-          globalDeaths: data.deaths,
-          globalRecovered: data.recovered,
-          updated: data.updated,
-          globalActive: data.active
+          globalData: data
         };
       } catch (error) {
         console.log(error);
@@ -138,12 +155,8 @@ export default {
         console.log(data);
         console.log(countries);
 
-        (this.globalCases = data.cases),
-          (this.globalDeaths = data.deaths),
-          (this.globalRecovered = data.recovered),
-          (this.updated = data.updated),
-          (this.globalActive = data.active),
-          (this.countries = countries);
+        this.globalData = data;
+        this.countries = countries;
       } catch (error) {
         console.log("Call to covid third party API went wrong..", error);
       }
@@ -162,34 +175,51 @@ export default {
           datasets: [
             {
               label: "Cases",
-              backgroundColor: "#dc3545",
-				      // borderColor: window.chartColors.red,
-              borderWidth: 1,
-              data: Object.values(histo.data.timeline.cases)
+              backgroundColor: "rgba(220,53,69,0.5)",
+              borderColor: "rgb(220,53,69)",
+              borderWidth: 3,
+              data: Object.values(histo.data.timeline.cases),
+              barThickness: "25",
+              padding: "5"
             },
             {
               label: "Deaths",
-              backgroundColor: '#1a9fff',
-				      // borderColor: window.chartColors.blue,
-              borderWidth: 1,
-              data: Object.values(histo.data.timeline.deaths)
+              backgroundColor: "rgba(26,159,255,0.5)",
+              borderColor: "rgb(26,159,255)",
+              borderWidth: 3,
+              data: Object.values(histo.data.timeline.deaths),
+              barThickness: "flex"
             },
             {
               label: "Recovered",
-              backgroundColor: '#28a745',
-				      // borderColor: window.chartColors.green,
-              borderWidth: 1,
-              data: Object.values(histo.data.timeline.recovered)
+              backgroundColor: "rgba(40,167,69,0.5)",
+              borderColor: "rgb(40,167,69)",
+              borderWidth: 3,
+              data: Object.values(histo.data.timeline.recovered),
+              barThickness: "flex"
             }
           ]
         };
-        this.histo = histoData
+        this.histo = histoData;
 
         this.histo_loaded = true;
         this.loading = false;
       } catch (error) {
         console.log(error);
       }
+    },
+    showHistory(country) {
+      this.selected = true
+      this.selectedName = country.country
+      this.selectedLastActive =  country.active
+      this.selectedUrl = country.countryInfo.flag
+      this.selectedTodayCases = country.todayCases
+      this.selectedLastCritical =  country.critical
+      this.selectedTodayDeaths = country.todayDeaths
+      this.selectedTotalCases = country.cases
+      this.selectedRecovered = country.recovered
+      console.log("selected: ",country);
+      return
     },
     fomratTime(value) {
       return moment(value);
