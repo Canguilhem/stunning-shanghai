@@ -106,6 +106,7 @@ h2 {
     border:1px solid ;
     border-radius: 10px;
     padding:5px;
+    width: fit-content;
     &:hover{
       color: var(--main-color6);
       background-color: var(--main-color2);

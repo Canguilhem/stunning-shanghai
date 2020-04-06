@@ -57,6 +57,7 @@ export default {
     position: absolute;
     left: -65px;
     top: 37px;
+    transition: transform .5s;
   }
   &:hover{
     box-shadow: 0 0 13px var(--danger);

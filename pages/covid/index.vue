@@ -11,14 +11,9 @@
     <div class="btn--container">
       <b-btn @click="getCoVidData" variant="outline-danger">update SARS-CoV2</b-btn>
     </div>
-    <div class="loader--container">
-      <img
-        v-if="loading"
-        class="loader"
-        :class="{'loading': loading}"
-        src="@/assets/images/pacman_loader.svg"
-      />
-      <p>Fetching Data</p>
+    <div v-if="loading" class="loader--container">
+      <img class="loader" :class="{'loading': loading}" src="@/assets/images/pacman_loader.svg" />
+      <p class="fetch--text">Fetching Data</p>
     </div>
 
     <div id="global--data">
@@ -32,17 +27,16 @@
       <p v-if="globalData" class="text-center">Last updated : {{fomratTime(globalData.updated)}}</p>
     </div>
 
-      <app-actual-data 
-        :name="selectedName"
-        :url="selectedUrl"
-        :cases="selectedTodayCases"
-        :deaths="selectedTodayDeaths"
-        :critical="selectedLastCritical"
-        :active="selectedLastActive"
-        :recovered="selectedRecovered"
-        :totalCases="selectedTotalCases">
-      </app-actual-data>
-
+    <app-actual-data
+      :name="selectedName"
+      :url="selectedUrl"
+      :cases="selectedTodayCases"
+      :deaths="selectedTodayDeaths"
+      :critical="selectedLastCritical"
+      :active="selectedLastActive"
+      :recovered="selectedRecovered"
+      :totalCases="selectedTotalCases"
+    ></app-actual-data>
 
     <client-only>
       <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
@@ -95,13 +89,14 @@
 </template>
 <script>
 const covid = require("novelcovid");
-import AppActualData from '@/components/Covid/ActualData'
+import AppActualData from "@/components/Covid/ActualData";
+import * as ss from "simple-statistics";
 // import Mapbox from "mapbox-gl-vue";
 import moment from "moment";
 import axios from "axios";
 export default {
   components: {
-    AppActualData,
+    AppActualData
     // Mapbox
   },
   data() {
@@ -112,21 +107,25 @@ export default {
       globalData: {},
       countries: [],
       histo: {},
-      options: { responsive: true },
+      options: {
+        responsive: true,
+        responsiveAnimationDuration: 500
+      },
       search: "",
       selectedName: "",
       selectedUrl: "",
-      selectedTodayCases:0,
-      selectedTodayDeaths:0,
-      selectedLastCritical:0,
-      selectedLastActive:0,
-      selectedRecovered:0,
-      selectedTotalCases:0,
+      selectedTodayCases: 0,
+      selectedTodayDeaths: 0,
+      selectedLastCritical: 0,
+      selectedLastActive: 0,
+      selectedRecovered: 0,
+      selectedTotalCases: 0
       // access_token:
       //   "pk.eyJ1IjoiY2FuZ3VpbGhlbSIsImEiOiJjazhhZjdxODYwMWgxM2duenZyajlmb2M5In0.-g6SKaL5YseQ0ER8_CamAw"
     };
   },
   async asyncData(context) {
+    console.log("getting data from store in advance");
     if (
       context.store.state.covidCountries &&
       context.store.state.covidCountries.length > 0
@@ -138,7 +137,7 @@ export default {
         context.store.commit("SET_COUNTRIES", countries);
         let data = await covid.all();
         return {
-          countries: countries,
+          countries,
           globalData: data
         };
       } catch (error) {
@@ -152,9 +151,6 @@ export default {
       try {
         let countries = await covid.getCountry();
         let data = await covid.getAll();
-        console.log(data);
-        console.log(countries);
-
         this.globalData = data;
         this.countries = countries;
       } catch (error) {
@@ -167,8 +163,22 @@ export default {
         this.loading = true;
         this.histo_loaded = false;
         let histo = await axios.get(
-          `https://corona.lmao.ninja/v2/historical/${this.search}`
+          `https://corona.lmao.ninja/v2/historical/${this.filteredTable[0].country}?lastdays=all`
         );
+        // let mean = ss.mean(Object.values(histo.data.timeline.cases));
+        // let std = ss.standardDeviation(Object.values(histo.data.timeline.cases));
+
+        let cases = Object.values(histo.data.timeline.cases).map(x => {
+          return x / 1000;
+        });
+
+        let deaths = Object.values(histo.data.timeline.deaths).map(x => {
+          return x / 1000;
+        });
+
+        let recovered = Object.values(histo.data.timeline.recovered).map(x => {
+          return x / 1000;
+        });
 
         let histoData = {
           labels: Object.keys(histo.data.timeline.cases),
@@ -178,25 +188,27 @@ export default {
               backgroundColor: "rgba(220,53,69,0.5)",
               borderColor: "rgb(220,53,69)",
               borderWidth: 3,
-              data: Object.values(histo.data.timeline.cases),
-              barThickness: "25",
-              padding: "5"
+              data: cases,
+              barThickness: "10",
+              padding: "20"
             },
             {
               label: "Deaths",
               backgroundColor: "rgba(26,159,255,0.5)",
               borderColor: "rgb(26,159,255)",
               borderWidth: 3,
-              data: Object.values(histo.data.timeline.deaths),
-              barThickness: "flex"
+              data: deaths,
+              barThickness: "10",
+              padding: "20"
             },
             {
               label: "Recovered",
               backgroundColor: "rgba(40,167,69,0.5)",
               borderColor: "rgb(40,167,69)",
               borderWidth: 3,
-              data: Object.values(histo.data.timeline.recovered),
-              barThickness: "flex"
+              data: recovered,
+              barThickness: "10",
+              padding: "20"
             }
           ]
         };
@@ -209,17 +221,17 @@ export default {
       }
     },
     showHistory(country) {
-      this.selected = true
-      this.selectedName = country.country
-      this.selectedLastActive =  country.active
-      this.selectedUrl = country.countryInfo.flag
-      this.selectedTodayCases = country.todayCases
-      this.selectedLastCritical =  country.critical
-      this.selectedTodayDeaths = country.todayDeaths
-      this.selectedTotalCases = country.cases
-      this.selectedRecovered = country.recovered
-      console.log("selected: ",country);
-      return
+      this.selected = true;
+      this.selectedName = country.country;
+      this.selectedLastActive = country.active;
+      this.selectedUrl = country.countryInfo.flag;
+      this.selectedTodayCases = country.todayCases;
+      this.selectedLastCritical = country.critical;
+      this.selectedTodayDeaths = country.todayDeaths;
+      this.selectedTotalCases = country.cases;
+      this.selectedRecovered = country.recovered;
+      console.log("selected: ", country);
+      return;
     },
     fomratTime(value) {
       return moment(value);
@@ -238,10 +250,16 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+
 .loader {
   position: absolute;
   left: 13%;
   top: 175px;
+}
+.fetch--text {
+  position: relative;
+  z-index: 1;
+  padding-left: 4%;
 }
 a {
   text-decoration: underline;

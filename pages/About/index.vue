@@ -9,7 +9,7 @@
     </b-jumbotron>
     <div class="row">
       This site gather different mini projects that I have been working on lately.
-      Most of them would merit their own standalone but here they are for now...
+      Most of them would merit (or not) their own standalone but here they are for now...
     </div>
     <div class="row">
       In case you are wondering, this whole site is developped as a serverless, single page application

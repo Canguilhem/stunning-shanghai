@@ -86,6 +86,9 @@ export default {
     h1 {
       text-decoration: underline;
     }
+    .fa{
+      color: var(--danger);
+    }
   } 
   h1 {
     font-size: 2rem;
@@ -106,6 +109,9 @@ export default {
     box-shadow: 0 0 8px var(--warning);
     &:hover{
       box-shadow: 0 0 13px #ffc107;
+      .fa{
+        color: var(--warning);
+    }
     }
     h4 {
       color: var(--warning);
