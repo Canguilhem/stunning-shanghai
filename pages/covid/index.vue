@@ -8,9 +8,7 @@
         <a href="https://www.worldometers.info/">worldometers</a> as datasource
       </h5>
     </div>
-    <div class="btn--container">
-      <b-btn @click="getCoVidData" variant="outline-danger">update SARS-CoV2</b-btn>
-    </div>
+
     <div v-if="loading" class="loader--container">
       <img class="loader" :class="{'loading': loading}" src="@/assets/images/pacman_loader.svg" />
       <p class="fetch--text">Fetching Data</p>
@@ -27,11 +25,14 @@
       <p class="text-center">Last updated : {{fomratTime(globalData.updated)}}</p>
     </div>
 
-    <app-actual-data v-if="selectedCountry.name && !selectedCountry.error" :country="selectedCountry"></app-actual-data>
+    <app-actual-data
+      v-if="selectedCountry.name && !selectedCountry.error"
+      :country="selectedCountry"
+    ></app-actual-data>
     <div class="histo--container">
       <client-only>
-      <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
-    </client-only>
+        <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
+      </client-only>
     </div>
     <!-- <mapbox
       :access-token="access_token"
@@ -44,10 +45,7 @@
     <div class="tableWrap" v-if="countries != null">
       <div class="container table">
         <input type="text" placeholder="Search Country" v-model="search" class="search" />
-        <!-- <b-btn
-          variant="outline-warning"
-          :disabled="filteredTable.length != 1"
-        >See historical data for this country</b-btn> -->
+        <b-btn @click="getCoVidData" variant="danger">Get Last Data</b-btn>
         <table>
           <tbody v-if="countries">
             <tr>
@@ -94,17 +92,17 @@ export default {
       histo: {},
       options: {
         title: {
-          display: true
+          display: true,
+          fontColor: "white"
+        },
+        legend: {
+          position: "top",
+          labels: {
+            fontColor: "white"
+          }
         },
         responsive: true,
-        responsiveAnimationDuration: 500,
-        scales: {
-          xAxes: [{
-              categoryPercentage: 1,
-              barPercentage: 1,
-              barThickness: 'flex'
-          }]
-        }
+        responsiveAnimationDuration: 500
       },
       search: "",
       selectedCountry: {}
@@ -147,7 +145,8 @@ export default {
       this.loading = false;
     },
     async showSpecificCountry(country) {
-      this.options.title.text = `Histogram for ${country.country}`
+      console.log(country);
+      this.options.title.text = `Historical data for ${country.country}`;
       this.selectedCountry = {
         name: country.country,
         active: country.active,
@@ -156,6 +155,8 @@ export default {
         todayCritical: country.critical,
         todayDeaths: country.todayDeaths,
         cases: country.cases,
+        tests: country.tests,
+        deaths: country.deaths,
         recovered: country.recovered
       };
       try {
@@ -179,34 +180,24 @@ export default {
 
         let histoData = {
           labels: Object.keys(histo.data.timeline.cases),
-          cssClasses: 'banana',
           datasets: [
             {
               label: "Cases",
-              backgroundColor: "rgba(220,53,69,0.5)",
-              borderColor: "rgb(220,53,69)",
-              borderWidth: 3,
-              data: cases,
-              barThickness: "10",
-              padding: "20"
+              backgroundColor: "rgba(26,159,255,0.3)",
+              borderWidth: 1,
+              data: cases
             },
             {
               label: "Deaths",
-              backgroundColor: "rgba(26,159,255,0.5)",
-              borderColor: "rgb(26,159,255)",
-              borderWidth: 3,
-              data: deaths,
-              barThickness: "10",
-              padding: "20"
+              backgroundColor: "rgba(220,53,69,0.4)",
+              borderWidth: 1,
+              data: deaths
             },
             {
               label: "Recovered",
               backgroundColor: "rgba(40,167,69,0.5)",
-              borderColor: "rgb(40,167,69)",
-              borderWidth: 3,
-              data: recovered,
-              barThickness: "10",
-              padding: "20"
+              borderWidth: 1,
+              data: recovered
             }
           ]
         };
@@ -214,7 +205,7 @@ export default {
         this.histo_loaded = true;
       } catch (error) {
         console.log("Error getting historical data for", country, error);
-        this.selectedCountry.error = "No data for this country"
+        this.selectedCountry.error = "No data for this country";
         this.histo_loaded = false;
       }
     },
@@ -235,19 +226,19 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-.loader {
+.loader--container {
   position: absolute;
-  left: 13%;
-  top: 175px;
+  left: 53%;
+  .loader {
+      position: absolute;
+      top: 30px;
+      left: 0;
+  }
 }
-.histo--container{
+
+.histo--container {
   width: 500px;
   height: 500px;
-}
-.fetch--text {
-  position: relative;
-  z-index: 1;
-  padding-left: 4%;
 }
 a {
   text-decoration: underline;
@@ -287,6 +278,7 @@ button {
 }
 .table {
   color: var(--main-color2);
+  width: 487px;
 }
 tr:hover {
   background-color: lighten($color: #000000, $amount: 15);

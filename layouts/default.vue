@@ -2,7 +2,7 @@
   <div id="root__default"> 
     <app-sidebar :site="site"></app-sidebar>
     <nuxt id="nuxt-content"/>
-    <app-footer class="footer"></app-footer>
+    <!-- <app-footer class="footer"></app-footer> -->
   </div>
 </template>
 
