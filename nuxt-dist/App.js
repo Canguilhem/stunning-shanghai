@@ -8,16 +8,16 @@ import {
 
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import '..\\node_modules\\bootstrap\\dist\\css\\bootstrap.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
-import '..\\node_modules\\bootstrap-vue\\dist\\bootstrap-vue.css'
+import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
 
-import '..\\assets\\css\\fontello.css'
+import '../assets/css/fontello.css'
 
-import _6dfe2c37 from '..\\layouts\\crypto.vue'
-import _6f6c098b from '..\\layouts\\default.vue'
-import _2b220301 from '..\\layouts\\shanghai.vue'
-import _4f894326 from '..\\layouts\\youtube.vue'
+import _6dfe2c37 from '../layouts/crypto.vue'
+import _6f6c098b from '../layouts/default.vue'
+import _2b220301 from '../layouts/shanghai.vue'
+import _4f894326 from '../layouts/youtube.vue'
 
 const layouts = { "_crypto": _6dfe2c37,"_default": _6f6c098b,"_shanghai": _2b220301,"_youtube": _4f894326 }
 

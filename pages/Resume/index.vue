@@ -7,7 +7,7 @@
       <p>2 - Really curious I like to discover and learn new things</p>
     </div>
 
-    <div class="tools">Frequently used Tools</div>
+    <!-- <div class="tools">Frequently used Tools</div> -->
 
     <div class="skills">Skills</div>
     <div class="container">
@@ -151,6 +151,7 @@ h4 {
   border-radius: 20px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 80px;
   padding: 10px 70px;
   background-color: rgba(58, 92, 131, 0.2);
   margin-top: 30px;
