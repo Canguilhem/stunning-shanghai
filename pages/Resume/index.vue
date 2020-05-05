@@ -94,6 +94,7 @@ export default {
   },
   methods: {},
   async asyncData(context) {
+    console.log(context.store)
     if (
       context.store.state.experiences &&
       context.store.state.experiences.length > 0

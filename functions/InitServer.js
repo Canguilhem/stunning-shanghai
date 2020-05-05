@@ -10,7 +10,6 @@ exports.handler = async (event, context) => {
     const experiences = await Experience.find().sort('-from')
     const formations = await Formation.find().sort('-from')
     const posts = await Post.find()
-        //   response.msg = "Experiences successfully found",
     response.data = {
         experiences,
         posts,
