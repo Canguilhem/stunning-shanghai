@@ -27,7 +27,7 @@ exports.handler = async (event, context) => {
     console.log(err) // output to netlify function log
     return {
       statusCode: 500,
-      body: JSON.stringify({msg: err.message})
+      body: JSON.stringify({msg: `Error from initServer function : ${err.message}`})
     }
   }
 }
