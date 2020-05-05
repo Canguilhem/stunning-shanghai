@@ -94,7 +94,7 @@ export default {
   },
   methods: {},
   async asyncData(context) {
-    console.log(context.store)
+    console.log(context.store.state)
     if (
       context.store.state.experiences &&
       context.store.state.experiences.length > 0
