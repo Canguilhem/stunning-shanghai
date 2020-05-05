@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
             msg: "Posts successfully found",
             data: posts
           }
-          console.log("found something")  
+          console.log("READ_POST_FUNC : ", response)
     return {
       statusCode: 200,
       body: JSON.stringify(response)
