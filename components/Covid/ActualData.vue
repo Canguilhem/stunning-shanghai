@@ -3,8 +3,10 @@
     <img :src="country.flag" />
     <div v-if="country.error != null">{{country.error}}</div>
     <div class="recap" v-else>
-      <h4>Right now in {{country.name}}</h4>
 
+      <h4 class="title">Right now in {{country.name}}  ({{country.cases}} identified) including:</h4>
+      <!-- and {{country.todayDeaths}} deaths -->
+    
       <div class="doughnut--container">
         <doughnut-chart :chartData="doughData" :options="options"></doughnut-chart>
       </div>
@@ -140,6 +142,9 @@ export default {
 </script>
 
 <style scoped>
+.title{
+  position: absolute;
+}
 .component {
   margin: 1rem;
 }
@@ -150,6 +155,8 @@ export default {
 img {
   border-radius: 15px;
   width: 8rem;
+  position: relative;
+  top: -20px;
 }
 .recap {
   display: inline-block;

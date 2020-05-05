@@ -12,11 +12,11 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_bootstrapvue_17e8dd98 from 'nuxt_plugin_bootstrapvue_17e8dd98' // Source: .\\bootstrap-vue.js (mode: 'all')
-import nuxt_plugin_axios_1fb6eff6 from 'nuxt_plugin_axios_1fb6eff6' // Source: .\\axios.js (mode: 'all')
-import nuxt_plugin_directives_521c0486 from 'nuxt_plugin_directives_521c0486' // Source: ..\\plugins\\directives.js (mode: 'client')
-import nuxt_plugin_mapboxglvue_08c98986 from 'nuxt_plugin_mapboxglvue_08c98986' // Source: ..\\plugins\\mapbox-gl-vue (mode: 'client')
-import nuxt_plugin_vuechartjs_345e868d from 'nuxt_plugin_vuechartjs_345e868d' // Source: ..\\plugins\\vue-chartjs.js (mode: 'client')
+import nuxt_plugin_bootstrapvue_33eef6b8 from 'nuxt_plugin_bootstrapvue_33eef6b8' // Source: ./bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_axios_1c43eb75 from 'nuxt_plugin_axios_1c43eb75' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_directives_521c0486 from 'nuxt_plugin_directives_521c0486' // Source: ../plugins/directives.js (mode: 'client')
+import nuxt_plugin_mapboxglvue_08c98986 from 'nuxt_plugin_mapboxglvue_08c98986' // Source: ../plugins/mapbox-gl-vue (mode: 'client')
+import nuxt_plugin_vuechartjs_345e868d from 'nuxt_plugin_vuechartjs_345e868d' // Source: ../plugins/vue-chartjs.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -173,12 +173,12 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_bootstrapvue_17e8dd98 === 'function') {
-    await nuxt_plugin_bootstrapvue_17e8dd98(app.context, inject)
+  if (typeof nuxt_plugin_bootstrapvue_33eef6b8 === 'function') {
+    await nuxt_plugin_bootstrapvue_33eef6b8(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_1fb6eff6 === 'function') {
-    await nuxt_plugin_axios_1fb6eff6(app.context, inject)
+  if (typeof nuxt_plugin_axios_1c43eb75 === 'function') {
+    await nuxt_plugin_axios_1c43eb75(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_directives_521c0486 === 'function') {
