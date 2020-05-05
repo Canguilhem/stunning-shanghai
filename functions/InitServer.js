@@ -16,10 +16,10 @@ exports.handler = async (event, context) => {
         posts,
         formations
     }
-    response.headers = {
-      'Access-Control-Allow-Origin': "*"
-    }
-    console.log("INIT_SERVER_FUNC: ", response.data)
+    // response.headers = {
+    //   'Access-Control-Allow-Origin': "*"
+    // }
+    console.log("INIT_SERVER_FUNC: ", response)
     return {
       statusCode: 200,
       body: JSON.stringify(response)
