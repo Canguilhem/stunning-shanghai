@@ -1,3 +1,7 @@
 [build]
   Command = "npm run generate"
   Functions = "functions"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"

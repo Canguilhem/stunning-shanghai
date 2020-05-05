@@ -1,13 +1,13 @@
 <template>
   <div class="page">
-    <div>
+    <!-- <div>
       <h5>
         This page is based on
         <a href="https://github.com/NovelCOVID/API">NovelCovid API</a>
         which use
         <a href="https://www.worldometers.info/">worldometers</a> as datasource
       </h5>
-    </div>
+    </div>-->
 
     <div v-if="loading" class="loader--container">
       <img class="loader" :class="{'loading': loading}" src="@/assets/images/pacman_loader.svg" />
@@ -15,12 +15,12 @@
     </div>
 
     <div id="global--data" v-if="globalData != null">
-      <h2 class="text-center">Global Data</h2>
+      <h2 class="text-center">Worldwide Data</h2>
       <div class="stats--container">
-        <p>Total number of cases: {{globalData.cases}}</p>
+        <p>Cases: {{globalData.cases}}</p>
         <p>Death toll : {{globalData.deaths}}</p>
-        <p>Still Active cases: {{globalData.active}}</p>
-        <p>Total number of recovered: {{globalData.recovered}}</p>
+        <p>Active : {{globalData.active}}</p>
+        <p>Recovered: {{globalData.recovered}}</p>
       </div>
       <p class="text-center">Last updated : {{fomratTime(globalData.updated)}}</p>
     </div>
@@ -30,9 +30,9 @@
       :country="selectedCountry"
     ></app-actual-data>
     <div class="histo--container">
-      <client-only>
+      <!-- <client-only>
         <portolio-chart v-if="histo_loaded" :chartData="histo" :options="options"></portolio-chart>
-      </client-only>
+      </client-only>-->
     </div>
     <!-- <mapbox
       :access-token="access_token"
@@ -50,9 +50,9 @@
           <tbody v-if="countries">
             <tr>
               <th>Country</th>
-              <th>Total Cases</th>
+              <!-- <th>Total Cases</th>
               <th>Total Deaths</th>
-              <th>Total Recovered</th>
+              <th>Total Recovered</th>-->
             </tr>
             <tr
               v-for="country in filteredTable"
@@ -60,9 +60,9 @@
               @click="showSpecificCountry(country)"
             >
               <td>{{ country.country }}</td>
-              <td>{{ country.cases }}</td>
+              <!-- <td>{{ country.cases }}</td>
               <td>{{ country.deaths }}</td>
-              <td>{{ country.recovered }}</td>
+              <td>{{ country.recovered }}</td>-->
             </tr>
           </tbody>
         </table>
@@ -84,12 +84,13 @@ export default {
   },
   data() {
     return {
+      historic: {},
       loading: false,
       histo_loaded: false,
       selected: false,
       globalData: {},
       countries: [],
-      histo: {},
+      // histo: {},
       options: {
         title: {
           display: true,
@@ -119,7 +120,7 @@ export default {
       return { countries: context.store.state.covidCountries };
     } else {
       try {
-        let countries = await covid.getCountry();
+        let countries = await covid.getCountry(null, "cases");
         context.store.commit("SET_COUNTRIES", countries);
         let data = await covid.all();
         return {
@@ -135,7 +136,7 @@ export default {
     async getCoVidData() {
       this.loading = true;
       try {
-        let countries = await covid.getCountry();
+        let countries = await covid.getCountry(null, "cases");
         let data = await covid.getAll();
         this.globalData = data;
         this.countries = countries;
@@ -147,6 +148,7 @@ export default {
     async showSpecificCountry(country) {
       console.log(country);
       this.options.title.text = `Historical data for ${country.country}`;
+  
       this.selectedCountry = {
         name: country.country,
         active: country.active,
@@ -159,55 +161,13 @@ export default {
         deaths: country.deaths,
         recovered: country.recovered
       };
-      try {
-        let histo = await axios.get(
+
+      let {data} = await this.$axios.get(
           `https://corona.lmao.ninja/v2/historical/${country.country}?lastdays=all`
-        );
-        let cases = Object.values(histo.data.timeline.cases).map(x => {
-          // return x / 1000;
-          return x;
-        });
+      );
+      this.selectedCountry.timeline = data;
 
-        let deaths = Object.values(histo.data.timeline.deaths).map(x => {
-          // return x / 1000;
-          return x;
-        });
 
-        let recovered = Object.values(histo.data.timeline.recovered).map(x => {
-          // return x / 1000;
-          return x;
-        });
-
-        let histoData = {
-          labels: Object.keys(histo.data.timeline.cases),
-          datasets: [
-            {
-              label: "Cases",
-              backgroundColor: "rgba(26,159,255,0.3)",
-              borderWidth: 1,
-              data: cases
-            },
-            {
-              label: "Deaths",
-              backgroundColor: "rgba(220,53,69,0.4)",
-              borderWidth: 1,
-              data: deaths
-            },
-            {
-              label: "Recovered",
-              backgroundColor: "rgba(40,167,69,0.5)",
-              borderWidth: 1,
-              data: recovered
-            }
-          ]
-        };
-        this.histo = histoData;
-        this.histo_loaded = true;
-      } catch (error) {
-        console.log("Error getting historical data for", country, error);
-        this.selectedCountry.error = "No data for this country";
-        this.histo_loaded = false;
-      }
     },
     fomratTime(value) {
       return moment(value);
@@ -230,9 +190,9 @@ export default {
   position: absolute;
   left: 53%;
   .loader {
-      position: absolute;
-      top: 30px;
-      left: 0;
+    position: absolute;
+    top: 30px;
+    left: 0;
   }
 }
 
