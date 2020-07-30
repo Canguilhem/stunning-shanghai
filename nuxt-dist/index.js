@@ -12,11 +12,11 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_bootstrapvue_33eef6b8 from 'nuxt_plugin_bootstrapvue_33eef6b8' // Source: ./bootstrap-vue.js (mode: 'all')
-import nuxt_plugin_axios_1c43eb75 from 'nuxt_plugin_axios_1c43eb75' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_directives_521c0486 from 'nuxt_plugin_directives_521c0486' // Source: ../plugins/directives.js (mode: 'client')
-import nuxt_plugin_mapboxglvue_08c98986 from 'nuxt_plugin_mapboxglvue_08c98986' // Source: ../plugins/mapbox-gl-vue (mode: 'client')
-import nuxt_plugin_vuechartjs_345e868d from 'nuxt_plugin_vuechartjs_345e868d' // Source: ../plugins/vue-chartjs.js (mode: 'client')
+import nuxt_plugin_bootstrapvue_44e9fcbe from 'nuxt_plugin_bootstrapvue_44e9fcbe' // Source: .\\bootstrap-vue.js (mode: 'all')
+import nuxt_plugin_axios_4e841d8f from 'nuxt_plugin_axios_4e841d8f' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_directives_521c0486 from 'nuxt_plugin_directives_521c0486' // Source: ..\\plugins\\directives.js (mode: 'client')
+import nuxt_plugin_mapboxglvue_08c98986 from 'nuxt_plugin_mapboxglvue_08c98986' // Source: ..\\plugins\\mapbox-gl-vue (mode: 'client')
+import nuxt_plugin_vuechartjs_345e868d from 'nuxt_plugin_vuechartjs_345e868d' // Source: ..\\plugins\\vue-chartjs.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -63,6 +63,8 @@ async function createApp (ssrContext) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
+    head: {"title":"personal-ludo-tech","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"CrunchDev web experiments"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Suez+One"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=PT+Serif+Caption"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Baloo+Da"},{"rel":"stylesheet","href":"https:\u002F\u002Fuse.fontawesome.com\u002Freleases\u002Fv5.8.1\u002Fcss\u002Fall.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fanimate.css\u002F3.7.0\u002Fanimate.min.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fapi.mapbox.com\u002Fmapbox-gl-js\u002Fv1.8.1\u002Fmapbox-gl.css"}],"script":[],"style":[]},
+
     store,
     router,
     nuxt: {
@@ -92,7 +94,10 @@ async function createApp (ssrContext) {
         err = err || null
         app.context._errored = Boolean(err)
         err = err ? normalizeError(err) : null
-        const nuxt = this.nuxt || this.$options.nuxt
+        let nuxt = app.nuxt // to work with @vue/composition-api, see https://github.com/nuxt/nuxt.js/issues/6517#issuecomment-573280207
+        if (this) {
+          nuxt = this.nuxt || this.$options.nuxt
+        }
         nuxt.dateErr = Date.now()
         nuxt.err = err
         // Used in src/server.js
@@ -136,7 +141,7 @@ async function createApp (ssrContext) {
       throw new Error('inject(key, value) has no key provided')
     }
     if (value === undefined) {
-      throw new Error('inject(key, value) has no value provided')
+      throw new Error(`inject('${key}', value) has no value provided`)
     }
 
     key = '$' + key
@@ -173,12 +178,12 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_bootstrapvue_33eef6b8 === 'function') {
-    await nuxt_plugin_bootstrapvue_33eef6b8(app.context, inject)
+  if (typeof nuxt_plugin_bootstrapvue_44e9fcbe === 'function') {
+    await nuxt_plugin_bootstrapvue_44e9fcbe(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_1c43eb75 === 'function') {
-    await nuxt_plugin_axios_1c43eb75(app.context, inject)
+  if (typeof nuxt_plugin_axios_4e841d8f === 'function') {
+    await nuxt_plugin_axios_4e841d8f(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_directives_521c0486 === 'function') {

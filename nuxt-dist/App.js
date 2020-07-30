@@ -2,28 +2,28 @@ import Vue from 'vue'
 
 import {
   getMatchedComponentsInstances,
+  getChildrenComponentInstancesUsingFetch,
   promisify,
-  globalHandleError
+  globalHandleError,
+  sanitizeComponent
 } from './utils'
 
 import NuxtLoading from './components/nuxt-loading.vue'
 
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import '..\\node_modules\\bootstrap\\dist\\css\\bootstrap.css'
 
-import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
+import '..\\node_modules\\bootstrap-vue\\dist\\bootstrap-vue.css'
 
-import '../assets/css/fontello.css'
+import '..\\assets\\css\\fontello.css'
 
-import _6dfe2c37 from '../layouts/crypto.vue'
-import _6f6c098b from '../layouts/default.vue'
-import _2b220301 from '../layouts/shanghai.vue'
-import _4f894326 from '../layouts/youtube.vue'
+import _6dfe2c37 from '..\\layouts\\crypto.vue'
+import _6f6c098b from '..\\layouts\\default.vue'
+import _2b220301 from '..\\layouts\\shanghai.vue'
+import _4f894326 from '..\\layouts\\youtube.vue'
 
-const layouts = { "_crypto": _6dfe2c37,"_default": _6f6c098b,"_shanghai": _2b220301,"_youtube": _4f894326 }
+const layouts = { "_crypto": sanitizeComponent(_6dfe2c37),"_default": sanitizeComponent(_6f6c098b),"_shanghai": sanitizeComponent(_2b220301),"_youtube": sanitizeComponent(_4f894326) }
 
 export default {
-  head: {"title":"personal-ludo-tech","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"CrunchDev web experiments"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Suez+One"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=PT+Serif+Caption"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Baloo+Da"},{"rel":"stylesheet","href":"https:\u002F\u002Fuse.fontawesome.com\u002Freleases\u002Fv5.8.1\u002Fcss\u002Fall.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fcdnjs.cloudflare.com\u002Fajax\u002Flibs\u002Fanimate.css\u002F3.7.0\u002Fanimate.min.css"},{"rel":"stylesheet","href":"https:\u002F\u002Fapi.mapbox.com\u002Fmapbox-gl-js\u002Fv1.8.1\u002Fmapbox-gl.css"}],"script":[],"style":[]},
-
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })
 
@@ -65,8 +65,10 @@ export default {
     isOnline: true,
 
     layout: null,
-    layoutName: ''
-  }),
+    layoutName: '',
+
+    nbFetching: 0
+    }),
 
   beforeCreate () {
     Vue.util.defineReactive(this, 'nuxt', this.$options.nuxt)
@@ -99,6 +101,10 @@ export default {
   computed: {
     isOffline () {
       return !this.isOnline
+    },
+
+      isFetching() {
+      return this.nbFetching > 0
     }
   },
 
@@ -127,8 +133,17 @@ export default {
       const promises = pages.map((page) => {
         const p = []
 
-        if (page.$options.fetch) {
+        // Old fetch
+        if (page.$options.fetch && page.$options.fetch.length) {
           p.push(promisify(page.$options.fetch, this.context))
+        }
+        if (page.$fetch) {
+          p.push(page.$fetch())
+        } else {
+          // Get all component instance to call $fetch
+          for (const component of getChildrenComponentInstancesUsingFetch(page.$vnode.componentInstance)) {
+            p.push(component.$fetch())
+          }
         }
 
         if (page.$options.asyncData) {
@@ -147,7 +162,7 @@ export default {
       try {
         await Promise.all(promises)
       } catch (error) {
-        this.$loading.fail()
+        this.$loading.fail(error)
         globalHandleError(error)
         this.error(error)
       }
@@ -157,7 +172,7 @@ export default {
     errorChanged () {
       if (this.nuxt.err && this.$loading) {
         if (this.$loading.fail) {
-          this.$loading.fail()
+          this.$loading.fail(this.nuxt.err)
         }
         if (this.$loading.finish) {
           this.$loading.finish()
@@ -166,10 +181,6 @@ export default {
     },
 
     setLayout (layout) {
-      if(layout && typeof layout !== 'string') {
-        throw new Error('[nuxt] Avoid using non-string value as layout property.')
-      }
-
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }
